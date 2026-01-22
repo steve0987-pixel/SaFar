@@ -220,7 +220,7 @@ class OpenAIClient:
     """OpenAI API client with structured output support."""
     
     def __init__(self, model: str = None):
-        self.model = model or os.getenv("OPENAI_MODEL", "gpt-4o")  # Best model by default
+        self.model = model or os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Safer default
         self.api_key = os.getenv("OPENAI_API_KEY")
         
         if not self.api_key:
@@ -383,7 +383,7 @@ def get_llm_client(use_mock: bool = False, prefer_local: bool = None):
     if api_key and api_key not in ["sk-your-key-here", "sk-ваш-ключ-здесь"]:
         try:
             # Avoid UnicodeEncodeError on Windows consoles with legacy encodings (cp1251, etc.)
-            print("Using OpenAI API (gpt-4o-mini)")
+            print("Using OpenAI API")
             return OpenAIClient()
         except Exception as e:
             print(f"OpenAI not available: {e}")
