@@ -816,6 +816,63 @@
         "lat": 39.66,
         "lng": 66.98
       }
+    },
+    {
+      "id": "rest_la_romantica",
+      "name": "Trattoria La Romantica",
+      "name_uz": "La Romantica",
+      "category": "fine-dining",
+      "cuisine": [
+        "italian",
+        "pizza",
+        "pasta"
+      ],
+      "description": "Authentic Italian flavors in the heart of Samarkand. Wood-fired pizza, handmade pasta, and tiramisu. A perfect escape for a European dinner.",
+      "price_range": "$$$",
+      "avg_check_usd": 20,
+      "rating": 4.7,
+      "address": "Amir Temur Street, 105, Samarkand",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "wine",
+        "reservation",
+        "credit-cards",
+        "romantic"
+      ],
+      "image_url": "/images/restaurants/rest_la_romantica.jpg",
+      "coordinates": {
+        "lat": 39.65,
+        "lng": 66.96
+      }
+    },
+    {
+      "id": "rest_green_garden",
+      "name": "Green Garden Healthy Bar",
+      "name_uz": "Green Garden",
+      "category": "casual",
+      "cuisine": [
+        "vegan",
+        "vegetarian",
+        "healthy"
+      ],
+      "description": "The best spot for vegans and healthy eaters. Fresh smoothie bowls, avocado toast, and plant-based versions of local dishes.",
+      "price_range": "$$",
+      "avg_check_usd": 12,
+      "rating": 4.8,
+      "address": "University Boulevard, 15, Samarkand",
+      "closing_hours": "21:00",
+      "features": [
+        "wifi",
+        "vegan",
+        "gluten-free",
+        "takeaway"
+      ],
+      "image_url": "/images/restaurants/rest_green_garden.jpg",
+      "coordinates": {
+        "lat": 39.645,
+        "lng": 66.965
+      }
     }
   ],
   "hotels": [
