@@ -1,0 +1,1486 @@
+{
+  "version": "3.0",
+  "city": "Samarkand",
+  "restaurants": [
+    {
+      "id": "rest_afandi_food",
+      "name": "Afandi Food",
+      "name_uz": "Afandi taomlari",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Домашняя узбекская кухня в понятном формате: плов, манты, лагман и свежая выпечка. Хороший вариант для сытного обеда рядом с центром.",
+      "price_range": "$$",
+      "avg_check_usd": 12,
+      "rating": 4.6,
+      "address": "улица Ислама Каримова, 43, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "family-friendly",
+        "takeaway",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_afandi_food.jpg",
+      "coordinates": {
+        "lat": 39.6564,
+        "lng": 66.9785
+      }
+    },
+    {
+      "id": "rest_ayvan_by_la_minor",
+      "name": "Ayvan by La Minor",
+      "name_uz": "Ayvan (La Minor)",
+      "category": "fine-dining",
+      "cuisine": [
+        "uzbek",
+        "european"
+      ],
+      "description": "Ресторан с акцентом на атмосферу и подачу: сочетание восточных мотивов и современной кухни. Часто выбирают для ужинов и красивых фотографий.",
+      "price_range": "$$$",
+      "avg_check_usd": 25,
+      "rating": 4.7,
+      "address": "улица Ибн Холдуна, 1/1, Самарканд",
+      "closing_hours": "00:00",
+      "features": [
+        "wifi",
+        "terrace",
+        "live-music",
+        "parking",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_ayvan_by_la_minor.jpg",
+      "coordinates": {
+        "lat": 39.678,
+        "lng": 66.94
+      }
+    },
+    {
+      "id": "rest_bellis",
+      "name": "Bellis",
+      "name_uz": "Bellis",
+      "category": "fine-dining",
+      "cuisine": [
+        "european",
+        "uzbek"
+      ],
+      "description": "Элегантный зал и меню с европейской классикой и локальными позициями. Подходит для спокойного ужина и встреч.",
+      "price_range": "$$$",
+      "avg_check_usd": 30,
+      "rating": 4.6,
+      "address": "улица Узбекистанская, 86, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "terrace",
+        "parking",
+        "credit-cards",
+        "reservation"
+      ],
+      "image_url": "/images/restaurants/rest_bellis.jpg",
+      "coordinates": {
+        "lat": 39.643076,
+        "lng": 66.9466591
+      }
+    },
+    {
+      "id": "rest_blinniy_domik",
+      "name": "Блинный Домик",
+      "name_uz": "Blinli uycha",
+      "category": "cafe",
+      "cuisine": [
+        "cafe",
+        "european"
+      ],
+      "description": "Уютное место с блинами, десертами и кофе — спасает, когда хочется чего-то простого и понятного. Хорошо для семей и перекуса.",
+      "price_range": "$",
+      "avg_check_usd": 8,
+      "rating": 4.5,
+      "address": "улица Шохрух Мирзо, 41, Самарканд",
+      "closing_hours": "22:00",
+      "features": [
+        "wifi",
+        "family-friendly",
+        "takeaway",
+        "desserts",
+        "coffee"
+      ],
+      "image_url": "/images/restaurants/rest_blinniy_domik.jpg",
+      "coordinates": {
+        "lat": 39.6818671,
+        "lng": 66.9802581
+      }
+    },
+    {
+      "id": "rest_burger_co",
+      "name": "Burger & Co",
+      "name_uz": "Burger & Co",
+      "category": "casual",
+      "cuisine": [
+        "fast-food",
+        "american"
+      ],
+      "description": "Стабильный вариант для бургеров, картофеля фри и напитков. Удобно, если нужен быстрый обед без лишних церемоний.",
+      "price_range": "$",
+      "avg_check_usd": 10,
+      "rating": 4.4,
+      "address": "улица Орзу Махмудова, 11, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "takeaway",
+        "delivery",
+        "kids-menu",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_burger_co.jpg",
+      "coordinates": {
+        "lat": 39.6450774,
+        "lng": 66.9549097
+      }
+    },
+    {
+      "id": "rest_chapon_uz",
+      "name": "Chapon",
+      "name_uz": "Chapon",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Современная интерпретация узбекской кухни: мясо на углях, лепёшки и блюда казана. Часто отмечают щедрые порции.",
+      "price_range": "$$",
+      "avg_check_usd": 14,
+      "rating": 4.6,
+      "address": "улица Давлатобод, 94, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "parking",
+        "family-friendly",
+        "halal",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_chapon_uz.jpg",
+      "coordinates": {
+        "lat": 39.6594807,
+        "lng": 66.9473222
+      }
+    },
+    {
+      "id": "rest_gruzinka",
+      "name": "Gruzinka",
+      "name_uz": "Gruzinka",
+      "category": "casual",
+      "cuisine": [
+        "georgian"
+      ],
+      "description": "Грузинская классика — хачапури, хинкали, шашлык и ароматные соусы. Хорошо для компании и долгих разговоров.",
+      "price_range": "$$",
+      "avg_check_usd": 18,
+      "rating": 4.6,
+      "address": "улица Махмуд ал-Кашгари, 87, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "terrace",
+        "parking",
+        "family-friendly",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_gruzinka.jpg",
+      "coordinates": {
+        "lat": 39.64787,
+        "lng": 66.95526
+      }
+    },
+    {
+      "id": "rest_istiqlol",
+      "name": "Istiqlol",
+      "name_uz": "Istiqlol",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek",
+        "central-asian"
+      ],
+      "description": "Ресторан в городской локации с привычным меню: плов, шашлык, самса и салаты. Удобно для обеда после прогулок.",
+      "price_range": "$$",
+      "avg_check_usd": 15,
+      "rating": 4.5,
+      "address": "улица Амира Темура, 101, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "parking",
+        "family-friendly",
+        "banquet",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_istiqlol.jpg",
+      "coordinates": {
+        "lat": 39.6462064,
+        "lng": 66.9279329
+      }
+    },
+    {
+      "id": "rest_jasmin",
+      "name": "Jasmin",
+      "name_uz": "Jasmin",
+      "category": "fine-dining",
+      "cuisine": [
+        "european",
+        "uzbek"
+      ],
+      "description": "Просторный ресторан с торжественным интерьером и меню для праздников: от стейков до локальных блюд. Часто бронируют под мероприятия.",
+      "price_range": "$$$",
+      "avg_check_usd": 28,
+      "rating": 4.6,
+      "address": "улица Амира Темура, 202, Самарканд",
+      "closing_hours": "00:00",
+      "features": [
+        "wifi",
+        "live-music",
+        "parking",
+        "banquet",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_jasmin.jpg",
+      "coordinates": {
+        "lat": 39.647822,
+        "lng": 66.9127897
+      }
+    },
+    {
+      "id": "rest_katana",
+      "name": "Katana",
+      "name_uz": "Katana",
+      "category": "fine-dining",
+      "cuisine": [
+        "japanese",
+        "pan-asian"
+      ],
+      "description": "Японско-азиатское меню (суши/роллы, вок, соусы), спокойный интерьер и аккуратная подача. Хороший выбор, если хочется разнообразия от узбекской кухни.",
+      "price_range": "$$$",
+      "avg_check_usd": 22,
+      "rating": 4.6,
+      "address": "улица Абу Райхон Беруни, 69A, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "reservation",
+        "credit-cards",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_katana.jpg",
+      "coordinates": {
+        "lat": 39.655,
+        "lng": 66.9735
+      }
+    },
+    {
+      "id": "rest_khan_ahmad",
+      "name": "Khan Ahmad",
+      "name_uz": "Xon Ahmad",
+      "category": "fine-dining",
+      "cuisine": [
+        "middle-eastern",
+        "turkish"
+      ],
+      "description": "Восточная кухня с акцентом на мясные блюда, супы и закуски. Атмосфера ближе к «ресторанам для ужина», чем к кафе.",
+      "price_range": "$$$",
+      "avg_check_usd": 25,
+      "rating": 4.6,
+      "address": "улица Гиёсиддин Жамшед, 4F, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "halal",
+        "parking",
+        "reservation",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_khan_ahmad.jpg",
+      "coordinates": {
+        "lat": 39.675904,
+        "lng": 66.973977
+      }
+    },
+    {
+      "id": "rest_malachit",
+      "name": "Малахит",
+      "name_uz": "Malaxit",
+      "category": "casual",
+      "cuisine": [
+        "european",
+        "cafe"
+      ],
+      "description": "Неспешное кафе-ресторан с европейскими блюдами, салатами и десертами. Подходит для встреч и спокойных обедов.",
+      "price_range": "$$",
+      "avg_check_usd": 16,
+      "rating": 4.5,
+      "address": "улица Мирзо Улугбека, 37A, Самарканд",
+      "closing_hours": "22:30",
+      "features": [
+        "wifi",
+        "coffee",
+        "desserts",
+        "credit-cards",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_malachit.jpg",
+      "coordinates": {
+        "lat": 39.6655579,
+        "lng": 66.9282862
+      }
+    },
+    {
+      "id": "rest_manhattan",
+      "name": "Manhattan",
+      "name_uz": "Manhattan",
+      "category": "casual",
+      "cuisine": [
+        "european",
+        "cafe"
+      ],
+      "description": "Городской ресторан в «современном» стиле: паста, пицца, горячие блюда и напитки. Удобно для ужина без формальностей.",
+      "price_range": "$$",
+      "avg_check_usd": 15,
+      "rating": 4.5,
+      "address": "улица Мироншох Мирзо, 40, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "parking",
+        "credit-cards",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_manhattan.jpg",
+      "coordinates": {
+        "lat": 39.6589657,
+        "lng": 66.9554069
+      }
+    },
+    {
+      "id": "rest_manresa",
+      "name": "Manresa",
+      "name_uz": "Manresa",
+      "category": "fine-dining",
+      "cuisine": [
+        "european"
+      ],
+      "description": "Ресторан с акцентом на сервировку и качество ингредиентов. Хорошо подходит для особого вечера или делового ужина.",
+      "price_range": "$$$$",
+      "avg_check_usd": 35,
+      "rating": 4.6,
+      "address": "улица Нодирабегим, 56, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "reservation",
+        "wine",
+        "credit-cards",
+        "parking"
+      ],
+      "image_url": "/images/restaurants/rest_manresa.jpg",
+      "coordinates": {
+        "lat": 39.6595131,
+        "lng": 66.9304445
+      }
+    },
+    {
+      "id": "rest_maroqand",
+      "name": "Maroqand",
+      "name_uz": "Maroqand",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Локальная кухня в привычном формате: блюда казана, шашлык, салаты и лепёшки. Часто выбирают за понятное меню и быстрый сервис.",
+      "price_range": "$$",
+      "avg_check_usd": 12,
+      "rating": 4.5,
+      "address": "улица Имом аль-Бухорий, 58, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "family-friendly",
+        "parking",
+        "halal",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_maroqand.jpg",
+      "coordinates": {
+        "lat": 39.653,
+        "lng": 66.971
+      }
+    },
+    {
+      "id": "rest_maroqand_osh",
+      "name": "Maroqand Osh",
+      "name_uz": "Maroqand osh",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Специализация на «ош/плов» и других сытных блюдах. Отличный вариант, чтобы быстро попробовать классику Самарканда.",
+      "price_range": "$",
+      "avg_check_usd": 8,
+      "rating": 4.6,
+      "address": "улица Мавлоно Лутфий, 50A, Самарканд",
+      "closing_hours": "21:30",
+      "features": [
+        "takeaway",
+        "halal",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_maroqand_osh.jpg",
+      "coordinates": {
+        "lat": 39.649925,
+        "lng": 66.948824
+      }
+    },
+    {
+      "id": "rest_minor",
+      "name": "La Minor",
+      "name_uz": "La Minor",
+      "category": "casual",
+      "cuisine": [
+        "european",
+        "uzbek"
+      ],
+      "description": "Ресторанный формат при гостинично-развлекательном комплексе: горячие блюда, салаты, закуски. Удобно для ужинов и встреч.",
+      "price_range": "$$",
+      "avg_check_usd": 18,
+      "rating": 4.5,
+      "address": "улица Ибн Холдуна, 1/1, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "parking",
+        "family-friendly",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_minor.jpg",
+      "coordinates": {
+        "lat": 39.68258,
+        "lng": 66.92798
+      }
+    },
+    {
+      "id": "rest_oasis_garden",
+      "name": "Oasis Garden",
+      "name_uz": "Oasis Garden",
+      "category": "fine-dining",
+      "cuisine": [
+        "european",
+        "uzbek"
+      ],
+      "description": "Зелёный дворик и ощущение «курортного» спокойствия в городе. Меню смешанное: от гриля до лёгких салатов и десертов.",
+      "price_range": "$$$",
+      "avg_check_usd": 25,
+      "rating": 4.6,
+      "address": "улица Абдурахмона Жомий, 59A, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "garden",
+        "outdoor-seating",
+        "parking",
+        "reservation"
+      ],
+      "image_url": "/images/restaurants/rest_oasis_garden.jpg",
+      "coordinates": {
+        "lat": 39.647385,
+        "lng": 66.959769
+      }
+    },
+    {
+      "id": "rest_old_city",
+      "name": "Old City Restaurant",
+      "name_uz": "Eski shahar",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek",
+        "central-asian"
+      ],
+      "description": "Ресторан в исторической части: блюда узбекской кухни и уютная атмосфера «старого города». Хорошо сочетается с прогулкой по достопримечательностям.",
+      "price_range": "$$",
+      "avg_check_usd": 15,
+      "rating": 4.6,
+      "address": "улица Абдурахмона Жомий, 100/1, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "terrace",
+        "family-friendly",
+        "halal",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_old_city.jpg",
+      "coordinates": {
+        "lat": 39.653,
+        "lng": 66.974
+      }
+    },
+    {
+      "id": "rest_oshqand",
+      "name": "Oshqand",
+      "name_uz": "Oshqand",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Популярное место для плова и блюд казана. Если хотите «тот самый» обед по-самаркандски — это хороший кандидат.",
+      "price_range": "$$",
+      "avg_check_usd": 13,
+      "rating": 4.6,
+      "address": "улица Зарaфшон Шох, 16, Самарканд",
+      "closing_hours": "22:00",
+      "features": [
+        "halal",
+        "family-friendly",
+        "takeaway",
+        "parking"
+      ],
+      "image_url": "/images/restaurants/rest_oshqand.jpg",
+      "coordinates": {
+        "lat": 39.6585,
+        "lng": 66.9765
+      }
+    },
+    {
+      "id": "rest_shampooor",
+      "name": "Shampoor",
+      "name_uz": "Shampoor",
+      "category": "casual",
+      "cuisine": [
+        "grill",
+        "uzbek"
+      ],
+      "description": "Гриль-формат: шашлык, кебабы и сытные гарниры. Подходит для компаний, когда хочется мяса и простых вкусов.",
+      "price_range": "$$",
+      "avg_check_usd": 14,
+      "rating": 4.5,
+      "address": "улица Амира Темура, 68, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "parking",
+        "family-friendly",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_shampooor.jpg",
+      "coordinates": {
+        "lat": 39.6508706,
+        "lng": 66.9482429
+      }
+    },
+    {
+      "id": "rest_shashlik_uz",
+      "name": "Shashlik Uz",
+      "name_uz": "Shashlik Uz",
+      "category": "traditional",
+      "cuisine": [
+        "grill",
+        "uzbek"
+      ],
+      "description": "Шашлычная в хорошем смысле слова: быстро, сытно, ароматно. Лучший выбор для «мясного» перекуса без долгого ожидания.",
+      "price_range": "$",
+      "avg_check_usd": 7,
+      "rating": 4.6,
+      "address": "улица Нарпай, 77, Самарканд",
+      "closing_hours": "22:00",
+      "features": [
+        "halal",
+        "takeaway",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_shashlik_uz.jpg",
+      "coordinates": {
+        "lat": 39.9309999,
+        "lng": 65.9373217
+      }
+    },
+    {
+      "id": "rest_shokhrukh_nur",
+      "name": "Shokhrukh Nur",
+      "name_uz": "Shoxrux Nur",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Ресторан рядом с туристическими маршрутами: плов, шашлык, супы и салаты. Удобно зайти после Регистана.",
+      "price_range": "$$",
+      "avg_check_usd": 12,
+      "rating": 4.5,
+      "address": "улица Регистан, 10B, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "family-friendly",
+        "halal",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_shokhrukh_nur.jpg",
+      "coordinates": {
+        "lat": 39.6515712,
+        "lng": 66.9679524
+      }
+    },
+    {
+      "id": "rest_sophia",
+      "name": "Sophia",
+      "name_uz": "Sofiya",
+      "category": "cafe",
+      "cuisine": [
+        "cafe",
+        "european"
+      ],
+      "description": "Небольшое кафе с лёгкими блюдами, десертами и напитками. Подойдёт для короткой паузы и спокойного разговора.",
+      "price_range": "$$",
+      "avg_check_usd": 14,
+      "rating": 4.4,
+      "address": "улица Мирзо Улугбека, 79A, Самарканд",
+      "closing_hours": "22:30",
+      "features": [
+        "wifi",
+        "coffee",
+        "desserts",
+        "credit-cards",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_sophia.jpg",
+      "coordinates": {
+        "lat": 39.6624757,
+        "lng": 66.933891
+      }
+    },
+    {
+      "id": "rest_t_bone",
+      "name": "T-Bone Cafe & Bar",
+      "name_uz": "T-Bone",
+      "category": "fine-dining",
+      "cuisine": [
+        "steakhouse",
+        "european"
+      ],
+      "description": "Стейки, бургеры «премиум» и барная карта в современном интерьере. Лучший вариант, когда хочется мяса и хорошей прожарки.",
+      "price_range": "$$$$",
+      "avg_check_usd": 40,
+      "rating": 4.6,
+      "address": "улица Мирзо Улугбека, 76, Самарканд",
+      "closing_hours": "00:00",
+      "features": [
+        "wifi",
+        "bar",
+        "reservation",
+        "credit-cards",
+        "parking"
+      ],
+      "image_url": "/images/restaurants/rest_t_bone.jpg",
+      "coordinates": {
+        "lat": 39.6606398,
+        "lng": 66.9398981
+      }
+    },
+    {
+      "id": "rest_ulfatlar",
+      "name": "Ulfatlar",
+      "name_uz": "Ulfatlar",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Традиционная кухня и формат для семейных посиделок: плов, горячие блюда, салаты. Часто выбирают для торжеств.",
+      "price_range": "$$",
+      "avg_check_usd": 10,
+      "rating": 4.5,
+      "address": "улица Мевали, 12, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "banquet",
+        "family-friendly",
+        "halal",
+        "parking"
+      ],
+      "image_url": "/images/restaurants/rest_ulfatlar.jpg",
+      "coordinates": {
+        "lat": 39.649419,
+        "lng": 66.934701
+      }
+    },
+    {
+      "id": "rest_yaponamama",
+      "name": "Yaponamama",
+      "name_uz": "Yaponamama",
+      "category": "casual",
+      "cuisine": [
+        "japanese",
+        "pan-asian"
+      ],
+      "description": "Сеть с понятным меню: роллы, супы, вок и закуски. Удобно, если хочется современного азиатского вкуса.",
+      "price_range": "$$",
+      "avg_check_usd": 18,
+      "rating": 4.5,
+      "address": "улица Абу Абдуллах Рудаки, 78, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "delivery",
+        "takeaway",
+        "credit-cards",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_yaponamama.jpg",
+      "coordinates": {
+        "lat": 39.663693,
+        "lng": 66.907783
+      }
+    },
+    {
+      "id": "rest_yzum_choyxona",
+      "name": "Uzum Choyxona",
+      "name_uz": "Uzum choyxona",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Чайхана-формат с восточной атмосферой, местной кухней и неспешным ритмом. Хорошо для дегустации узбекских блюд в «традиционном» сеттинге.",
+      "price_range": "$$",
+      "avg_check_usd": 16,
+      "rating": 4.6,
+      "address": "улица Ходжа Ахрор Вали, 58A, Самарканд",
+      "closing_hours": "23:00",
+      "features": [
+        "wifi",
+        "terrace",
+        "tea",
+        "family-friendly",
+        "halal"
+      ],
+      "image_url": "/images/restaurants/rest_yzum_choyxona.jpg",
+      "coordinates": {
+        "lat": 39.6378069,
+        "lng": 66.9674348
+      }
+    },
+    {
+      "id": "rest_zabi_bobo",
+      "name": "Zabi Bobo",
+      "name_uz": "Zabi bobo",
+      "category": "traditional",
+      "cuisine": [
+        "uzbek"
+      ],
+      "description": "Народное место: сытные блюда, плов и шашлык по доступной цене. Подходит, чтобы попробовать местную кухню без переплат.",
+      "price_range": "$",
+      "avg_check_usd": 9,
+      "rating": 4.6,
+      "address": "улица Фирдавсий, 165, Самарканд",
+      "closing_hours": "22:00",
+      "features": [
+        "halal",
+        "takeaway",
+        "family-friendly"
+      ],
+      "image_url": "/images/restaurants/rest_zabi_bobo.jpg",
+      "coordinates": {
+        "lat": 39.644612,
+        "lng": 66.941521
+      }
+    },
+    {
+      "id": "rest_zafar",
+      "name": "Zafar",
+      "name_uz": "Zafar",
+      "category": "casual",
+      "cuisine": [
+        "uzbek",
+        "cafe"
+      ],
+      "description": "Небольшой ресторан/кафе с универсальным меню: от горячих блюд до салатов и напитков. Хороший «базовый» вариант по дороге.",
+      "price_range": "$$",
+      "avg_check_usd": 12,
+      "rating": 4.4,
+      "address": "улица Махтумкули, 2, Самарканд",
+      "closing_hours": "22:30",
+      "features": [
+        "wifi",
+        "takeaway",
+        "family-friendly",
+        "credit-cards"
+      ],
+      "image_url": "/images/restaurants/rest_zafar.jpg",
+      "coordinates": {
+        "lat": 39.66,
+        "lng": 66.98
+      }
+    }
+  ],
+  "hotels": [
+    {
+      "id": "hotel_ad_bellagio",
+      "name": "AD Bellagio Hotel",
+      "category": "boutique",
+      "stars": 4,
+      "description": "Современный отель в центральной части Самарканда: свежие номера, аккуратный сервис и удобная логистика к основным достопримечательностям.",
+      "price_per_night_usd": 70,
+      "rating": 4.7,
+      "address": "улица Мироншох Мирзо, 19, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "restaurant",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_ad_bellagio.jpg",
+      "coordinates": {
+        "lat": 39.6589657,
+        "lng": 66.9554069
+      }
+    },
+    {
+      "id": "hotel_al_bukhary",
+      "name": "Hotel Al Bukhary",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Небольшой гостеприимный отель с домашней атмосферой. Хороший вариант для путешественников, которые хотят жить ближе к историческому центру.",
+      "price_per_night_usd": 40,
+      "rating": 4.6,
+      "address": "улица Аль-Бухорий, 48, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "airport-shuttle",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_al_bukhary.jpg",
+      "coordinates": {
+        "lat": 39.6525,
+        "lng": 66.97
+      }
+    },
+    {
+      "id": "hotel_al_maryam",
+      "name": "Hotel Al Maryam",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Уютный семейный отель с базовыми удобствами и хорошим соотношением цена/расположение. Подходит для спокойной поездки без переплат.",
+      "price_per_night_usd": 45,
+      "rating": 4.6,
+      "address": "улица Узбекистанская, 70, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_al_maryam.jpg",
+      "coordinates": {
+        "lat": 39.6474576,
+        "lng": 66.9542587
+      }
+    },
+    {
+      "id": "hotel_bibi_khanum",
+      "name": "Bibi-Khanym Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Отель рядом с историческими локациями старого города. Удобно, если вы планируете много ходить по центру и возвращаться пешком.",
+      "price_per_night_usd": 50,
+      "rating": 4.6,
+      "address": "улица Ташкентская, 10, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "family-rooms",
+        "terrace"
+      ],
+      "image_url": "/images/hotels/hotel_bibi_khanum.jpg",
+      "coordinates": {
+        "lat": 39.6600642,
+        "lng": 66.9801496
+      }
+    },
+    {
+      "id": "hotel_bogishamol",
+      "name": "Bog'ishamol Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Новый и спокойный отель в жилом районе: тишина, чистые номера и доброжелательный персонал. Хорошо для отдыха после насыщенного дня.",
+      "price_per_night_usd": 55,
+      "rating": 4.7,
+      "address": "улица Туракула Зехни, 102, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_bogishamol.jpg",
+      "coordinates": {
+        "lat": 39.66579,
+        "lng": 66.997744
+      }
+    },
+    {
+      "id": "hotel_chekhran",
+      "name": "Chehran Hotel",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Бюджетный вариант с нужным минимумом: кондиционер, Wi-Fi и круглосуточная стойка. Подходит для практичных путешественников.",
+      "price_per_night_usd": 35,
+      "rating": 4.4,
+      "address": "улица Ютук, 59, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "24h-front-desk"
+      ],
+      "image_url": "/images/hotels/hotel_chekhran.jpg",
+      "coordinates": {
+        "lat": 39.66,
+        "lng": 66.98
+      }
+    },
+    {
+      "id": "hotel_city_samarkand",
+      "name": "Hotel City Samarkand",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Городской отель на Университетском бульваре, удобный для прогулок к Регистану. Часто выбирают за локацию и аккуратные номера.",
+      "price_per_night_usd": 65,
+      "rating": 4.7,
+      "address": "Университетский бульвар, 19A, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "restaurant",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_city_samarkand.jpg",
+      "coordinates": {
+        "lat": 39.6467482,
+        "lng": 66.9612333
+      }
+    },
+    {
+      "id": "hotel_continental",
+      "name": "Continental Hotel Samarkand",
+      "category": "luxury",
+      "stars": 4,
+      "description": "Современный 4-звёздочный отель с высоким уровнем сервиса и инфраструктуры. Подойдёт для комфортной туристической и деловой поездки.",
+      "price_per_night_usd": 120,
+      "rating": 4.8,
+      "address": "Университетский бульвар, 7, Самарканд",
+      "amenities": [
+        "pool",
+        "spa",
+        "breakfast",
+        "wifi",
+        "gym",
+        "parking",
+        "restaurant"
+      ],
+      "image_url": "/images/hotels/hotel_continental.jpg",
+      "coordinates": {
+        "lat": 39.6479884,
+        "lng": 66.9641161
+      }
+    },
+    {
+      "id": "hotel_diyor",
+      "name": "Diyora Hotel",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Компактный отель в центре: удобно добираться до Регистана и старого города. Выбор для тех, кому важны локация и базовый комфорт.",
+      "price_per_night_usd": 55,
+      "rating": 4.5,
+      "address": "улица Имом аль-Бухорий, 106, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "airport-shuttle",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_diyor.jpg",
+      "coordinates": {
+        "lat": 39.654543,
+        "lng": 66.968847
+      }
+    },
+    {
+      "id": "hotel_grand_sogdiana",
+      "name": "Grand Hotel Sogdiana",
+      "category": "luxury",
+      "stars": 4,
+      "description": "Крупный отель с бассейном и wellness-инфраструктурой. Хорошо подходит для семей, а также для тех, кто хочет «всё в одном месте».",
+      "price_per_night_usd": 95,
+      "rating": 4.6,
+      "address": "улица Нарпай, 76A, Самарканд",
+      "amenities": [
+        "pool",
+        "spa",
+        "breakfast",
+        "wifi",
+        "parking",
+        "gym",
+        "restaurant"
+      ],
+      "image_url": "/images/hotels/hotel_grand_sogdiana.jpg",
+      "coordinates": {
+        "lat": 39.9309999,
+        "lng": 65.9373217
+      }
+    },
+    {
+      "id": "hotel_gur_emir",
+      "name": "Gur Emir Palace",
+      "category": "boutique",
+      "stars": 4,
+      "description": "Бутик-отель рядом с ключевыми достопримечательностями. Комбинация традиционных мотивов и современного уровня комфорта.",
+      "price_per_night_usd": 90,
+      "rating": 4.8,
+      "address": "улица Шохрух Мирзо, 126, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "restaurant",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_gur_emir.jpg",
+      "coordinates": {
+        "lat": 39.6818671,
+        "lng": 66.9802581
+      }
+    },
+    {
+      "id": "hotel_hilton_garden_inn",
+      "name": "Hilton Garden Inn Samarkand",
+      "category": "luxury",
+      "stars": 4,
+      "description": "Международный бренд на территории туристического кластера: стабильные стандарты сервиса, комфортные номера и развитая инфраструктура.",
+      "price_per_night_usd": 110,
+      "rating": 4.7,
+      "address": "улица Дахбед йули, 2, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "gym",
+        "restaurant",
+        "spa",
+        "pool"
+      ],
+      "image_url": "/images/hotels/hotel_hilton_garden_inn.jpg",
+      "coordinates": {
+        "lat": 39.6557,
+        "lng": 67.0571
+      }
+    },
+    {
+      "id": "hotel_karim_parkside",
+      "name": "Karim Parkside Hotel",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Уютный отель на тихой улице в центре. Хороший вариант, если вы хотите быть недалеко от основных мест и при этом высыпаться.",
+      "price_per_night_usd": 50,
+      "rating": 4.7,
+      "address": "улица Узбекистанская, 1G, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "family-rooms",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_karim_parkside.jpg",
+      "coordinates": {
+        "lat": 39.6474576,
+        "lng": 66.9542587
+      }
+    },
+    {
+      "id": "hotel_kok_saroy_plaza",
+      "name": "Ko'k Saroy Plaza Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Небольшой отель в очень удобной локации между ключевыми точками центра. Часто выбирают за «шаговую доступность» достопримечательностей.",
+      "price_per_night_usd": 75,
+      "rating": 4.6,
+      "address": "улица Дагбитская, 1A, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_kok_saroy_plaza.jpg",
+      "coordinates": {
+        "lat": 39.6534051,
+        "lng": 66.9702527
+      }
+    },
+    {
+      "id": "hotel_kosh_xavuz",
+      "name": "Kosh Havuz Boutique Hotel",
+      "category": "boutique",
+      "stars": 4,
+      "description": "Бутик-отель в старом городе в двух шагах от туристических маршрутов. Атмосфера «исторического Самарканда» плюс современный комфорт.",
+      "price_per_night_usd": 80,
+      "rating": 4.8,
+      "address": "улица Кош Хавуз, 40, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "restaurant",
+        "terrace",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_kosh_xavuz.jpg",
+      "coordinates": {
+        "lat": 39.661,
+        "lng": 66.98
+      }
+    },
+    {
+      "id": "hotel_marokand",
+      "name": "Marokand SPA Hotel",
+      "category": "luxury",
+      "stars": 4,
+      "description": "Отель со SPA-акцентом: бассейн, процедуры и расслабляющая атмосфера. Удобен, если вы планируете отдых с wellness-компонентом.",
+      "price_per_night_usd": 110,
+      "rating": 4.7,
+      "address": "улица Ибн Сино, 17, Самарканд",
+      "amenities": [
+        "spa",
+        "pool",
+        "breakfast",
+        "wifi",
+        "parking",
+        "restaurant",
+        "gym"
+      ],
+      "image_url": "/images/hotels/hotel_marokand.jpg",
+      "coordinates": {
+        "lat": 39.7063629,
+        "lng": 66.6714471
+      }
+    },
+    {
+      "id": "hotel_maroqand_a",
+      "name": "Maroqanda Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Современный городской отель с удобным доступом к центру. Подходит для туристов, которым важна практичная локация и чистые номера.",
+      "price_per_night_usd": 60,
+      "rating": 4.6,
+      "address": "улица Бухара, 141, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "24h-front-desk"
+      ],
+      "image_url": "/images/hotels/hotel_maroqand_a.jpg",
+      "coordinates": {
+        "lat": 39.648,
+        "lng": 66.9641
+      }
+    },
+    {
+      "id": "hotel_medina",
+      "name": "Medina Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Отель в старом городе: удобно добираться до Сиабского базара и Биби-Ханым. Отличный вариант для знакомства с историческим Самаркандом.",
+      "price_per_night_usd": 60,
+      "rating": 4.7,
+      "address": "улица Дагбитская, 53, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "airport-shuttle",
+        "family-rooms",
+        "terrace"
+      ],
+      "image_url": "/images/hotels/hotel_medina.jpg",
+      "coordinates": {
+        "lat": 39.6534051,
+        "lng": 66.9702527
+      }
+    },
+    {
+      "id": "hotel_movenpick",
+      "name": "Mövenpick Samarkand",
+      "category": "luxury",
+      "stars": 4,
+      "description": "Отель высокого класса с ориентацией на комфорт и сервис. Хороший выбор для тех, кто ценит современную инфраструктуру и просторные номера.",
+      "price_per_night_usd": 140,
+      "rating": 4.7,
+      "address": "улица Шохрух Мирзо, 53, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "pool",
+        "spa",
+        "gym",
+        "parking",
+        "restaurant",
+        "conference-room"
+      ],
+      "image_url": "/images/hotels/hotel_movenpick.jpg",
+      "coordinates": {
+        "lat": 39.6818671,
+        "lng": 66.9802581
+      }
+    },
+    {
+      "id": "hotel_reikartz_amar",
+      "name": "Reikartz Amar Samarkand",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Удобный отель среднего класса: чистые номера, понятный сервис и хорошая логистика по городу. Подходит для коротких поездок.",
+      "price_per_night_usd": 55,
+      "rating": 4.6,
+      "address": "улица Орзу Махмудова, 14, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_reikartz_amar.jpg",
+      "coordinates": {
+        "lat": 39.644424,
+        "lng": 66.9549121
+      }
+    },
+    {
+      "id": "hotel_rio_samarkand",
+      "name": "RIO Hotel & Apartments",
+      "category": "boutique",
+      "stars": 4,
+      "description": "Современный отель-апартаменты: простор, новые интерьеры и удобство для семей и длительного проживания.",
+      "price_per_night_usd": 85,
+      "rating": 4.7,
+      "address": "улица Юсуф Хос Ходжиб, 3, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "family-rooms",
+        "kitchenette",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_rio_samarkand.jpg",
+      "coordinates": {
+        "lat": 39.648,
+        "lng": 66.96
+      }
+    },
+    {
+      "id": "hotel_samarkand_city_center",
+      "name": "Samarkand City Center Hotel",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Небольшой городской отель рядом с туристическим центром. Хорош для тех, кто планирует много гулять и возвращаться в уютное место.",
+      "price_per_night_usd": 40,
+      "rating": 4.7,
+      "address": "улица Абдурасулов, 55, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "airport-shuttle",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_samarkand_city_center.jpg",
+      "coordinates": {
+        "lat": 39.6572135,
+        "lng": 66.9731698
+      }
+    },
+    {
+      "id": "hotel_samarkand_travel",
+      "name": "Samarkand Travel Hotel",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Популярный отель для туристов: удобное расположение, понятный сервис и хорошая база для экскурсионной программы.",
+      "price_per_night_usd": 45,
+      "rating": 4.7,
+      "address": "улица Турсунова, 127, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "airport-shuttle",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_samarkand_travel.jpg",
+      "coordinates": {
+        "lat": 39.649,
+        "lng": 66.965
+      }
+    },
+    {
+      "id": "hotel_sangzor",
+      "name": "Sangzor Boutique Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Удобная локация в центре и аккуратный номерной фонд. Часто выбирают как «разумный» вариант по цене и близости к историческим местам.",
+      "price_per_night_usd": 55,
+      "rating": 4.6,
+      "address": "улица Ислама Каримова, 45A, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_sangzor.jpg",
+      "coordinates": {
+        "lat": 39.658797,
+        "lng": 66.9793321
+      }
+    },
+    {
+      "id": "hotel_shahram_plus",
+      "name": "Shahram Plus",
+      "category": "b&b",
+      "stars": 3,
+      "description": "Гостевой дом/мини-отель рядом с центром: тишина, домашняя атмосфера и персональный подход.",
+      "price_per_night_usd": 40,
+      "rating": 4.7,
+      "address": "улица Муллакандова, 62, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "airport-shuttle",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_shahram_plus.jpg",
+      "coordinates": {
+        "lat": 39.657537,
+        "lng": 66.981162
+      }
+    },
+    {
+      "id": "hotel_shohjahon_palace",
+      "name": "Shohjahon Palace Hotel & Spa",
+      "category": "luxury",
+      "stars": 4,
+      "description": "Отель с выраженной SPA-инфраструктурой и бассейном. Подходит для комфортного отдыха и восстановления после экскурсий.",
+      "price_per_night_usd": 105,
+      "rating": 4.8,
+      "address": "улица Сўзангарон, 110, Самарканд",
+      "amenities": [
+        "spa",
+        "pool",
+        "breakfast",
+        "wifi",
+        "gym",
+        "parking",
+        "restaurant"
+      ],
+      "image_url": "/images/hotels/hotel_shohjahon_palace.jpg",
+      "coordinates": {
+        "lat": 39.64544,
+        "lng": 66.97556
+      }
+    },
+    {
+      "id": "hotel_the_afrosiyob",
+      "name": "The Afrosiyob Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Новый отель с практичными номерами и удобством для поездок по городу. Хороший вариант, если важны чистота и простая логистика.",
+      "price_per_night_usd": 50,
+      "rating": 4.5,
+      "address": "улица Джуракулов, 228, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_the_afrosiyob.jpg",
+      "coordinates": {
+        "lat": 39.66,
+        "lng": 67.0
+      }
+    },
+    {
+      "id": "hotel_zarafshon_parkside",
+      "name": "Zarafshon Parkside Hotel",
+      "category": "boutique",
+      "stars": 4,
+      "description": "Комфортный отель рядом с зелёными зонами и центром. Подходит для тех, кто хочет тишину и хороший уровень сервиса.",
+      "price_per_night_usd": 85,
+      "rating": 4.7,
+      "address": "улица Абдурахмона Жомий, 65, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "restaurant",
+        "airport-shuttle",
+        "family-rooms"
+      ],
+      "image_url": "/images/hotels/hotel_zarafshon_parkside.jpg",
+      "coordinates": {
+        "lat": 39.648744,
+        "lng": 66.957942
+      }
+    },
+    {
+      "id": "hotel_zilol_baxt",
+      "name": "Zilol-Baxt Hotel",
+      "category": "boutique",
+      "stars": 3,
+      "description": "Надёжный городской отель с современными удобствами и хорошей доступностью по транспорту. Часто выбирают для семейных поездок.",
+      "price_per_night_usd": 60,
+      "rating": 4.6,
+      "address": "улица Гулобод, 5, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "restaurant",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_zilol_baxt.jpg",
+      "coordinates": {
+        "lat": 39.6330137,
+        "lng": 66.9587747
+      }
+    },
+    {
+      "id": "hotel_majestic_palace",
+      "name": "Majestic Palace Hotel",
+      "category": "luxury",
+      "stars": 4,
+      "description": "Современный отель с просторными номерами и сервисом уровня 4*. Хорош для деловых поездок и комфортного отдыха.",
+      "price_per_night_usd": 95,
+      "rating": 4.6,
+      "address": "улица Бобур Мирзо, 32A, Самарканд",
+      "amenities": [
+        "breakfast",
+        "wifi",
+        "parking",
+        "restaurant",
+        "conference-room",
+        "airport-shuttle"
+      ],
+      "image_url": "/images/hotels/hotel_majestic_palace.jpg",
+      "coordinates": {
+        "lat": 39.644258,
+        "lng": 66.952875
+      }
+    }
+  ]
+}

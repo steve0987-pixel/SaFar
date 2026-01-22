@@ -1,0 +1,1789 @@
+{
+  "version": "2.0",
+  "city": "Samarkand",
+  "country": "Uzbekistan",
+  "last_updated": "2026-01-21",
+  "currency": "USD",
+  "timezone": "Asia/Samarkand",
+  "poi": [
+    {
+      "id": "registan_square",
+      "name": "Площадь Регистан",
+      "name_en": "Registan Square",
+      "category": [
+        "history",
+        "architecture",
+        "landmark"
+      ],
+      "description": "Главная площадь древнего Самарканда — жемчужина Центральной Азии. Ансамбль из трёх грандиозных медресе XV-XVII веков: Улугбека (1417-1420), Шердор (1619-1636) и Тилля-Кори (1646-1660). Объект Всемирного наследия ЮНЕСКО. Каждое медресе украшено уникальной мозаикой и майоликой.",
+      "cost_usd": 5,
+      "duration_hours": 1.5,
+      "best_time": "morning",
+      "opening_hours": "08:00-19:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6548,
+        "lng": 66.9758
+      },
+      "tags": [
+        "must-see",
+        "unesco",
+        "photography",
+        "iconic",
+        "night-show",
+        "history"
+      ],
+      "tips": [
+        "Приходите к открытию в 8:00 — минимум туристов и лучший свет для фото",
+        "Вечером (21:00) проводится световое шоу — билет отдельно $10",
+        "Можно подняться на минарет медресе Улугбека за дополнительные $3",
+        "Зимой работает до 17:00"
+      ],
+      "physical_level": "low",
+      "accessibility": "частичная — есть ступени",
+      "avg_rating": 4.9,
+      "reviews_count": 12500
+    },
+    {
+      "id": "gur_emir_mausoleum",
+      "name": "Мавзолей Гур-Эмир",
+      "name_en": "Gur-e-Amir Mausoleum",
+      "category": [
+        "history",
+        "architecture",
+        "religious"
+      ],
+      "description": "Усыпальница великого завоевателя Тамерлана (Амира Тимура) и его потомков. Построен в 1403-1404 годах. Знаменит величественным ребристым куполом с бирюзовой облицовкой высотой 12.5 метров. Внутри — нефритовое надгробие Тамерлана, одно из крупнейших в мире.",
+      "cost_usd": 3,
+      "duration_hours": 1.0,
+      "best_time": "any",
+      "opening_hours": "08:00-18:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6495,
+        "lng": 66.9683
+      },
+      "tags": [
+        "must-see",
+        "tamerlane",
+        "mausoleum",
+        "history",
+        "architecture"
+      ],
+      "tips": [
+        "Не пропустите нефритовое надгробие внутри — 1.5 метра в длину",
+        "По пути от Регистана — 10 минут пешком",
+        "Фото внутри разрешено без вспышки",
+        "Рядом мавзолеи Рухабад и Аксарай"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.8,
+      "reviews_count": 8200
+    },
+    {
+      "id": "shah_i_zinda",
+      "name": "Некрополь Шахи-Зинда",
+      "name_en": "Shah-i-Zinda Necropolis",
+      "category": [
+        "history",
+        "architecture",
+        "religious"
+      ],
+      "description": "Уникальный ансамбль мавзолеев XI-XV веков на склоне холма Афросиаб. 'Аллея мавзолеев' включает 11 усыпальниц с потрясающей голубой и бирюзовой майоликой. По легенде, здесь похоронен двоюродный брат пророка Мухаммеда — Кусам ибн Аббас.",
+      "cost_usd": 3,
+      "duration_hours": 1.5,
+      "best_time": "morning",
+      "opening_hours": "08:00-19:00",
+      "district": "Афросиаб",
+      "coordinates": {
+        "lat": 39.6627,
+        "lng": 66.9903
+      },
+      "tags": [
+        "must-see",
+        "unesco",
+        "photography",
+        "necropolis",
+        "majolica",
+        "spiritual"
+      ],
+      "tips": [
+        "40 ступеней наверх — удобная обувь обязательна",
+        "Лучшие фото при утреннем боковом свете (8-10 утра)",
+        "Это действующее место паломничества — уважайте молящихся",
+        "Считайте ступени: одинаковое число вверх и вниз — к удаче"
+      ],
+      "physical_level": "moderate",
+      "accessibility": "сложная — много ступеней",
+      "avg_rating": 4.9,
+      "reviews_count": 9100
+    },
+    {
+      "id": "bibi_khanym_mosque",
+      "name": "Мечеть Биби-Ханым",
+      "name_en": "Bibi-Khanym Mosque",
+      "category": [
+        "history",
+        "architecture",
+        "religious"
+      ],
+      "description": "Грандиозная соборная мечеть, построенная Тамерланом в 1399-1404 годах в честь любимой жены Биби-Ханым после похода в Индию. В своё время была одной из крупнейших мечетей исламского мира. Главный портал достигает 35 метров в высоту.",
+      "cost_usd": 2,
+      "duration_hours": 0.75,
+      "best_time": "any",
+      "opening_hours": "08:00-18:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6603,
+        "lng": 66.9822
+      },
+      "tags": [
+        "architecture",
+        "mosque",
+        "tamerlane",
+        "photography",
+        "history"
+      ],
+      "tips": [
+        "Огромный мраморный подставка для Корана во дворе — пройдите под ней 3 раза на удачу",
+        "Прямо напротив — базар Сиаб, удобно совместить",
+        "Реставрация продолжается — некоторые части в лесах"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.6,
+      "reviews_count": 5400
+    },
+    {
+      "id": "siab_bazaar",
+      "name": "Базар Сиаб",
+      "name_en": "Siab Bazaar",
+      "category": [
+        "market",
+        "food",
+        "culture"
+      ],
+      "description": "Главный восточный базар Самарканда — сердце городской жизни. Тысячи лет здесь торгуют специями, сухофруктами, орехами. Знаменитые самаркандские лепёшки (оби-нон) считаются лучшими в Узбекистане и не черствеют неделями.",
+      "cost_usd": 0,
+      "duration_hours": 1.0,
+      "best_time": "morning",
+      "opening_hours": "06:00-18:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6612,
+        "lng": 66.9838
+      },
+      "tags": [
+        "market",
+        "food",
+        "local",
+        "shopping",
+        "photography",
+        "free",
+        "must-see"
+      ],
+      "tips": [
+        "Торгуйтесь! Начальная цена завышена на 50-100%",
+        "Самаркандские лепёшки — идеальный сувенир (хранятся 2 недели)",
+        "Попробуйте горячую самсу прямо из тандыра",
+        "Лучший выбор фруктов утром до 10:00",
+        "Банкоматов нет — берите наличные"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.7,
+      "reviews_count": 6800
+    },
+    {
+      "id": "afrosiyab_museum",
+      "name": "Музей Афросиаб",
+      "name_en": "Afrosiyab Museum",
+      "category": [
+        "museum",
+        "history",
+        "archaeology"
+      ],
+      "description": "Археологический музей на месте древнего городища Афросиаб — предшественника современного Самарканда. Главный экспонат — уникальные согдийские фрески VII века с изображением послов разных стран. Показывает 2500 лет истории города.",
+      "cost_usd": 2,
+      "duration_hours": 1.0,
+      "best_time": "any",
+      "opening_hours": "09:00-17:00",
+      "district": "Афросиаб",
+      "coordinates": {
+        "lat": 39.6694,
+        "lng": 66.9881
+      },
+      "tags": [
+        "museum",
+        "archaeology",
+        "sogdian",
+        "frescoes",
+        "history"
+      ],
+      "tips": [
+        "Согдийские фрески — главная ценность, не пропустите!",
+        "Рядом можно прогуляться по холмам городища",
+        "Хорошо сочетается с Шахи-Зиндой (5 минут пешком)",
+        "Закрыт по понедельникам"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.4,
+      "reviews_count": 2100
+    },
+    {
+      "id": "ulugh_beg_observatory",
+      "name": "Обсерватория Улугбека",
+      "name_en": "Ulugh Beg Observatory",
+      "category": [
+        "history",
+        "science",
+        "museum"
+      ],
+      "description": "Остатки грандиозной обсерватории XV века, построенной внуком Тамерлана — учёным-астрономом Улугбеком. Сохранилась часть гигантского секстанта радиусом 40 метров. Улугбек составил точнейший звёздный каталог с погрешностью менее 1 градуса.",
+      "cost_usd": 2,
+      "duration_hours": 0.75,
+      "best_time": "any",
+      "opening_hours": "09:00-18:00",
+      "district": "север",
+      "coordinates": {
+        "lat": 39.6774,
+        "lng": 66.9702
+      },
+      "tags": [
+        "science",
+        "history",
+        "ulughbek",
+        "astronomy",
+        "museum"
+      ],
+      "tips": [
+        "Можно спуститься в траншею секстанта — впечатляющий масштаб",
+        "Музей рядом объясняет астрономические открытия",
+        "Нужно такси — 15 минут от центра",
+        "Хорошо совместить с мечетью Хазрет-Хызр"
+      ],
+      "physical_level": "low",
+      "accessibility": "частичная",
+      "avg_rating": 4.5,
+      "reviews_count": 3200
+    },
+    {
+      "id": "hazrat_khizr_mosque",
+      "name": "Мечеть Хазрет-Хызр",
+      "name_en": "Hazrat Khizr Mosque",
+      "category": [
+        "religious",
+        "architecture",
+        "viewpoint"
+      ],
+      "description": "Красивая мечеть XIX века на высоком холме с лучшим панорамным видом на Самарканд. Названа в честь пророка Хызра (Хидра). Рядом — могила первого президента Узбекистана Ислама Каримова.",
+      "cost_usd": 0,
+      "duration_hours": 0.5,
+      "best_time": "sunset",
+      "opening_hours": "06:00-20:00",
+      "district": "Афросиаб",
+      "coordinates": {
+        "lat": 39.6644,
+        "lng": 66.9875
+      },
+      "tags": [
+        "mosque",
+        "viewpoint",
+        "sunset",
+        "peaceful",
+        "free",
+        "photography"
+      ],
+      "tips": [
+        "Лучшее место для заката — панорама на Шахи-Зинду и весь город",
+        "Приходите за 30 минут до заката",
+        "Действующая мечеть — снимайте обувь при входе",
+        "Рядом могила Каримова (вход свободный)"
+      ],
+      "physical_level": "moderate",
+      "accessibility": "сложная — крутой подъём",
+      "avg_rating": 4.7,
+      "reviews_count": 1800
+    },
+    {
+      "id": "central_plov_center",
+      "name": "Центральный плов-центр",
+      "name_en": "Central Plov Center",
+      "category": [
+        "food",
+        "culture"
+      ],
+      "description": "Знаменитый ресторан самаркандского плова. Плов готовится в огромных казанах (до 100 кг риса) на открытом огне по традиционному рецепту с жёлтой морковью, нутом и перепелиными яйцами. Аутентичная атмосфера.",
+      "cost_usd": 4,
+      "duration_hours": 0.75,
+      "best_time": "lunch",
+      "opening_hours": "10:00-15:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6531,
+        "lng": 66.9712
+      },
+      "tags": [
+        "food",
+        "plov",
+        "local",
+        "lunch",
+        "must-try",
+        "culture"
+      ],
+      "tips": [
+        "Приходите до 13:00 — плов часто заканчивается к 14:00",
+        "Порция большая — можно взять одну на двоих",
+        "Попросите с перепелиным яйцом и курдюком",
+        "Запивайте зелёным чаем — помогает переварить"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.6,
+      "reviews_count": 4500
+    },
+    {
+      "id": "silk_paper_workshop_konigil",
+      "name": "Мастерская шёлковой бумаги Конигиль",
+      "name_en": "Konigil Silk Paper Workshop (Meros)",
+      "category": [
+        "craft",
+        "museum",
+        "culture",
+        "nature"
+      ],
+      "description": "Уникальная мастерская в живописном кишлаке Конигиль, где делают бумагу по древней самаркандской технологии из коры тутового дерева. Процесс не менялся 1000 лет. Можно попробовать сделать свой лист бумаги.",
+      "cost_usd": 5,
+      "duration_hours": 1.5,
+      "best_time": "any",
+      "opening_hours": "09:00-18:00",
+      "district": "пригород",
+      "coordinates": {
+        "lat": 39.6321,
+        "lng": 66.9543
+      },
+      "tags": [
+        "craft",
+        "workshop",
+        "paper",
+        "souvenir",
+        "handmade",
+        "nature",
+        "unique"
+      ],
+      "tips": [
+        "Мастер-класс по изготовлению бумаги — дополнительные $5",
+        "Отличные сувениры: блокноты, конверты, картины на шёлковой бумаге",
+        "Территория очень красивая — водяная мельница, сад",
+        "10-15 минут на такси от центра ($3-5)",
+        "Можно заказать обед заранее — плов в саду"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.8,
+      "reviews_count": 2800
+    },
+    {
+      "id": "khovrenko_winery",
+      "name": "Винодельня Ховренко",
+      "name_en": "Khovrenko Winery",
+      "category": [
+        "food",
+        "culture",
+        "museum"
+      ],
+      "description": "Историческая винодельня, основанная в 1868 году. Музей виноделия и дегустация узбекских вин. Узбекистан — один из древнейших винодельческих регионов мира. Коллекция включает редкие сорта винограда.",
+      "cost_usd": 7,
+      "duration_hours": 1.5,
+      "best_time": "afternoon",
+      "opening_hours": "10:00-17:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6489,
+        "lng": 66.9601
+      },
+      "tags": [
+        "wine",
+        "tasting",
+        "museum",
+        "culture",
+        "history"
+      ],
+      "tips": [
+        "Дегустация 5-7 вин включена в билет",
+        "Попробуйте десертные вина — местная специальность",
+        "Можно купить вино на вынос",
+        "Закрыт по воскресеньям"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.3,
+      "reviews_count": 1200
+    },
+    {
+      "id": "rukhobod_mausoleum",
+      "name": "Мавзолей Рухабад",
+      "name_en": "Rukhobod Mausoleum",
+      "category": [
+        "history",
+        "religious"
+      ],
+      "description": "Один из старейших мавзолеев Самарканда (1380-е годы). Строгая архитектура без изразцов и декора — редкость для Самарканда. Здесь похоронен шейх Бурханеддин Сагарджи.",
+      "cost_usd": 0,
+      "duration_hours": 0.25,
+      "best_time": "any",
+      "opening_hours": "всегда открыт",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6509,
+        "lng": 66.9701
+      },
+      "tags": [
+        "mausoleum",
+        "history",
+        "free",
+        "quick"
+      ],
+      "tips": [
+        "По пути от Гур-Эмира к Регистану — не пропустите",
+        "Осмотр занимает 5-10 минут",
+        "Интересен контрастом с богато украшенными зданиями"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.0,
+      "reviews_count": 890
+    },
+    {
+      "id": "amir_temur_statue",
+      "name": "Памятник Амиру Темуру",
+      "name_en": "Amir Temur Statue",
+      "category": [
+        "landmark",
+        "history",
+        "culture"
+      ],
+      "description": "Главный памятник Тамерлану в центре города, установлен в 1996 году. Бронзовая статуя на гранитном постаменте. Популярное место для фото и прогулок. Окружён красивым сквером.",
+      "cost_usd": 0,
+      "duration_hours": 0.25,
+      "best_time": "evening",
+      "opening_hours": "всегда открыт",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6521,
+        "lng": 66.9623
+      },
+      "tags": [
+        "monument",
+        "tamerlane",
+        "photo",
+        "free",
+        "park"
+      ],
+      "tips": [
+        "Красивая подсветка вечером",
+        "Хорошая точка для начала или конца прогулки",
+        "Рядом кафе и рестораны"
+      ],
+      "physical_level": "low",
+      "accessibility": "отличная",
+      "avg_rating": 4.2,
+      "reviews_count": 2100
+    },
+    {
+      "id": "zarafshan_gorge_day_trip",
+      "name": "Зеравшанское ущелье",
+      "name_en": "Zarafshan Gorge Day Trip",
+      "category": [
+        "nature",
+        "adventure",
+        "day_trip"
+      ],
+      "description": "Однодневный тур в живописное горное ущелье реки Зеравшан (60 км от Самарканда). Потрясающие горные пейзажи, традиционные кишлаки, обед в горах. Высота до 1500 м над уровнем моря.",
+      "cost_usd": 35,
+      "duration_hours": 8,
+      "best_time": "morning",
+      "opening_hours": "выезд 07:00",
+      "district": "горы",
+      "coordinates": {
+        "lat": 39.5012,
+        "lng": 67.2341
+      },
+      "tags": [
+        "mountains",
+        "nature",
+        "day_trip",
+        "photography",
+        "day2_mountains",
+        "hiking",
+        "village"
+      ],
+      "tips": [
+        "Выезд в 7:00, возвращение к 17:00",
+        "Возьмите тёплую куртку — в горах холоднее на 10-15°C",
+        "Обед в горном кишлаке включён (плов, лепёшки)",
+        "Удобная обувь обязательна",
+        "Бронируйте за день — места ограничены"
+      ],
+      "physical_level": "moderate",
+      "requirements": [
+        "удобная обувь",
+        "куртка",
+        "вода 1.5л",
+        "солнцезащитный крем",
+        "головной убор"
+      ],
+      "includes": [
+        "трансфер",
+        "гид на русском",
+        "обед",
+        "входные билеты"
+      ],
+      "accessibility": "сложная",
+      "avg_rating": 4.8,
+      "reviews_count": 560
+    },
+    {
+      "id": "seven_lakes_fann_mountains",
+      "name": "Семь озёр (Хафткуль)",
+      "name_en": "Seven Lakes (Haftkul)",
+      "category": [
+        "nature",
+        "adventure",
+        "day_trip"
+      ],
+      "description": "Каскад из семи горных озёр в Фанских горах — одно из красивейших мест Центральной Азии. Бирюзовые воды на фоне скалистых гор. Требует полного дня (130 км от Самарканда, частично горная дорога).",
+      "cost_usd": 55,
+      "duration_hours": 12,
+      "best_time": "morning",
+      "opening_hours": "выезд 06:00",
+      "district": "Фанские горы",
+      "coordinates": {
+        "lat": 39.2234,
+        "lng": 68.1234
+      },
+      "tags": [
+        "mountains",
+        "lakes",
+        "nature",
+        "day_trip",
+        "trekking",
+        "day2_mountains",
+        "photography",
+        "adventure"
+      ],
+      "tips": [
+        "Сезон: май-октябрь (зимой дорога закрыта)",
+        "Выезд в 6:00 — длинная дорога (3 часа)",
+        "Треккинг между озёрами — 2-3 часа",
+        "Обязательна тёплая одежда даже летом",
+        "Высота до 2400 м — возможна лёгкая горная болезнь"
+      ],
+      "physical_level": "high",
+      "requirements": [
+        "трекинговая обувь",
+        "тёплая куртка",
+        "вода 2л",
+        "перекус",
+        "солнцезащитные очки"
+      ],
+      "includes": [
+        "трансфер 4x4",
+        "гид",
+        "обед",
+        "разрешения"
+      ],
+      "accessibility": "сложная — требуется хорошая физ. форма",
+      "best_season": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
+      "avg_rating": 4.9,
+      "reviews_count": 890
+    },
+    {
+      "id": "aksay_waterfall_hike",
+      "name": "Водопад Аксай",
+      "name_en": "Aksay Waterfall Hike",
+      "category": [
+        "nature",
+        "adventure",
+        "day_trip"
+      ],
+      "description": "Живописный водопад в предгорьях (50 км от Самарканда). Лёгкий треккинг (3-4 км) через ореховые рощи. Подходит для начинающих. Высота водопада около 20 метров.",
+      "cost_usd": 25,
+      "duration_hours": 5,
+      "best_time": "morning",
+      "opening_hours": "выезд 08:00",
+      "district": "горы",
+      "coordinates": {
+        "lat": 39.5543,
+        "lng": 67.0876
+      },
+      "tags": [
+        "mountains",
+        "waterfall",
+        "nature",
+        "hiking",
+        "day2_mountains",
+        "easy",
+        "family"
+      ],
+      "tips": [
+        "Лёгкий маршрут — подходит для семей с детьми",
+        "Лучший сезон — весна (апрель-май), водопад полноводнее",
+        "Можно искупаться в озере у водопада (летом)",
+        "Возьмите купальник и полотенце",
+        "Обед у водопада — пикник включён"
+      ],
+      "physical_level": "moderate",
+      "requirements": [
+        "удобная обувь",
+        "вода",
+        "лёгкий перекус",
+        "купальник (опционально)"
+      ],
+      "includes": [
+        "трансфер",
+        "гид",
+        "пикник"
+      ],
+      "accessibility": "умеренная",
+      "avg_rating": 4.6,
+      "reviews_count": 420
+    },
+    {
+      "id": "urgut_sunday_market",
+      "name": "Воскресный базар Ургут",
+      "name_en": "Urgut Sunday Market",
+      "category": [
+        "market",
+        "culture",
+        "day_trip"
+      ],
+      "description": "Огромный еженедельный базар в городке Ургут (40 км от Самарканда). Тысячи продавцов со всего региона. Знаменит антикварными сузани (вышивка), коврами, ювелиркой. Работает только по воскресеньям.",
+      "cost_usd": 10,
+      "duration_hours": 4,
+      "best_time": "morning",
+      "opening_hours": "воскресенье 06:00-14:00",
+      "district": "пригород",
+      "coordinates": {
+        "lat": 39.4012,
+        "lng": 67.2543
+      },
+      "tags": [
+        "market",
+        "sunday",
+        "shopping",
+        "suzani",
+        "day_trip",
+        "antique",
+        "culture"
+      ],
+      "tips": [
+        "ТОЛЬКО ПО ВОСКРЕСЕНЬЯМ — планируйте поездку заранее!",
+        "Лучшие сузани — на верхних рядах базара",
+        "Торгуйтесь активно — можно сбить цену на 30-50%",
+        "Берите наличные — карты не принимают",
+        "Выезжайте в 7:00 чтобы успеть к открытию",
+        "К 13:00 многие продавцы уже уезжают"
+      ],
+      "physical_level": "low",
+      "includes": [
+        "трансфер"
+      ],
+      "accessibility": "хорошая",
+      "avg_rating": 4.7,
+      "reviews_count": 1100
+    },
+    {
+      "id": "siyob_restaurant",
+      "name": "Ресторан Siyob",
+      "name_en": "Siyob Restaurant",
+      "category": [
+        "food"
+      ],
+      "description": "Популярный ресторан узбекской кухни рядом с базаром Сиаб. Традиционная обстановка, топчаны, живая музыка вечером. Отличный выбор шашлыков, лагман, манты.",
+      "cost_usd": 8,
+      "duration_hours": 1.0,
+      "best_time": "dinner",
+      "opening_hours": "11:00-23:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6608,
+        "lng": 66.9831
+      },
+      "tags": [
+        "food",
+        "restaurant",
+        "dinner",
+        "local",
+        "music"
+      ],
+      "tips": [
+        "Попробуйте шашлык-машлык (ассорти)",
+        "Вечером живая узбекская музыка",
+        "Топчаны на открытом воздухе — лучше бронировать",
+        "Большие порции!"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.4,
+      "reviews_count": 1800
+    },
+    {
+      "id": "art_cafe_samarkand",
+      "name": "Art Café Samarkand",
+      "name_en": "Art Café Samarkand",
+      "category": [
+        "food",
+        "culture"
+      ],
+      "description": "Уютное кафе с авторской кухней в центре города. Фьюжн узбекской и европейской кухни. Хороший кофе, десерты. Выставки местных художников.",
+      "cost_usd": 10,
+      "duration_hours": 1.0,
+      "best_time": "any",
+      "opening_hours": "09:00-22:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6534,
+        "lng": 66.9698
+      },
+      "tags": [
+        "food",
+        "cafe",
+        "coffee",
+        "art",
+        "modern"
+      ],
+      "tips": [
+        "Хороший кофе — редкость для Самарканда",
+        "Wi-Fi стабильный",
+        "Попробуйте чизкейк с курагой",
+        "Меню на английском"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.5,
+      "reviews_count": 680
+    },
+    {
+      "id": "ishrat_khona_ruins",
+      "name": "Мавзолей Ишратхона",
+      "name_en": "Ishrat-Khona Mausoleum",
+      "category": [
+        "history",
+        "architecture"
+      ],
+      "description": "Живописные руины изящного мавзолея XV века для женщин династии Тимуридов. Необычная архитектура с элементами персидского стиля. Малоизвестное, но атмосферное место.",
+      "cost_usd": 0,
+      "duration_hours": 0.5,
+      "best_time": "any",
+      "opening_hours": "всегда открыт",
+      "district": "восток",
+      "coordinates": {
+        "lat": 39.6587,
+        "lng": 67.0123
+      },
+      "tags": [
+        "ruins",
+        "history",
+        "timurid",
+        "off-beaten",
+        "free",
+        "photography"
+      ],
+      "tips": [
+        "Малоизвестное место — мало туристов",
+        "Атмосферные руины для фото",
+        "Нужно такси — 10 минут от центра",
+        "Можно совместить с Музеем вина"
+      ],
+      "physical_level": "low",
+      "accessibility": "частичная",
+      "avg_rating": 4.1,
+      "reviews_count": 340
+    },
+    {
+      "id": "sunset_viewpoint_hill",
+      "name": "Смотровая площадка (закат)",
+      "name_en": "Sunset Viewpoint Hill",
+      "category": [
+        "nature",
+        "photography",
+        "viewpoint"
+      ],
+      "description": "Холм рядом с Шахи-Зиндой с панорамным видом на старый город, мечети и Регистан. Лучшее место для закатных фотографий. Местные приходят сюда на пикник.",
+      "cost_usd": 0,
+      "duration_hours": 0.75,
+      "best_time": "sunset",
+      "opening_hours": "всегда открыт",
+      "district": "Афросиаб",
+      "coordinates": {
+        "lat": 39.6652,
+        "lng": 66.9912
+      },
+      "tags": [
+        "viewpoint",
+        "sunset",
+        "photography",
+        "free",
+        "romantic",
+        "panorama"
+      ],
+      "tips": [
+        "Приходите за 40 минут до заката",
+        "Захватите воду и снеки — магазинов нет",
+        "Лёгкий подъём — 10 минут пешком",
+        "Панорама на весь старый город"
+      ],
+      "physical_level": "moderate",
+      "accessibility": "сложная — подъём в гору",
+      "avg_rating": 4.6,
+      "reviews_count": 520
+    },
+    {
+      "id": "samarkand_carpet_workshop",
+      "name": "Ковровая мастерская Samarkand Bukhara Silk Carpets",
+      "name_en": "Samarkand Bukhara Silk Carpets Workshop",
+      "category": [
+        "craft",
+        "shopping",
+        "culture"
+      ],
+      "description": "Традиционная мастерская шёлковых ковров ручной работы. Можно увидеть весь процесс от окраски нитей до готового ковра. Ковры ткут на традиционных станках.",
+      "cost_usd": 0,
+      "duration_hours": 1.0,
+      "best_time": "any",
+      "opening_hours": "09:00-18:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6541,
+        "lng": 66.9774
+      },
+      "tags": [
+        "craft",
+        "carpet",
+        "silk",
+        "shopping",
+        "handmade",
+        "free"
+      ],
+      "tips": [
+        "Экскурсия по мастерской бесплатная",
+        "Покупка не обязательна — без давления",
+        "Шёлковый ковер 1x1.5м — от $200",
+        "Доставка по всему миру"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.3,
+      "reviews_count": 890
+    },
+    {
+      "id": "saint_daniel_tomb",
+      "name": "Мавзолей Ходжа Дониёр (Пророк Даниил)",
+      "name_en": "Saint Daniel's Tomb",
+      "category": [
+        "religious",
+        "history",
+        "spiritual"
+      ],
+      "description": "Священное место паломничества мусульман, христиан и иудеев. По легенде, здесь похоронен библейский пророк Даниил. Мавзолей необычной длины — 18 метров. Рядом — священный источник.",
+      "cost_usd": 0,
+      "duration_hours": 0.75,
+      "best_time": "any",
+      "opening_hours": "08:00-18:00",
+      "district": "Афросиаб",
+      "coordinates": {
+        "lat": 39.6698,
+        "lng": 66.9954
+      },
+      "tags": [
+        "religious",
+        "spiritual",
+        "pilgrimage",
+        "free",
+        "unique",
+        "peaceful"
+      ],
+      "tips": [
+        "Одно из немногих мест, священных для трёх религий",
+        "Снимите обувь при входе",
+        "Попробуйте воду из священного источника",
+        "Хорошо совместить с Шахи-Зиндой"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.5,
+      "reviews_count": 1400
+    },
+    {
+      "id": "museum_ulughbek",
+      "name": "Музей Улугбека",
+      "name_en": "Ulugh Beg Museum",
+      "category": [
+        "museum",
+        "history",
+        "science"
+      ],
+      "description": "Музей рядом с обсерваторией, посвящённый жизни и научной деятельности Улугбека. Модели астрономических инструментов, копии звёздных каталогов, история эпохи Тимуридов.",
+      "cost_usd": 1,
+      "duration_hours": 0.5,
+      "best_time": "any",
+      "opening_hours": "09:00-17:00",
+      "district": "север",
+      "coordinates": {
+        "lat": 39.6772,
+        "lng": 66.9698
+      },
+      "tags": [
+        "museum",
+        "science",
+        "ulughbek",
+        "astronomy",
+        "history"
+      ],
+      "tips": [
+        "Входит в один билет с обсерваторией",
+        "Хорошо дополняет осмотр обсерватории",
+        "Интерактивные экспонаты"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.2,
+      "reviews_count": 890
+    },
+    {
+      "id": "registan_night_show",
+      "name": "Вечернее шоу на Регистане",
+      "name_en": "Registan Night Light Show",
+      "category": [
+        "entertainment",
+        "culture"
+      ],
+      "description": "Потрясающее световое и звуковое шоу на площади Регистан. Фасады медресе оживают под музыку и световые проекции. История Самарканда и Шёлкового пути.",
+      "cost_usd": 10,
+      "duration_hours": 1.0,
+      "best_time": "evening",
+      "opening_hours": "21:00-22:00 (сезонно)",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6550,
+        "lng": 66.9760
+      },
+      "tags": [
+        "entertainment",
+        "night",
+        "show",
+        "photography",
+        "culture",
+        "must-see"
+      ],
+      "tips": [
+        "Проводится с апреля по октябрь",
+        "Начало в 21:00, приходите заранее за хорошие места",
+        "Берите тёплую одежду — вечером прохладно",
+        "Билеты можно купить на месте"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.7,
+      "reviews_count": 2300
+    },
+    {
+      "id": "teahouse_lyabi_hovuz",
+      "name": "Чайхана у Ляби-Хауз",
+      "name_en": "Lyabi-Hovuz Teahouse",
+      "category": [
+        "food",
+        "culture",
+        "relax"
+      ],
+      "description": "Традиционная узбекская чайхана на топчанах. Зелёный чай, свежие лепёшки, варенье из грецких орехов. Идеальное место для отдыха после прогулки.",
+      "cost_usd": 3,
+      "duration_hours": 0.5,
+      "best_time": "afternoon",
+      "opening_hours": "08:00-20:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6527,
+        "lng": 66.9678
+      },
+      "tags": [
+        "food",
+        "tea",
+        "relax",
+        "local",
+        "culture",
+        "budget"
+      ],
+      "tips": [
+        "Закажите чайник на двоих",
+        "Попробуйте орешковое варенье",
+        "Идеально для отдыха между достопримечательностями"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.4,
+      "reviews_count": 780
+    },
+    {
+      "id": "afrosiyab_ancient_settlement",
+      "name": "Городище Афросиаб",
+      "name_en": "Afrosiyab Ancient Settlement",
+      "category": [
+        "history",
+        "archaeology",
+        "nature"
+      ],
+      "description": "Руины древнего Самарканда (Мараканда) — города, существовавшего более 2500 лет назад. Холмы с остатками стен и улиц согдийского города. Археологические раскопки продолжаются.",
+      "cost_usd": 0,
+      "duration_hours": 1.0,
+      "best_time": "morning",
+      "opening_hours": "всегда открыт",
+      "district": "Афросиаб",
+      "coordinates": {
+        "lat": 39.6701,
+        "lng": 66.9867
+      },
+      "tags": [
+        "archaeology",
+        "history",
+        "free",
+        "walking",
+        "ancient"
+      ],
+      "tips": [
+        "Хорошо совместить с музеем Афросиаб",
+        "Прогулка по холмам — красивые виды",
+        "Мало тени — головной убор обязателен",
+        "Можно увидеть текущие раскопки"
+      ],
+      "physical_level": "moderate",
+      "accessibility": "сложная — неровная местность",
+      "avg_rating": 4.2,
+      "reviews_count": 560
+    },
+    {
+      "id": "eternal_city_samarkand",
+      "name": "Комплекс 'Вечный город' (Samarkand-City)",
+      "name_en": "Eternal City Complex",
+      "category": [
+        "modern",
+        "architecture",
+        "shopping"
+      ],
+      "description": "Современный туристический комплекс с реконструкциями исторических зданий Шёлкового пути. Базар, рестораны, отели. Открыт в 2022 году. Противоречивый, но интересный проект.",
+      "cost_usd": 0,
+      "duration_hours": 1.5,
+      "best_time": "evening",
+      "opening_hours": "10:00-22:00",
+      "district": "запад",
+      "coordinates": {
+        "lat": 39.6432,
+        "lng": 66.9234
+      },
+      "tags": [
+        "modern",
+        "shopping",
+        "restaurant",
+        "entertainment",
+        "new"
+      ],
+      "tips": [
+        "Новый проект — мнения туристов разделились",
+        "Хорошие рестораны и кафе",
+        "Красивая подсветка вечером",
+        "Можно быстро увидеть 'мини-Узбекистан'"
+      ],
+      "physical_level": "low",
+      "accessibility": "отличная",
+      "avg_rating": 3.9,
+      "reviews_count": 1200
+    },
+    {
+      "id": "nurata_mountains_2day",
+      "name": "Горы Нурата (2 дня)",
+      "name_en": "Nurata Mountains 2-Day Trip",
+      "category": [
+        "nature",
+        "adventure",
+        "overnight"
+      ],
+      "description": "Двухдневный тур в горы Нурата с ночёвкой в юрточном лагере. Озеро Айдаркуль в пустыне, катание на верблюдах, ночь под звёздами. Уникальное сочетание гор, степи и пустыни.",
+      "cost_usd": 120,
+      "duration_hours": 36,
+      "best_time": "morning",
+      "opening_hours": "выезд 07:00",
+      "district": "Нурата",
+      "coordinates": {
+        "lat": 40.5634,
+        "lng": 65.6812
+      },
+      "tags": [
+        "mountains",
+        "desert",
+        "camping",
+        "camel",
+        "overnight",
+        "adventure",
+        "unique"
+      ],
+      "tips": [
+        "Требует 2 дня — планируйте заранее",
+        "Юрточный лагерь — комфортный 'глэмпинг'",
+        "Катание на верблюдах включено",
+        "Озеро Айдаркуль — пресноводное озеро в пустыне",
+        "Фантастические звёзды ночью — нет светового загрязнения"
+      ],
+      "physical_level": "moderate",
+      "requirements": [
+        "удобная одежда",
+        "тёплые вещи на ночь",
+        "купальник"
+      ],
+      "includes": [
+        "трансфер",
+        "питание",
+        "проживание в юрте",
+        "гид",
+        "верблюды"
+      ],
+      "accessibility": "умеренная",
+      "avg_rating": 4.9,
+      "reviews_count": 340
+    },
+    {
+      "id": "chorsu_local_market",
+      "name": "Чорсу (местный базар)",
+      "name_en": "Chorsu Local Market",
+      "category": [
+        "market",
+        "food",
+        "local"
+      ],
+      "description": "Менее туристический базар для местных жителей. Аутентичная атмосфера, низкие цены. Свежие продукты, молочные продукты, мясо, домашние товары.",
+      "cost_usd": 0,
+      "duration_hours": 0.75,
+      "best_time": "morning",
+      "opening_hours": "06:00-16:00",
+      "district": "запад",
+      "coordinates": {
+        "lat": 39.6487,
+        "lng": 66.9512
+      },
+      "tags": [
+        "market",
+        "local",
+        "authentic",
+        "free",
+        "food",
+        "budget"
+      ],
+      "tips": [
+        "Для тех, кто хочет увидеть 'настоящий' Самарканд",
+        "Цены ниже, чем на Сиабе",
+        "Мало кто говорит по-английски",
+        "Отличный курт (сухой сыр)"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.3,
+      "reviews_count": 320
+    },
+    {
+      "id": "restaurant_samarkand_darvoza",
+      "name": "Ресторан Самарканд Дарвоза",
+      "name_en": "Samarkand Darvoza Restaurant",
+      "category": [
+        "restaurant",
+        "food"
+      ],
+      "description": "Премиальный ресторан узбекской кухни с видом на Регистан. Традиционные блюда в современной подаче. Живая музыка и танцы вечером.",
+      "cost_usd": 25,
+      "duration_hours": 1.5,
+      "best_time": "dinner",
+      "opening_hours": "12:00-23:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6545,
+        "lng": 66.9762
+      },
+      "tags": [
+        "restaurant",
+        "fine-dining",
+        "premium",
+        "uzbek-cuisine",
+        "view",
+        "music"
+      ],
+      "cuisine_type": "uzbek",
+      "restaurant_style": "fine-dining",
+      "price_range": "$$$$",
+      "tips": [
+        "Бронируйте столик с видом на Регистан",
+        "Попробуйте авторский плов с трюфелем",
+        "Дресс-код smart casual"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.7,
+      "reviews_count": 890
+    },
+    {
+      "id": "restaurant_labi_hovuz",
+      "name": "Чайхана Ляби-Хауз",
+      "name_en": "Labi Hovuz Chaikhana",
+      "category": [
+        "restaurant",
+        "food"
+      ],
+      "description": "Традиционная узбекская чайхана с топчанами. Аутентичная атмосфера, домашняя кухня. Отличный плов, шашлык, лагман.",
+      "cost_usd": 6,
+      "duration_hours": 1.0,
+      "best_time": "lunch",
+      "opening_hours": "08:00-22:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6527,
+        "lng": 66.9678
+      },
+      "tags": [
+        "restaurant",
+        "chaikhana",
+        "traditional",
+        "budget",
+        "uzbek-cuisine",
+        "local"
+      ],
+      "cuisine_type": "uzbek",
+      "restaurant_style": "traditional",
+      "price_range": "$",
+      "tips": [
+        "Сидите на топчанах для аутентичности",
+        "Чай включён в стоимость",
+        "Большие порции"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.5,
+      "reviews_count": 2100
+    },
+    {
+      "id": "restaurant_mediterra",
+      "name": "Ресторан Mediterra",
+      "name_en": "Mediterra Restaurant",
+      "category": [
+        "restaurant",
+        "food"
+      ],
+      "description": "Средиземноморская и европейская кухня в современном интерьере. Пасты, стейки, морепродукты. Винная карта.",
+      "cost_usd": 20,
+      "duration_hours": 1.5,
+      "best_time": "dinner",
+      "opening_hours": "11:00-23:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6512,
+        "lng": 66.9645
+      },
+      "tags": [
+        "restaurant",
+        "european",
+        "modern",
+        "wine",
+        "romantic"
+      ],
+      "cuisine_type": "european",
+      "restaurant_style": "modern",
+      "price_range": "$$$",
+      "tips": [
+        "Хороший выбор вин",
+        "Подходит для свидания",
+        "Меню на английском"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.4,
+      "reviews_count": 450
+    },
+    {
+      "id": "restaurant_boss_plov",
+      "name": "Boss Plov",
+      "name_en": "Boss Plov Restaurant",
+      "category": [
+        "restaurant",
+        "food"
+      ],
+      "description": "Популярный ресторан самаркандского плова. Готовят на открытом огне в огромных казанах. Быстрое обслуживание.",
+      "cost_usd": 5,
+      "duration_hours": 0.75,
+      "best_time": "lunch",
+      "opening_hours": "09:00-16:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6498,
+        "lng": 66.9723
+      },
+      "tags": [
+        "restaurant",
+        "plov",
+        "budget",
+        "quick",
+        "local",
+        "uzbek-cuisine"
+      ],
+      "cuisine_type": "uzbek",
+      "restaurant_style": "casual",
+      "price_range": "$",
+      "tips": [
+        "Приходите до 14:00",
+        "Только наличные",
+        "Лучший плов в городе по мнению местных"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.8,
+      "reviews_count": 3200
+    },
+    {
+      "id": "restaurant_platan",
+      "name": "Ресторан Платан",
+      "name_en": "Platan Restaurant",
+      "category": [
+        "restaurant",
+        "food"
+      ],
+      "description": "Семейный ресторан с большой террасой в тени платанов. Узбекская и русская кухня. Детское меню. Живая музыка по выходным.",
+      "cost_usd": 12,
+      "duration_hours": 1.5,
+      "best_time": "dinner",
+      "opening_hours": "10:00-23:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6534,
+        "lng": 66.9687
+      },
+      "tags": [
+        "restaurant",
+        "family",
+        "terrace",
+        "uzbek-cuisine",
+        "kids-friendly"
+      ],
+      "cuisine_type": "mixed",
+      "restaurant_style": "family",
+      "price_range": "$$",
+      "tips": [
+        "Отличная терраса летом",
+        "Есть детское меню",
+        "Живая музыка по пятницам и субботам"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.3,
+      "reviews_count": 780
+    },
+    {
+      "id": "restaurant_besh_chinor",
+      "name": "Бешь Чинор",
+      "name_en": "Besh Chinor Restaurant",
+      "category": [
+        "restaurant",
+        "food"
+      ],
+      "description": "Ресторан под открытым небом среди пяти вековых платанов. Национальная кухня, свежее мясо. Идеально для больших компаний.",
+      "cost_usd": 15,
+      "duration_hours": 2.0,
+      "best_time": "dinner",
+      "opening_hours": "11:00-00:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6556,
+        "lng": 66.9712
+      },
+      "tags": [
+        "restaurant",
+        "outdoor",
+        "group",
+        "uzbek-cuisine",
+        "banquet"
+      ],
+      "cuisine_type": "uzbek",
+      "restaurant_style": "outdoor",
+      "price_range": "$$",
+      "tips": [
+        "Идеально для больших групп",
+        "Можно заказать барана",
+        "Бронируйте заранее на выходные"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.5,
+      "reviews_count": 1200
+    },
+    {
+      "id": "cafe_registan",
+      "name": "Registan Café",
+      "name_en": "Registan Café",
+      "category": [
+        "cafe",
+        "food"
+      ],
+      "description": "Современное кафе с видом на Регистан. Кофе, десерты, лёгкие закуски. Wi-Fi. Отличное место для завтрака.",
+      "cost_usd": 8,
+      "duration_hours": 0.75,
+      "best_time": "morning",
+      "opening_hours": "07:00-22:00",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6551,
+        "lng": 66.9751
+      },
+      "tags": [
+        "cafe",
+        "coffee",
+        "breakfast",
+        "wifi",
+        "view",
+        "modern"
+      ],
+      "cuisine_type": "cafe",
+      "restaurant_style": "modern",
+      "price_range": "$$",
+      "tips": [
+        "Лучший кофе с видом на Регистан",
+        "Есть завтраки",
+        "Хороший Wi-Fi"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.4,
+      "reviews_count": 560
+    },
+    {
+      "id": "hotel_registan_plaza",
+      "name": "Registan Plaza Hotel",
+      "name_en": "Registan Plaza Hotel",
+      "category": [
+        "hotel",
+        "accommodation"
+      ],
+      "description": "Пятизвёздочный отель в центре города с видом на Регистан. Спа, бассейн, ресторан. Лучший отель Самарканда.",
+      "cost_usd": 150,
+      "duration_hours": 24,
+      "best_time": "any",
+      "opening_hours": "24/7",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6542,
+        "lng": 66.9748
+      },
+      "tags": [
+        "hotel",
+        "5-star",
+        "luxury",
+        "spa",
+        "pool",
+        "central"
+      ],
+      "hotel_class": 5,
+      "comfort_level": "luxury",
+      "amenities": [
+        "wifi",
+        "spa",
+        "pool",
+        "gym",
+        "restaurant",
+        "parking",
+        "concierge",
+        "room-service"
+      ],
+      "breakfast_included": true,
+      "tips": [
+        "Номера с видом на Регистан дороже на 30%",
+        "Отличный завтрак",
+        "Бронируйте заранее в сезон"
+      ],
+      "physical_level": "low",
+      "accessibility": "отличная",
+      "avg_rating": 4.8,
+      "reviews_count": 2300
+    },
+    {
+      "id": "hotel_silk_road",
+      "name": "Silk Road Samarkand",
+      "name_en": "Silk Road Samarkand Hotel",
+      "category": [
+        "hotel",
+        "accommodation"
+      ],
+      "description": "Новый пятизвёздочный комплекс с конгресс-центром. Несколько ресторанов, спа, теннисные корты. Для бизнес-туристов.",
+      "cost_usd": 180,
+      "duration_hours": 24,
+      "best_time": "any",
+      "opening_hours": "24/7",
+      "district": "запад",
+      "coordinates": {
+        "lat": 39.6412,
+        "lng": 66.9234
+      },
+      "tags": [
+        "hotel",
+        "5-star",
+        "luxury",
+        "business",
+        "spa",
+        "conference"
+      ],
+      "hotel_class": 5,
+      "comfort_level": "luxury",
+      "amenities": [
+        "wifi",
+        "spa",
+        "pool",
+        "gym",
+        "restaurant",
+        "parking",
+        "conference",
+        "tennis"
+      ],
+      "breakfast_included": true,
+      "tips": [
+        "Идеально для бизнеса",
+        "Большая территория",
+        "Трансфер до центра 15 минут"
+      ],
+      "physical_level": "low",
+      "accessibility": "отличная",
+      "avg_rating": 4.7,
+      "reviews_count": 1800
+    },
+    {
+      "id": "hotel_konstantin",
+      "name": "Boutique Hotel Konstantin",
+      "name_en": "Boutique Hotel Konstantin",
+      "category": [
+        "hotel",
+        "accommodation"
+      ],
+      "description": "Уютный бутик-отель в историческом здании. 12 номеров с индивидуальным дизайном. Домашняя атмосфера, отличный завтрак.",
+      "cost_usd": 70,
+      "duration_hours": 24,
+      "best_time": "any",
+      "opening_hours": "24/7",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6523,
+        "lng": 66.9689
+      },
+      "tags": [
+        "hotel",
+        "boutique",
+        "comfort",
+        "central",
+        "charming"
+      ],
+      "hotel_class": 4,
+      "comfort_level": "comfort",
+      "amenities": [
+        "wifi",
+        "restaurant",
+        "garden",
+        "terrace"
+      ],
+      "breakfast_included": true,
+      "tips": [
+        "Бронируйте заранее — всего 12 номеров",
+        "Хозяева очень гостеприимные",
+        "Лучший завтрак в городе"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.9,
+      "reviews_count": 890
+    },
+    {
+      "id": "hotel_emir",
+      "name": "Hotel Emir",
+      "name_en": "Hotel Emir",
+      "category": [
+        "hotel",
+        "accommodation"
+      ],
+      "description": "Трёхзвёздочный отель хорошего качества. Просторные номера, хороший завтрак. Оптимальное соотношение цена/качество.",
+      "cost_usd": 45,
+      "duration_hours": 24,
+      "best_time": "any",
+      "opening_hours": "24/7",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6501,
+        "lng": 66.9678
+      },
+      "tags": [
+        "hotel",
+        "3-star",
+        "budget-friendly",
+        "central",
+        "value"
+      ],
+      "hotel_class": 3,
+      "comfort_level": "standard",
+      "amenities": [
+        "wifi",
+        "restaurant",
+        "parking"
+      ],
+      "breakfast_included": true,
+      "tips": [
+        "Хорошее соотношение цена/качество",
+        "10 минут до Регистана",
+        "Просите номер с окном во двор — тише"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.2,
+      "reviews_count": 1500
+    },
+    {
+      "id": "hotel_antica",
+      "name": "Antica B&B",
+      "name_en": "Antica Bed & Breakfast",
+      "category": [
+        "hotel",
+        "accommodation"
+      ],
+      "description": "Гостевой дом в традиционном узбекском стиле. Дворик с фонтаном, топчаны, домашняя кухня. Атмосферное место.",
+      "cost_usd": 35,
+      "duration_hours": 24,
+      "best_time": "any",
+      "opening_hours": "24/7",
+      "district": "старый город",
+      "coordinates": {
+        "lat": 39.6578,
+        "lng": 66.9812
+      },
+      "tags": [
+        "hotel",
+        "guesthouse",
+        "traditional",
+        "budget",
+        "authentic",
+        "courtyard"
+      ],
+      "hotel_class": 3,
+      "comfort_level": "basic",
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "garden",
+        "terrace"
+      ],
+      "breakfast_included": true,
+      "tips": [
+        "Аутентичный узбекский опыт",
+        "Хозяйка готовит домашний плов",
+        "Бронируйте заранее"
+      ],
+      "physical_level": "low",
+      "accessibility": "частичная",
+      "avg_rating": 4.7,
+      "reviews_count": 670
+    },
+    {
+      "id": "hostel_bahodir",
+      "name": "Bahodir B&B",
+      "name_en": "Bahodir Bed & Breakfast",
+      "category": [
+        "hotel",
+        "accommodation"
+      ],
+      "description": "Популярный бюджетный гостевой дом. Чистые комнаты, дружелюбные хозяева, вкусный завтрак. Идеально для бэкпекеров.",
+      "cost_usd": 15,
+      "duration_hours": 24,
+      "best_time": "any",
+      "opening_hours": "24/7",
+      "district": "старый город",
+      "coordinates": {
+        "lat": 39.6589,
+        "lng": 66.9798
+      },
+      "tags": [
+        "hotel",
+        "hostel",
+        "budget",
+        "backpacker",
+        "friendly"
+      ],
+      "hotel_class": 2,
+      "comfort_level": "budget",
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "shared-bathroom",
+        "laundry"
+      ],
+      "breakfast_included": true,
+      "tips": [
+        "Лучший бюджетный вариант",
+        "Общая кухня",
+        "Хозяева помогут с турами"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.6,
+      "reviews_count": 2100
+    },
+    {
+      "id": "hotel_grand_kuk",
+      "name": "Grand Samarkand Superior",
+      "name_en": "Grand Samarkand Superior Hotel",
+      "category": [
+        "hotel",
+        "accommodation"
+      ],
+      "description": "Четырёхзвёздочный отель с хорошим сервисом. Бассейн, фитнес, ресторан. Подходит для семей.",
+      "cost_usd": 85,
+      "duration_hours": 24,
+      "best_time": "any",
+      "opening_hours": "24/7",
+      "district": "центр",
+      "coordinates": {
+        "lat": 39.6498,
+        "lng": 66.9656
+      },
+      "tags": [
+        "hotel",
+        "4-star",
+        "pool",
+        "family",
+        "central"
+      ],
+      "hotel_class": 4,
+      "comfort_level": "comfort",
+      "amenities": [
+        "wifi",
+        "pool",
+        "gym",
+        "restaurant",
+        "parking",
+        "kids-club"
+      ],
+      "breakfast_included": true,
+      "tips": [
+        "Хороший бассейн",
+        "Есть детский клуб",
+        "До Регистана 5 минут"
+      ],
+      "physical_level": "low",
+      "accessibility": "хорошая",
+      "avg_rating": 4.4,
+      "reviews_count": 1100
+    }
+  ]
+}

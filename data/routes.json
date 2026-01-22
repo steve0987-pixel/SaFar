@@ -1,0 +1,528 @@
+{
+    "version": "2.0",
+    "city": "Samarkand",
+    "route_templates": [
+        {
+            "id": "classic_2day_mountains",
+            "name": "Классический Самарканд с горами",
+            "name_en": "Classic Samarkand + Mountains",
+            "description": "Идеальный баланс: все главные достопримечательности в первый день, горы во второй. Подходит для большинства туристов.",
+            "duration_days": 2,
+            "budget_range": {
+                "min": 70,
+                "max": 120
+            },
+            "style": "balanced",
+            "physical_level": "moderate",
+            "best_for": [
+                "первый визит",
+                "любители истории",
+                "фотографы"
+            ],
+            "days": [
+                {
+                    "day": 1,
+                    "theme": "Исторический центр",
+                    "total_walking_km": 5,
+                    "activities": [
+                        {
+                            "poi_id": "registan_square",
+                            "time": "08:00-09:30",
+                            "notes": "Меньше туристов, лучший свет"
+                        },
+                        {
+                            "poi_id": "gur_emir_mausoleum",
+                            "time": "10:00-11:00"
+                        },
+                        {
+                            "poi_id": "rukhobod_mausoleum",
+                            "time": "11:15-11:30",
+                            "notes": "По пути, быстрый осмотр"
+                        },
+                        {
+                            "poi_id": "central_plov_center",
+                            "time": "12:00-13:00",
+                            "notes": "Обед! Порция большая"
+                        },
+                        {
+                            "poi_id": "siab_bazaar",
+                            "time": "13:30-14:30",
+                            "notes": "Покупка сувениров и лепёшек"
+                        },
+                        {
+                            "poi_id": "bibi_khanym_mosque",
+                            "time": "14:45-15:30"
+                        },
+                        {
+                            "poi_id": "shah_i_zinda",
+                            "time": "16:00-17:30",
+                            "notes": "Главное — не торопитесь!"
+                        },
+                        {
+                            "poi_id": "hazrat_khizr_mosque",
+                            "time": "17:45-18:30",
+                            "notes": "Закат с видом на город"
+                        }
+                    ]
+                },
+                {
+                    "day": 2,
+                    "theme": "Горы и природа",
+                    "activities": [
+                        {
+                            "poi_id": "zarafshan_gorge_day_trip",
+                            "time": "07:00-17:00",
+                            "notes": "Полный день, обед включён"
+                        }
+                    ],
+                    "notes": "Выезд рано — 7:00. Возьмите куртку и воду. Обед в горном кишлаке."
+                }
+            ],
+            "tips": [
+                "День 1 насыщенный — удобная обувь обязательна",
+                "Закажите горный тур заранее (вечером дня 1)",
+                "Оставьте время на вечернее шоу на Регистане (опционально, $10)"
+            ]
+        },
+        {
+            "id": "budget_2day",
+            "name": "Бюджетный Самарканд",
+            "name_en": "Budget Samarkand",
+            "description": "Максимум впечатлений при минимальных расходах. Много бесплатных мест и пешие прогулки.",
+            "duration_days": 2,
+            "budget_range": {
+                "min": 35,
+                "max": 60
+            },
+            "style": "budget",
+            "physical_level": "moderate",
+            "best_for": [
+                "бэкпекеры",
+                "студенты",
+                "длительные путешественники"
+            ],
+            "days": [
+                {
+                    "day": 1,
+                    "theme": "Главные достопримечательности",
+                    "total_walking_km": 7,
+                    "activities": [
+                        {
+                            "poi_id": "registan_square",
+                            "time": "08:00-09:30",
+                            "cost_override": 5
+                        },
+                        {
+                            "poi_id": "gur_emir_mausoleum",
+                            "time": "10:00-11:00",
+                            "cost_override": 3
+                        },
+                        {
+                            "poi_id": "siab_bazaar",
+                            "time": "11:30-12:30",
+                            "notes": "Обед здесь — самса и лепёшка ($2)"
+                        },
+                        {
+                            "poi_id": "bibi_khanym_mosque",
+                            "time": "13:00-13:45",
+                            "cost_override": 2
+                        },
+                        {
+                            "poi_id": "shah_i_zinda",
+                            "time": "14:15-15:45",
+                            "cost_override": 3
+                        },
+                        {
+                            "poi_id": "saint_daniel_tomb",
+                            "time": "16:00-16:45",
+                            "notes": "Бесплатно!"
+                        },
+                        {
+                            "poi_id": "sunset_viewpoint_hill",
+                            "time": "17:30-18:30",
+                            "notes": "Лучший бесплатный закат"
+                        }
+                    ]
+                },
+                {
+                    "day": 2,
+                    "theme": "Музеи и культура",
+                    "total_walking_km": 5,
+                    "activities": [
+                        {
+                            "poi_id": "afrosiyab_ancient_settlement",
+                            "time": "08:30-09:30",
+                            "notes": "Бесплатно, прогулка"
+                        },
+                        {
+                            "poi_id": "afrosiyab_museum",
+                            "time": "09:45-10:45",
+                            "cost_override": 2
+                        },
+                        {
+                            "poi_id": "ulugh_beg_observatory",
+                            "time": "11:15-12:00",
+                            "cost_override": 2
+                        },
+                        {
+                            "poi_id": "teahouse_lyabi_hovuz",
+                            "time": "12:30-13:15",
+                            "notes": "Обед: чай и лепёшка ($3)"
+                        },
+                        {
+                            "poi_id": "samarkand_carpet_workshop",
+                            "time": "14:00-15:00",
+                            "notes": "Экскурсия бесплатная"
+                        },
+                        {
+                            "poi_id": "silk_paper_workshop_konigil",
+                            "time": "15:30-17:00",
+                            "cost_override": 5,
+                            "notes": "Такси $5 туда-обратно"
+                        }
+                    ]
+                }
+            ],
+            "tips": [
+                "Общий бюджет: ~$40-50 на всё",
+                "Ешьте на базаре — дешевле и вкуснее",
+                "Такси заменяйте пешими прогулками где возможно",
+                "Торгуйтесь за всё!"
+            ]
+        },
+        {
+            "id": "intensive_2day_lakes",
+            "name": "Насыщенный Самарканд + Семь озёр",
+            "name_en": "Intensive Samarkand + Seven Lakes",
+            "description": "Для тех, кто хочет увидеть максимум за 2 дня. Включает самый впечатляющий горный маршрут. Требует хорошей физической формы.",
+            "duration_days": 2,
+            "budget_range": {
+                "min": 100,
+                "max": 170
+            },
+            "style": "intensive",
+            "physical_level": "high",
+            "best_for": [
+                "активные путешественники",
+                "фотографы",
+                "любители природы"
+            ],
+            "days": [
+                {
+                    "day": 1,
+                    "theme": "Полный обзор города",
+                    "total_walking_km": 8,
+                    "activities": [
+                        {
+                            "poi_id": "registan_square",
+                            "time": "07:30-09:00",
+                            "notes": "Ранний старт!"
+                        },
+                        {
+                            "poi_id": "gur_emir_mausoleum",
+                            "time": "09:15-10:15"
+                        },
+                        {
+                            "poi_id": "central_plov_center",
+                            "time": "10:45-11:30",
+                            "notes": "Ранний обед"
+                        },
+                        {
+                            "poi_id": "siab_bazaar",
+                            "time": "11:45-12:30"
+                        },
+                        {
+                            "poi_id": "bibi_khanym_mosque",
+                            "time": "12:45-13:30"
+                        },
+                        {
+                            "poi_id": "shah_i_zinda",
+                            "time": "14:00-15:30"
+                        },
+                        {
+                            "poi_id": "afrosiyab_museum",
+                            "time": "15:45-16:45"
+                        },
+                        {
+                            "poi_id": "ulugh_beg_observatory",
+                            "time": "17:15-18:00",
+                            "notes": "Такси"
+                        },
+                        {
+                            "poi_id": "hazrat_khizr_mosque",
+                            "time": "18:30-19:15",
+                            "notes": "Закат"
+                        },
+                        {
+                            "poi_id": "registan_night_show",
+                            "time": "21:00-22:00",
+                            "notes": "Опционально, $10"
+                        }
+                    ]
+                },
+                {
+                    "day": 2,
+                    "theme": "Семь озёр в Фанских горах",
+                    "activities": [
+                        {
+                            "poi_id": "seven_lakes_fann_mountains",
+                            "time": "06:00-18:00",
+                            "notes": "Выезд в 6 утра! Полный день"
+                        }
+                    ],
+                    "notes": "Самый длинный и красивый маршрут. Физически требовательный. Возьмите тёплую куртку!"
+                }
+            ],
+            "tips": [
+                "День 1 ОЧЕНЬ насыщенный — ложитесь рано",
+                "День 2 требует хорошей физической формы (высота 2400м)",
+                "Забронируйте тур на Семь озёр заранее",
+                "Возьмите энергию и воду на горы"
+            ],
+            "warnings": [
+                "Семь озёра недоступны зимой (ноябрь-апрель)",
+                "При плохой погоде тур могут отменить"
+            ]
+        },
+        {
+            "id": "culture_food_2day",
+            "name": "Культура и гастрономия",
+            "name_en": "Culture & Food Experience",
+            "description": "Акцент на узбекскую кухню, мастерские и культурные впечатления. Размеренный темп.",
+            "duration_days": 2,
+            "budget_range": {
+                "min": 60,
+                "max": 100
+            },
+            "style": "relaxed",
+            "physical_level": "low",
+            "best_for": [
+                "гурманы",
+                "любители культуры",
+                "старшее поколение"
+            ],
+            "days": [
+                {
+                    "day": 1,
+                    "theme": "История и кухня",
+                    "activities": [
+                        {
+                            "poi_id": "registan_square",
+                            "time": "09:00-10:30"
+                        },
+                        {
+                            "poi_id": "teahouse_lyabi_hovuz",
+                            "time": "11:00-11:45",
+                            "notes": "Чайная церемония"
+                        },
+                        {
+                            "poi_id": "central_plov_center",
+                            "time": "12:15-13:15",
+                            "notes": "Лучший плов в городе"
+                        },
+                        {
+                            "poi_id": "gur_emir_mausoleum",
+                            "time": "14:00-15:00"
+                        },
+                        {
+                            "poi_id": "khovrenko_winery",
+                            "time": "15:30-17:00",
+                            "notes": "Дегустация узбекских вин"
+                        },
+                        {
+                            "poi_id": "siyob_restaurant",
+                            "time": "19:00-21:00",
+                            "notes": "Ужин с музыкой"
+                        }
+                    ]
+                },
+                {
+                    "day": 2,
+                    "theme": "Мастерские и традиции",
+                    "activities": [
+                        {
+                            "poi_id": "siab_bazaar",
+                            "time": "08:00-09:30",
+                            "notes": "Лучший выбор утром"
+                        },
+                        {
+                            "poi_id": "samarkand_carpet_workshop",
+                            "time": "10:00-11:00"
+                        },
+                        {
+                            "poi_id": "silk_paper_workshop_konigil",
+                            "time": "11:30-13:30",
+                            "notes": "Мастер-класс + обед в саду"
+                        },
+                        {
+                            "poi_id": "shah_i_zinda",
+                            "time": "15:00-16:30"
+                        },
+                        {
+                            "poi_id": "art_cafe_samarkand",
+                            "time": "17:00-18:00",
+                            "notes": "Кофе и десерты"
+                        },
+                        {
+                            "poi_id": "hazrat_khizr_mosque",
+                            "time": "18:30-19:15",
+                            "notes": "Закат"
+                        }
+                    ]
+                }
+            ],
+            "tips": [
+                "Размеренный темп — много времени на еду и отдых",
+                "Закажите обед в Конигиле заранее",
+                "Попробуйте разные виды плова и шашлыка"
+            ]
+        },
+        {
+            "id": "sunday_urgut_special",
+            "name": "С воскресным базаром Ургут",
+            "name_en": "Sunday Urgut Market Special",
+            "description": "Специальный маршрут для воскресенья — включает знаменитый базар Ургут с антикварными сузани.",
+            "duration_days": 2,
+            "budget_range": {
+                "min": 50,
+                "max": 90
+            },
+            "style": "balanced",
+            "physical_level": "low",
+            "best_for": [
+                "шопоголики",
+                "коллекционеры",
+                "любители антиквариата"
+            ],
+            "availability": "только если день 2 — воскресенье",
+            "days": [
+                {
+                    "day": 1,
+                    "theme": "Главные достопримечательности",
+                    "activities": [
+                        {
+                            "poi_id": "registan_square",
+                            "time": "09:00-10:30"
+                        },
+                        {
+                            "poi_id": "gur_emir_mausoleum",
+                            "time": "11:00-12:00"
+                        },
+                        {
+                            "poi_id": "central_plov_center",
+                            "time": "12:30-13:30"
+                        },
+                        {
+                            "poi_id": "shah_i_zinda",
+                            "time": "14:30-16:00"
+                        },
+                        {
+                            "poi_id": "bibi_khanym_mosque",
+                            "time": "16:30-17:15"
+                        },
+                        {
+                            "poi_id": "siab_bazaar",
+                            "time": "17:30-18:30"
+                        }
+                    ]
+                },
+                {
+                    "day": 2,
+                    "theme": "Воскресный базар Ургут",
+                    "activities": [
+                        {
+                            "poi_id": "urgut_sunday_market",
+                            "time": "07:00-12:00",
+                            "notes": "Выезд в 7:00, возвращение к обеду"
+                        },
+                        {
+                            "poi_id": "silk_paper_workshop_konigil",
+                            "time": "14:00-16:00",
+                            "notes": "По дороге обратно"
+                        },
+                        {
+                            "poi_id": "hazrat_khizr_mosque",
+                            "time": "17:30-18:30",
+                            "notes": "Закат"
+                        }
+                    ],
+                    "notes": "Базар работает только до 13:00! Берите наличные."
+                }
+            ],
+            "tips": [
+                "ТОЛЬКО ДЛЯ ВОСКРЕСЕНЬЯ!",
+                "Берите много наличных (карты не принимают)",
+                "Торгуйтесь активно — цены завышены на 50%+",
+                "Лучшие сузани — в верхней части базара"
+            ]
+        },
+        {
+            "id": "one_day_express",
+            "name": "Экспресс за 1 день",
+            "name_en": "Express 1-Day Tour",
+            "description": "Все главные достопримечательности за один насыщенный день. Для проездом или в рамках большого тура.",
+            "duration_days": 1,
+            "budget_range": {
+                "min": 25,
+                "max": 50
+            },
+            "style": "intensive",
+            "physical_level": "moderate",
+            "best_for": [
+                "транзитные путешественники",
+                "бизнес-поездки"
+            ],
+            "days": [
+                {
+                    "day": 1,
+                    "theme": "Всё лучшее за один день",
+                    "total_walking_km": 6,
+                    "activities": [
+                        {
+                            "poi_id": "registan_square",
+                            "time": "08:00-09:30"
+                        },
+                        {
+                            "poi_id": "gur_emir_mausoleum",
+                            "time": "09:45-10:30"
+                        },
+                        {
+                            "poi_id": "siab_bazaar",
+                            "time": "10:45-11:15",
+                            "notes": "Быстрый обзор + самса"
+                        },
+                        {
+                            "poi_id": "bibi_khanym_mosque",
+                            "time": "11:30-12:00"
+                        },
+                        {
+                            "poi_id": "central_plov_center",
+                            "time": "12:15-13:00",
+                            "notes": "Обязательный обед!"
+                        },
+                        {
+                            "poi_id": "shah_i_zinda",
+                            "time": "13:30-15:00",
+                            "notes": "Самое важное — не торопитесь здесь"
+                        },
+                        {
+                            "poi_id": "ulugh_beg_observatory",
+                            "time": "15:30-16:15",
+                            "notes": "Такси ~$3"
+                        },
+                        {
+                            "poi_id": "hazrat_khizr_mosque",
+                            "time": "16:45-17:30",
+                            "notes": "Если успеваете — закат"
+                        }
+                    ]
+                }
+            ],
+            "tips": [
+                "Минимум на Самарканд — всё равно лучше 2 дня",
+                "Можно убрать обсерваторию если не хватает времени",
+                "Такси между точками экономит время"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaFar</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --bg-dark: #0f172a;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Light Theme */
+        [data-theme="light"] {
+            --bg-dark: #f8fafc;
+            --bg-card: rgba(0, 0, 0, 0.05);
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --glass: rgba(0, 0, 0, 0.05);
+            --glass-border: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(30px, -30px) rotate(5deg);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(-5deg);
+            }
+        }
+
+        /* Header */
+        .header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--glass);
+            padding: 0.25rem;
+            border-radius: 12px;
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab.active {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            padding-left: 3.5rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        /* Category Pills */
+        .categories {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-pill {
+            padding: 0.75rem 1.5rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-pill:hover,
+        .category-pill.active {
+            background: var(--gradient);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Places Grid */
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .place-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .place-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .place-content {
+            padding: 1.5rem;
+        }
+
+        .place-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--gradient);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .place-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .place-description {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .place-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .place-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .place-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #fbbf24;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            display: none;
+        }
+
+        .chat-section.active {
+            display: block;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .message.user .message-avatar {
+            background: #10b981;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border-top-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background: var(--primary);
+            border-top-left-radius: 16px;
+            border-top-right-radius: 4px;
+        }
+
+        .chat-input-container {
+            padding: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary);
+        }
+
+        .send-btn {
+            padding: 1rem 1.5rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-tabs {
+                display: none;
+            }
+
+            .places-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating Planner Widget */
+        .planner-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 350px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            z-index: 1000;
+            transform: translateY(120%);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .planner-widget.active {
+            transform: translateY(0);
+        }
+
+        .planner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .planner-title {
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .plan-count {
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .planner-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .plan-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-item-name {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .plan-item-remove {
+            color: var(--secondary);
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .optimize-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Add Button on Cards */
+        .add-to-plan-btn {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.6rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-plan-btn:hover {
+            background: var(--primary);
+            border-color: transparent;
+        }
+
+        .add-to-plan-btn.added {
+            background: #10b981;
+            color: white;
+        }
+
+        /* Weather Widget */
+        .weather-widget {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--glass);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .weather-widget:hover {
+            background: var(--primary);
+        }
+
+        .weather-icon {
+            font-size: 1.2rem;
+        }
+
+        .weather-temp {
+            font-weight: 600;
+        }
+
+        .weather-rec {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Story Modal */
+        .story-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .story-modal.active {
+            display: flex;
+        }
+
+        .story-content {
+            background: var(--bg-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .story-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .story-title {
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .story-text {
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .story-legend {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(236, 72, 153, 0.1);
+            border-left: 3px solid var(--secondary);
+            border-radius: 8px;
+        }
+
+        .story-btn {
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .story-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="SaFar" style="height: 32px; width: 32px; border-radius: 8px;">
+            <span class="logo-text">SaFar</span>
+        </div>
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="explore">🔍 Explore</button>
+            <button class="nav-tab" data-tab="map" onclick="setTimeout(initMap, 100)">🗺️ Map</button>
+            <button class="nav-tab" data-tab="chat">💬 Plan Trip</button>
+        </nav>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <div class="weather-widget" id="weather-widget" title="Weather Forecast">
+                <span class="weather-icon">🌤️</span>
+                <span class="weather-temp" id="weather-temp">--°C</span>
+                <span class="weather-rec" id="weather-rec">Loading...</span>
+            </div>
+            <select id="lang-select" class="nav-tab"
+                style="padding: 0.5rem; background: var(--glass); color: var(--text); border: 1px solid var(--glass-border);">
+                <option value="en-US">🇺🇸 EN</option>
+                <option value="ru-RU">🇷🇺 RU</option>
+                <option value="uz-UZ">🇺🇿 UZ</option>
+            </select>
+            <button id="currency-btn" class="nav-tab" title="Currency Converter" style="padding: 0.5rem;">💱</button>
+            <button id="theme-toggle" class="nav-tab" title="Toggle Theme" style="padding: 0.5rem;">🌙</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Explore Section -->
+        <section id="explore-section">
+            <div class="hero">
+                <h1>Discover Samarkand</h1>
+                <p>Explore hotels, restaurants, and attractions in the heart of the Silk Road</p>
+            </div>
+
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="search-input"
+                    placeholder="Search for places, cuisines, or experiences...">
+            </div>
+
+            <div class="categories">
+                <button class="category-pill active" data-category="all">🌟 All</button>
+                <button class="category-pill" data-category="hotel">🏨 Hotels</button>
+                <button class="category-pill" data-category="restaurant">🍽️ Restaurants</button>
+                <button class="category-pill" data-category="attraction">🏛️ Attractions</button>
+            </div>
+
+            <div class="places-grid" id="places-grid">
+                <div class="empty-state">
+                    <div class="empty-state-icon">🔄</div>
+                    <p>Loading amazing places...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat-section" class="chat-section">
+            <div class="hero">
+                <h1>Plan Your Trip</h1>
+                <p>Tell me about your ideal trip and I'll create a personalized itinerary</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            Hello! I'm your AI travel assistant. Tell me about your trip plans - how many days, budget,
+                            and what interests you!
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chat-input"
+                        placeholder="e.g., 3 day budget trip with historical sites...">
+                    <button class="nav-tab" id="voice-btn" title="Speak">🎤</button>
+                    <button class="send-btn" id="send-btn">Send ➤</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map-section" style="display: none;">
+            <div class="hero">
+                <h1>Explore on Map</h1>
+                <p>See all attractions, hotels, and restaurants on an interactive map</p>
+            </div>
+            <div id="map-container" style="height: 500px; border-radius: 16px; overflow: hidden; margin: 1rem;"></div>
+        </section>
+    </main>
+
+    <!-- Currency Converter Modal -->
+    <div id="currency-modal"
+        style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+        <div
+            style="background: var(--bg-dark); border-radius: 16px; padding: 2rem; max-width: 350px; width: 90%; border: 1px solid var(--glass-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--text);">💱 Currency Converter</h3>
+                <button onclick="closeCurrencyModal()"
+                    style="background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;">×</button>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label style="color: var(--text-muted); font-size: 0.9rem;">From</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <select id="currency-select" onchange="convertCurrency()"
+                        style="padding: 0.75rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass); color: var(--text); flex: 1;">
+                        <option value="USD">🇺🇸 USD</option>
+                        <option value="EUR">🇪🇺 EUR</option>
+                        <option value="RUB">🇷🇺 RUB</option>
+                        <option value="CNY">🇨🇳 CNY</option>
+                        <option value="KZT">🇰🇿 KZT</option>
+                    </select>
+                    <input type="number" id="amount-input" value="100" oninput="convertCurrency()"
+                        style="width: 60%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--glass); color: var(--text); font-size: 1.1rem;">
+                </div>
+            </div>
+            <div style="text-align: center; margin: 1rem 0;">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--secondary);" id="uzs-output">1,270,000 UZS
+                </div>
+                <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.5rem;" id="exchange-rate-display">Loading
+                    rates...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather Modal -->
+    <div id="weather-modal"
+        style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+        <div
+            style="background: var(--bg-dark); border-radius: 16px; padding: 2rem; max-width: 400px; width: 90%; border: 1px solid var(--glass-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--text);">🌤️ 3-Day Forecast</h3>
+                <button onclick="document.getElementById('weather-modal').style.display = 'none'"
+                    style="background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer;">×</button>
+            </div>
+            <div id="weather-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="spinner"></div> Loading...
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Story Modal -->
+    <div class="story-modal" id="story-modal">
+        <div class="story-content">
+            <button class="story-close" onclick="closeStoryModal()">×</button>
+            <h2 class="story-title" id="story-title">Loading...</h2>
+            <div class="story-text" id="story-text">
+                <div class="spinner"></div> Generating story...
+            </div>
+            <div class="story-legend" id="story-legend" style="display:none;"></div>
+        </div>
+    </div>
+
+    <!-- Planner Widget -->
+    <div class="planner-widget" id="planner-widget">
+        <div class="planner-header">
+            <span class="planner-title">🗓️ My Trip <span class="plan-count" id="plan-count">0</span></span>
+            <span style="font-size: 0.8rem; color: #94a3b8; cursor: pointer;" onclick="clearPlan()">Clear</span>
+        </div>
+        <div class="planner-list" id="planner-list">
+            <!-- Items go here -->
+        </div>
+        <div class="planner-actions">
+            <button class="optimize-btn" onclick="optimizeItinerary()">
+                ✨ AI Generate Plan
+            </button>
+            <div class="secondary-actions">
+                <button class="action-btn" onclick="estimateBudget()">💰 Budget</button>
+                <button class="action-btn" onclick="verifyPlan()">✅ Verify</button>
+                <button class="action-btn" onclick="toggleEdit()">✏️ Edit</button>
+                <button class="action-btn" onclick="exportPlan()">📤 Export</button>
+            </div>
+            <div id="ai-controls" style="margin-top: 10px; display: none;">
+                <input type="text" id="edit-input" placeholder="e.g. 'Move to 3 days', 'Budget $100'"
+                    style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: white;">
+                <button onclick="editPlan()"
+                    style="width: 100%; margin-top: 5px; background: #3b82f6; color: white; border: none; padding: 5px; border-radius: 4px;">Apply
+                    AI Edit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        let map = null;
+
+
+
+        // ============ WEATHER WIDGET ============
+        async function loadWeather() {
+            try {
+                // Fetch 3 days
+                const res = await fetch(`${API_BASE}/v1/weather?days=3`);
+                const data = await res.json();
+
+                if (data.forecasts && data.forecasts.length > 0) {
+                    const today = data.forecasts[0];
+                    // Update Widget
+                    document.getElementById('weather-temp').textContent = `${today.temp_max.toFixed(0)}°C`;
+                    document.getElementById('weather-rec').textContent = today.weather_description;
+
+                    const icons = { '☀️': '☀️', '🌤️': '🌤️', '⛅': '⛅', '☁️': '☁️', '🌧️': '🌧️', '🌨️': '🌨️', '⛈️': '⛈️', '🌫️': '🌫️' };
+                    let icon = '☀️';
+                    for (const [emoji, i] of Object.entries(icons)) {
+                        if (today.weather_description.includes(emoji)) { icon = i; break; }
+                    }
+                    document.querySelector('.weather-icon').textContent = icon;
+
+                    // Click to open modal
+                    document.getElementById('weather-widget').onclick = () => {
+                        document.getElementById('weather-modal').style.display = 'flex';
+                        renderWeatherModal(data.forecasts);
+                    };
+                }
+            } catch (e) {
+                console.log('Weather unavailable:', e);
+                document.getElementById('weather-rec').textContent = "Offline";
+            }
+        }
+
+        function renderWeatherModal(forecasts) {
+            const list = document.getElementById('weather-list');
+            list.innerHTML = forecasts.map(day => `
+                <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span style="font-size: 2rem;">${getWeatherIcon(day.weather_description)}</span>
+                        <div>
+                            <div style="font-weight: bold;">${new Date(day.date).toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</div>
+                            <div style="font-size: 0.9rem; color: #cbd5e1;">${day.weather_description}</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 1.2rem; font-weight: bold;">${day.temp_max.toFixed(0)}°C</div>
+                        <div style="font-size: 0.8rem; color: #94a3b8;">${day.temp_min.toFixed(0)}°C</div>
+                    </div>
+                </div>
+                <div style="font-size: 0.85rem; color: var(--secondary); margin-top: -0.5rem; padding-left: 1rem;">💡 ${day.recommendation.split('|')[0]}</div>
+            `).join('');
+        }
+
+        function getWeatherIcon(desc) {
+            const icons = { '☀️': '☀️', '🌤️': '🌤️', '⛅': '⛅', '☁️': '☁️', '🌧️': '🌧️', '🌨️': '🌨️', '⛈️': '⛈️', '🌫️': '🌫️' };
+            for (const [emoji, i] of Object.entries(icons)) {
+                if (desc.includes(emoji)) return emoji;
+            }
+            return '☀️';
+        }
+
+        loadWeather();
+
+        // ============ CURRENCY CONVERTER ============
+        let exchangeRates = {};
+
+        async function initCurrency() {
+            try {
+                const res = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await res.json();
+                exchangeRates = data.rates;
+                document.getElementById('exchange-rate-display').textContent = `Live Rates: 1 USD = ${exchangeRates.UZS.toFixed(2)} UZS`;
+                convertCurrency();
+            } catch (e) {
+                console.log('Currency API error:', e);
+                // Fallback
+                exchangeRates = { UZS: 12800, EUR: 0.92, RUB: 90, CNY: 7.2, KZT: 450, USD: 1 };
+                document.getElementById('exchange-rate-display').textContent = "⚠️ Offline Mode (Approx Rates)";
+            }
+        }
+
+
+
+
+        function convertCurrency() {
+            const currency = document.getElementById('currency-select').value;
+            const amount = parseFloat(document.getElementById('amount-input').value) || 0;
+
+            if (!exchangeRates.UZS) return;
+
+            // Convert to USD first (since base is USD)
+            const rateToUSD = exchangeRates[currency]; // e.g. EUR is 0.92 per USD? No, API base is USD. 
+            // open.er-api base USD: EUR=0.92 means 1 USD = 0.92 EUR. So 1 EUR = 1/0.92 USD.
+
+            const amountInUSD = amount / exchangeRates[currency];
+            const amountInUZS = amountInUSD * exchangeRates.UZS;
+
+            document.getElementById('uzs-output').textContent = amountInUZS.toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' UZS';
+
+            // Update rate text
+            const oneUnitRate = (1 / exchangeRates[currency]) * exchangeRates.UZS;
+            document.getElementById('exchange-rate-display').textContent = `1 ${currency} = ${oneUnitRate.toFixed(2)} UZS`;
+        }
+
+        document.getElementById('currency-btn').onclick = () => {
+            document.getElementById('currency-modal').style.display = 'flex';
+            if (!exchangeRates.UZS) initCurrency();
+        };
+
+        function closeCurrencyModal() {
+            document.getElementById('currency-modal').style.display = 'none';
+        }
+
+        // ============ STORY MODAL ============
+        function openStoryModal(poiId, poiName) {
+            const modal = document.getElementById('story-modal');
+            document.getElementById('story-title').textContent = poiName;
+            document.getElementById('story-text').innerHTML = '<div class="spinner"></div> Generating story with AI...';
+            document.getElementById('story-legend').style.display = 'none';
+            modal.classList.add('active');
+
+            fetch(`${API_BASE}/v1/story`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    poi_id: poiId,
+                    language: localStorage.getItem('lang') || 'ru',
+                    style: 'full'
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('story-text').innerHTML = data.story || 'Story not found.';
+                    if (data.has_legend) {
+                        document.getElementById('story-legend').innerHTML = '🔮 <strong>Легенда:</strong> ' + (data.story.match(/легенда[^.]+\./i) || [''])[0];
+                        document.getElementById('story-legend').style.display = 'block';
+                    }
+                })
+                .catch(e => {
+                    document.getElementById('story-text').textContent = 'Error loading story.';
+                });
+        }
+        function closeStoryModal() {
+            document.getElementById('story-modal').classList.remove('active');
+        }
+        document.getElementById('story-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'story-modal') closeStoryModal();
+        });
+
+        // Planning Logic
+        let myPlan = [];
+
+        function togglePlan(id, name) {
+            const index = myPlan.findIndex(p => p.id === id);
+            const btn = document.getElementById(`btn-${id}`);
+
+            if (index === -1) {
+                myPlan.push({ id, name });
+                if (btn) {
+                    btn.classList.add('added');
+                    btn.textContent = '✓ Added';
+                }
+            } else {
+                myPlan.splice(index, 1);
+                if (btn) {
+                    btn.classList.remove('added');
+                    btn.textContent = '+ Add to Plan';
+                }
+            }
+            updatePlannerUI();
+        }
+
+        function updatePlannerUI() {
+            const widget = document.getElementById('planner-widget');
+            const list = document.getElementById('planner-list');
+            const count = document.getElementById('plan-count');
+
+            count.textContent = myPlan.length;
+
+            if (myPlan.length > 0) {
+                widget.classList.add('active');
+                list.innerHTML = myPlan.map(item => `
+                    <div class="plan-item">
+                        <span class="plan-item-name">${item.name}</span>
+                        <span class="plan-item-remove" onclick="togglePlan('${item.id}', '${item.name.replace(/'/g, "\\'")}')">✕</span>
+                    </div>
+                `).join('');
+            } else {
+                widget.classList.remove('active');
+            }
+        }
+
+        function clearPlan() {
+            myPlan = [];
+            document.querySelectorAll('.add-to-plan-btn').forEach(btn => {
+                btn.classList.remove('added');
+                btn.textContent = '+ Add to Plan';
+            });
+            updatePlannerUI();
+        }
+
+        async function optimizeItinerary() {
+            if (myPlan.length === 0) return;
+
+            const btn = document.querySelector('.optimize-btn');
+            const oldText = btn.innerHTML;
+            btn.innerHTML = '<div class="spinner"></div> Optimizing...';
+            btn.disabled = true;
+
+            try {
+                // Switch to chat tab to show results
+                document.querySelector('[data-tab="chat"]').click();
+                const chatMessages = document.getElementById('chat-messages');
+
+                // Add system message
+                chatMessages.innerHTML += `
+                    <div class="message">
+                        <div class="message-avatar">✨</div>
+                        <div class="message-content">
+                            I'm optimizing your itinerary for ${myPlan.length} places using AI. One moment...
+                        </div>
+                    </div>
+                `;
+
+                const response = await fetch(`${API_BASE}/v1/optimize-itinerary`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        places: myPlan.map(p => p.name),
+                        days: Math.ceil(myPlan.length / 4) // simple heuristic
+                    })
+                });
+
+                const plan = await response.json();
+
+                // Render Itinerary (Text based)
+                chatMessages.innerHTML += `
+                    <div class="message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            ${plan.success ? plan.itinerary.replace(/\n/g, '<br>') : '⚠️ ' + plan.itinerary}
+                        </div>
+                    </div>
+                `;
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Reset button
+                btn.innerHTML = oldText;
+                btn.disabled = false;
+
+            } catch (e) {
+                console.error(e);
+                btn.innerHTML = 'Error';
+                setTimeout(() => { btn.innerHTML = oldText; btn.disabled = false; }, 2000);
+            }
+        }
+
+        // Toggle edit input
+        document.querySelector('.planner-actions').addEventListener('click', (e) => {
+            // Logic to show edit input if needed, handled by UI buttons mostly
+        });
+
+        // Expose toggle function
+        window.toggleEdit = function () {
+            const el = document.getElementById('ai-controls');
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+
+        async function editPlan() {
+            const input = document.getElementById('edit-input');
+            const instruction = input.value.trim();
+            if (!instruction || myPlan.length === 0) return alert('Please add items to your plan and provide instructions!');
+
+            const btn = document.querySelector('#ai-controls button');
+            const oldText = btn.textContent;
+            btn.textContent = '🧠 Processing...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/v1/edit-itinerary`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        places: myPlan.map(p => p.name),
+                        instruction: instruction
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.places) {
+                    // Update plan with new places (approximate ID generation)
+                    myPlan = data.places.map(name => ({
+                        id: name.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+                        name: name
+                    }));
+                    updatePlannerUI();
+
+                    // Show success message in chat
+                    const chatMessages = document.getElementById('chat-messages');
+                    if (chatMessages) {
+                        chatMessages.innerHTML += `
+                            <div class="message">
+                                <div class="message-avatar">✨</div>
+                                <div class="message-content">
+                                    I've updated your plan: "${instruction}".<br>
+                                    ${data.message || ''}
+                                </div>
+                            </div>
+                        `;
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+                alert('AI Edit failed. Please try again.');
+            } finally {
+                btn.textContent = oldText;
+                btn.disabled = false;
+            }
+        }
+        // Tab Navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+
+            tab.addEventListener('click', () => {
+                if (!tab.dataset.tab) return; // Skip non-tab buttons
+
+                document.querySelectorAll('.nav-tab[data-tab]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const tabName = tab.dataset.tab;
+                document.getElementById('explore-section').style.display = tabName === 'explore' ? 'block' : 'none';
+                document.getElementById('map-section').style.display = tabName === 'map' ? 'block' : 'none';
+                document.getElementById('chat-section').style.display = tabName === 'chat' ? 'block' : 'none';
+                document.getElementById('chat-section').classList.toggle('active', tabName === 'chat');
+            });
+        });
+
+        // Category Filter
+        let currentCategory = 'all';
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                currentCategory = pill.dataset.category;
+                loadPlaces();
+            });
+        });
+
+        // Search
+        let searchTimeout;
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => loadPlaces(e.target.value), 300);
+        });
+
+        // Load Places
+        async function loadPlaces(query = '') {
+            const grid = document.getElementById('places-grid');
+            grid.innerHTML = '<div class="empty-state"><div class="spinner"></div><p>Loading...</p></div>';
+
+            try {
+                const params = new URLSearchParams({ limit: 20 });
+                if (query) params.append('q', query);
+                if (currentCategory !== 'all') params.append('category', currentCategory);
+
+                const response = await fetch(`${API_BASE}/v1/search?${params}`);
+                const places = await response.json();
+
+                if (places.length === 0) {
+                    grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔍</div><p>No places found. Try a different search.</p></div>';
+                    return;
+                }
+                grid.innerHTML = places.map((place, idx) => {
+                    // Use image_url from API if available, otherwise use fallback
+                    const fallbackImages = {
+                        "attraction": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Registan_square_Samarkand.jpg/800px-Registan_square_Samarkand.jpg",
+                        "restaurant": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Uzbek_Plov.jpg/800px-Uzbek_Plov.jpg",
+                        "hotel": "https://www.advantour.com/img/uzbekistan/hotels/samarkand/silk-road-empire/silk-road-empire-hotel-2.jpg",
+                        "market": "https://lifejourney4two.com/wp-content/uploads/2020/01/SIYOB-BAZAAR-SAMARKAND.jpg"
+                    };
+                    const fallback = fallbackImages[place.category] || fallbackImages['attraction'];
+                    const imageUrl = place.image_url || fallback;
+
+                    const poiId = place.name.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+                    return `
+                    <div class="place-card">
+                        <img src="${imageUrl}" alt="${place.name}" class="place-image" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Registan_square_Samarkand.jpg/400px-Registan_square_Samarkand.jpg'">
+                        <div class="place-content">
+                            <span class="place-category">${place.category}</span>
+                            <h3 class="place-name">${place.name}</h3>
+                            <p class="place-description">${place.description}</p>
+                            <div class="place-meta">
+                                <span class="place-price">$${place.price}</span>
+                                <span class="place-rating">⭐ ${place.rating.toFixed(1)}</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+                                <button class="story-btn" onclick="openStoryModal('${poiId}', '${place.name.replace(/'/g, "\\'")}')">\u{1F4D6} История</button>
+                                <button class="add-to-plan-btn" id="btn-${place.id}" onclick="togglePlan('${place.id}', '${place.name.replace(/'/g, "\\'")}')">+ Add to Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                `}).join('');
+            } catch (error) {
+                grid.innerHTML = `<div class="empty-state"><div class="empty-state-icon">⚠️</div><p>Error loading places. Is the API running?</p></div>`;
+                console.error(error);
+            }
+        }
+
+        // Chat
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const voiceBtn = document.getElementById('voice-btn');
+
+        // Voice Support
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            voiceBtn.style.display = 'block';
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.continuous = false;
+            recognition.lang = 'en-US';
+
+            voiceBtn.addEventListener('click', () => {
+                const lang = document.getElementById('lang-select').value;
+                recognition.lang = lang;
+                console.log(`Listening in ${lang}...`);
+
+                if (voiceBtn.classList.contains('active')) {
+                    recognition.stop();
+                } else {
+                    voiceBtn.classList.add('active');
+                    voiceBtn.style.background = 'var(--secondary)';
+                    voiceBtn.style.color = 'white';
+                    recognition.start();
+                }
+            });
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                chatInput.value = transcript;
+                voiceBtn.classList.remove('active');
+                voiceBtn.style.background = '';
+                voiceBtn.style.color = '';
+            };
+
+            recognition.onerror = () => {
+                voiceBtn.classList.remove('active');
+                voiceBtn.style.background = '';
+                voiceBtn.style.color = '';
+            };
+
+            recognition.onend = () => {
+                voiceBtn.classList.remove('active');
+                voiceBtn.style.background = '';
+                voiceBtn.style.color = '';
+            };
+        } else {
+            voiceBtn.style.display = 'none';
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            chatMessages.innerHTML += `
+                <div class="message user">
+                    <div class="message-avatar">👤</div>
+                    <div class="message-content">${message}</div>
+                </div>
+            `;
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Add loading message with fast Groq response time
+            const loadingId = Date.now();
+            chatMessages.innerHTML += `
+                <div class="message" id="loading-${loadingId}">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <div class="spinner"></div> 
+                        <span>Thinking with phi3 (local)...</span>
+                        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.5rem;">
+                            🔒 Runs 100% locally on your device
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            sendBtn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/v1/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: 'user-1' // In real app, manage sessions
+                    })
+                });
+                const data = await response.json();
+
+                // Remove loading
+                const loadingMsg = document.getElementById(`loading-${loadingId}`);
+                if (loadingMsg) loadingMsg.remove();
+
+                // Add bot response
+                chatMessages.innerHTML += `
+                    <div class="message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">${data.message || data.response || 'I received your message!'}</div>
+                    </div>
+                `;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                sendBtn.disabled = false;
+
+                // Play Audio if available
+                if (data.audio) {
+                    const audio = new Audio(`data:audio/mp3;base64,${data.audio}`);
+                    audio.play();
+                }
+
+            } catch (error) {
+                console.error(error);
+                const loadingMsg = document.getElementById(`loading-${loadingId}`);
+                if (loadingMsg) loadingMsg.innerHTML = '<div style="color:red">Error thinking...</div>';
+                sendBtn.disabled = false;
+            }
+        }
+
+        async function exportPlan() {
+            if (myPlan.length === 0) return alert("Add items to your plan first!");
+
+            try {
+                // Mock itinerary for export (in real app, this comes from state)
+                const itinerary = [{
+                    date: "Day 1",
+                    items: myPlan.map(p => ({ time: "10:00 AM", place: { name: p.name }, notes: "Visit" }))
+                }];
+
+                const res = await fetch(`${API_BASE}/v1/export-itinerary`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ itinerary: itinerary, format: "text" })
+                });
+
+                const data = await res.json();
+
+                // Download file
+                const blob = new Blob([data.content], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'samarkand-trip.txt';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+
+                alert("Itinerary downloaded! 📄");
+
+            } catch (e) {
+                console.error(e);
+                alert("Export failed");
+            }
+        }
+
+
+        // Initial load
+        loadPlaces();
+
+        // ============ THEME TOGGLE ============
+        const themeToggle = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            themeToggle.textContent = next === 'dark' ? '🌙' : '☀️';
+        });
+
+        // ============ LANGUAGE SWITCHER ============
+        const translations = {
+            'en-US': {
+                heroTitle: 'Discover Samarkand',
+                heroSubtitle: 'Explore hotels, restaurants, and attractions in the heart of the Silk Road',
+                searchPlaceholder: 'Search for places, cuisines, or experiences...',
+                all: '🌟 All',
+                hotels: '🏨 Hotels',
+                restaurants: '🍽️ Restaurants',
+                attractions: '🏛️ Attractions',
+                planTrip: 'Plan Your Trip',
+                planSubtitle: 'Tell me about your ideal trip and I\'ll create a personalized itinerary',
+                chatPlaceholder: 'e.g., 3 day budget trip with historical sites...',
+                send: 'Send ➤',
+                addToPlan: '+ Add to Plan',
+                aiGenerate: '✨ AI Generate Plan',
+                myTrip: '🗓️ My Trip',
+                mapTitle: 'Explore on Map',
+                mapSubtitle: 'See all attractions, hotels, and restaurants on an interactive map',
+                loading: 'Loading amazing places...',
+                greeting: "Hello! I'm SaFar, your AI travel assistant. Tell me about your trip plans - how many days, budget, and what interests you!"
+            },
+            'ru-RU': {
+                heroTitle: 'Откройте Самарканд',
+                heroSubtitle: 'Изучайте отели, рестораны и достопримечательности сердца Шёлкового пути',
+                searchPlaceholder: 'Поиск мест, кухни или впечатлений...',
+                all: '🌟 Все',
+                hotels: '🏨 Отели',
+                restaurants: '🍽️ Рестораны',
+                attractions: '🏛️ Достопримечательности',
+                planTrip: 'Планируй поездку',
+                planSubtitle: 'Расскажите о вашем идеальном путешествии, и я создам персональный маршрут',
+                chatPlaceholder: 'например: 3 дня, бюджет $100, исторические места...',
+                send: 'Отправить ➤',
+                addToPlan: '+ Добавить',
+                aiGenerate: '✨ AI Создать план',
+                myTrip: '🗓️ Мой маршрут',
+                mapTitle: 'Карта',
+                mapSubtitle: 'Все достопримечательности, отели и рестораны на интерактивной карте',
+                loading: 'Загрузка...',
+                greeting: "Привет! Я SaFar — ваш AI-помощник. Расскажите о поездке: сколько дней, бюджет, что интересует?"
+            },
+            'uz-UZ': {
+                heroTitle: 'Samarqandni kashf eting',
+                heroSubtitle: 'Ipak yo\'lining markazidagi mehmonxonalar, restoranlar va diqqatga sazovor joylarni o\'rganing',
+                searchPlaceholder: 'Joylar, taomlar yoki tajribalarni qidiring...',
+                all: '🌟 Hammasi',
+                hotels: '🏨 Mehmonxonalar',
+                restaurants: '🍽️ Restoranlar',
+                attractions: '🏛️ Diqqatga sazovor joylar',
+                planTrip: 'Sayohatni rejalashtiring',
+                planSubtitle: 'Ideal sayohatingiz haqida aytib bering, men sizga shaxsiy marshrut yarataman',
+                chatPlaceholder: 'masalan: 3 kun, byudjet $100, tarixiy joylar...',
+                send: 'Yuborish ➤',
+                addToPlan: '+ Qo\'shish',
+                aiGenerate: '✨ AI Reja yaratish',
+                myTrip: '🗓️ Mening marshrutim',
+                mapTitle: 'Xarita',
+                mapSubtitle: 'Barcha diqqatga sazovor joylar, mehmonxonalar va restoranlarni interaktiv xaritada ko\'ring',
+                loading: 'Yuklanmoqda...',
+                greeting: "Salom! Men SaFar — sizning AI yordamchingizman. Sayohatingiz haqida ayting: necha kun, byudjet, nimani ko'rmoqchisiz?"
+            }
+        };
+
+        const langSelect = document.getElementById('lang-select');
+        const savedLang = localStorage.getItem('lang') || 'en-US';
+        langSelect.value = savedLang;
+
+        function applyLanguage(lang) {
+            const t = translations[lang] || translations['en-US'];
+
+            // Update UI texts
+            document.querySelector('#explore-section .hero h1').textContent = t.heroTitle;
+            document.querySelector('#explore-section .hero p').textContent = t.heroSubtitle;
+            document.querySelector('#search-input').placeholder = t.searchPlaceholder;
+
+            // Category pills
+            const pills = document.querySelectorAll('.category-pill');
+            if (pills.length >= 4) {
+                pills[0].innerHTML = t.all;
+                pills[1].innerHTML = t.hotels;
+                pills[2].innerHTML = t.restaurants;
+                pills[3].innerHTML = t.attractions;
+            }
+
+            // Chat section
+            document.querySelector('#chat-section .hero h1').textContent = t.planTrip;
+            document.querySelector('#chat-section .hero p').textContent = t.planSubtitle;
+            document.querySelector('#chat-input').placeholder = t.chatPlaceholder;
+            document.querySelector('#send-btn').textContent = t.send;
+
+            // Map section
+            document.querySelector('#map-section .hero h1').textContent = t.mapTitle;
+            document.querySelector('#map-section .hero p').textContent = t.mapSubtitle;
+
+            // Planner widget
+            document.querySelector('.planner-title').innerHTML = t.myTrip + ' <span class="plan-count" id="plan-count">0</span>';
+            document.querySelector('.optimize-btn').innerHTML = t.aiGenerate;
+
+            // Update "Add to Plan" buttons
+            document.querySelectorAll('.add-to-plan-btn:not(.added)').forEach(btn => {
+                btn.textContent = t.addToPlan;
+            });
+
+            localStorage.setItem('lang', lang);
+            console.log('🌐 Language switched to:', lang);
+        }
+
+        langSelect.addEventListener('change', (e) => {
+            applyLanguage(e.target.value);
+        });
+
+        // Apply saved language on load
+        applyLanguage(savedLang);
+
+        // ============ CURRENCY CONVERTER ============
+        const RATE = 12700; // 1 USD = 12,700 UZS
+        const currencyBtn = document.getElementById('currency-btn');
+        const currencyModal = document.getElementById('currency-modal');
+        const usdInput = document.getElementById('usd-input');
+        const uzsInput = document.getElementById('uzs-input');
+
+        currencyBtn.addEventListener('click', () => {
+            currencyModal.style.display = 'flex';
+        });
+
+        function closeCurrencyModal() {
+            currencyModal.style.display = 'none';
+        }
+
+        currencyModal.addEventListener('click', (e) => {
+            if (e.target === currencyModal) closeCurrencyModal();
+        });
+
+        usdInput.addEventListener('input', () => {
+            uzsInput.value = Math.round(parseFloat(usdInput.value || 0) * RATE);
+        });
+
+        uzsInput.addEventListener('input', () => {
+            usdInput.value = (parseFloat(uzsInput.value || 0) / RATE).toFixed(2);
+        });
+
+        function swapCurrency() {
+            const temp = usdInput.value;
+            usdInput.value = (parseFloat(uzsInput.value) / RATE).toFixed(2);
+            uzsInput.value = Math.round(parseFloat(temp) * RATE);
+        }
+
+        // ============ INTERACTIVE MAP ============
+
+        const mapSection = document.getElementById('map-section');
+
+
+
+        // Custom marker icons
+        function createMarkerIcon(category) {
+            const colors = {
+                'restaurant': '#e74c3c',  // Red
+                'hotel': '#3498db',        // Blue
+                'attraction': '#9b59b6',   // Purple
+                'market': '#27ae60'        // Green
+            };
+            const color = colors[category] || '#3498db';
+
+            return L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="
+                    background: ${color};
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50% 50% 50% 0;
+                    transform: rotate(-45deg);
+                    border: 2px solid white;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                "></div>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 30],
+                popupAnchor: [0, -30]
+            });
+        }
+
+        // Create popup with photo card
+        function createPhotoPopup(place) {
+            const fallbackImg = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Registan_square_Samarkand.jpg/200px-Registan_square_Samarkand.jpg';
+            const imgUrl = place.image_url || fallbackImg;
+
+            return `
+                <div style="width: 220px; font-family: var(--font-primary);">
+                    <img src="${imgUrl}" 
+                         onerror="this.src='${fallbackImg}'" 
+                         style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px; margin-bottom: 8px;">
+                    <h4 style="margin: 0 0 4px 0; font-size: 14px; color: #2c3e50;">${place.name}</h4>
+                    <p style="margin: 0 0 6px 0; font-size: 11px; color: #7f8c8d; line-height: 1.3;">${place.desc || place.description || ''}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px;">
+                            ${place.type}
+                        </span>
+                        ${place.price ? `<span style="font-weight: 600; color: #27ae60; font-size: 12px;">${place.price}</span>` : ''}
+                    </div>
+                    ${place.rating ? `<div style="margin-top: 4px; font-size: 11px;">⭐ ${place.rating.toFixed(1)}</div>` : ''}
+                </div>
+            `;
+        }
+
+
+
+
+        const staticLandmarks = [
+            { name: "Registan Square", lat: 39.6548, lng: 66.9758, type: "🏛️ Attraction", desc: "UNESCO World Heritage - 3 Madrasas", icon: "🏛️", category: "attraction" },
+            { name: "Gur-e-Amir Mausoleum", lat: 39.6490, lng: 66.9682, type: "🏛️ Attraction", desc: "Tomb of Amir Timur (Tamerlane)", icon: "⚱️", category: "attraction" },
+            { name: "Shah-i-Zinda Necropolis", lat: 39.6623, lng: 66.9880, type: "🏛️ Attraction", desc: "Avenue of stunning mausoleums", icon: "🕌", category: "attraction" },
+            { name: "Bibi-Khanym Mosque", lat: 39.6608, lng: 66.9792, type: "🏛️ Religious", desc: "Historic 15th century mosque", icon: "🕌", category: "attraction" },
+            { name: "Ulugh Beg Observatory", lat: 39.6725, lng: 66.9882, type: "🏛️ Attraction", desc: "15th century astronomical observatory", icon: "🔭", category: "attraction" },
+            { name: "Afrasiab Museum", lat: 39.6680, lng: 66.9945, type: "🏛️ Museum", desc: "Ancient Sogdian city artifacts", icon: "🏺", category: "attraction" },
+            { name: "Siab Bazaar", lat: 39.6595, lng: 66.9785, type: "🛒 Market", desc: "Traditional market - spices, fruits", icon: "🛒", category: "market" },
+        ];
+
+        async function initMap() {
+            console.log('🗺️ initMap called');
+            if (map) {
+                console.log('✅ Map already initialized');
+                map.invalidateSize();
+                return;
+            }
+
+            try {
+                console.log('🚀 Initializing Leaflet map...');
+                map = L.map('map-container').setView([39.6548, 66.9758], 14);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap'
+                }).addTo(map);
+
+                // Add static landmarks
+                console.log(`📍 Adding ${staticLandmarks.length} static landmarks...`);
+                staticLandmarks.forEach(place => {
+                    try {
+                        const marker = L.marker([place.lat, place.lng], {
+                            icon: createMarkerIcon(place.category)
+                        }).addTo(map);
+                        marker.bindPopup(createPhotoPopup({
+                            ...place,
+                            type: place.type,
+                            desc: place.desc
+                        }));
+                    } catch (err) {
+                        console.error('❌ Error adding static marker:', place.name, err);
+                    }
+                });
+
+                // Load dynamic places from API
+                try {
+                    console.log('🔄 Fetching dynamic map places...');
+                    const response = await fetch(`${API_BASE}/v1/map-places`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.places && data.places.length > 0) {
+                            console.log(`✅ Loaded ${data.places.length} dynamic places`);
+                            data.places.forEach(place => {
+                                const marker = L.marker([place.lat, place.lng], {
+                                    icon: createMarkerIcon(place.category)
+                                }).addTo(map);
+                                marker.bindPopup(createPhotoPopup(place));
+                            });
+                        }
+                    } else {
+                        console.warn('⚠️ API map-places returned:', response.status);
+                    }
+                } catch (error) {
+                    console.error('❌ Failed to load dynamic map places:', error);
+                }
+
+            } catch (e) {
+                console.error('❌ Error initializing map:', e);
+            }
+        }
+
+        // Initialize App with robust error handling
+        (async () => {
+            try {
+                console.log('🚀 App Initializing...');
+                // Run loaders in parallel, but handle errors silently to ensure UI unlocks
+                await Promise.all([
+                    loadPlaces().catch(e => console.error("loadPlaces failed:", e)),
+                    loadWeather().catch(e => console.error("loadWeather failed:", e))
+                ]);
+            } catch (err) {
+                console.error("Critical Initialization error:", err);
+            } finally {
+                // FORCE HIDE LOADING OVERLAY
+                const loader = document.getElementById('loading');
+                if (loader) {
+                    loader.style.display = 'none';
+                    console.log('✅ Loading overlay hidden');
+                } else {
+                    console.warn('⚠️ Loader element #loading not found');
+                }
+            }
+        })();
+
+
+        // Handle map tab - initialize on first view
+        document.querySelectorAll('.nav-tab[data-tab]').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                // Simple tab switching logic (in case it was missing or separated)
+                const target = tab.dataset.tab;
+
+                // Switch active tab
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Switch section visibility
+                ['explore', 'map', 'chat'].forEach(section => {
+                    const el = document.getElementById(`${section}-section`);
+                    if (el) el.style.display = section === target ? 'block' : 'none';
+                });
+
+                // Map specific logic
+                if (target === 'map') {
+                    setTimeout(() => {
+                        initMap();
+                        if (map) map.invalidateSize();
+                    }, 200);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
