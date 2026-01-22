@@ -540,8 +540,14 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
         places = []
         data_dir = Path(__file__).parent.parent / "data"
         
+        # Debug logging for Railway
+        print(f"🔍 DEBUG: __file__ = {__file__}")
+        print(f"🔍 DEBUG: data_dir = {data_dir}")
+        print(f"🔍 DEBUG: data_dir.exists() = {data_dir.exists()}")
+        
         # Load POI data
         poi_path = data_dir / "poi.json"
+        print(f"🔍 DEBUG: poi_path = {poi_path}, exists = {poi_path.exists()}")
         if poi_path.exists():
             with open(poi_path, "r", encoding="utf-8") as f:
                 poi_data = json.load(f)
