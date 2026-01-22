@@ -360,10 +360,11 @@ def get_llm_client(use_mock: bool = False, prefer_local: bool = None):
     api_key = os.getenv("OPENAI_API_KEY")
     if api_key and api_key not in ["sk-your-key-here", "sk-ваш-ключ-здесь"]:
         try:
-            print("✅ Using OpenAI API (gpt-4o-mini)")
+            # Avoid UnicodeEncodeError on Windows consoles with legacy encodings (cp1251, etc.)
+            print("Using OpenAI API (gpt-4o-mini)")
             return OpenAIClient()
         except Exception as e:
-            print(f"⚠️  OpenAI not available: {e}")
+            print(f"OpenAI not available: {e}")
     
     # Try Groq as alternative (ultra-fast)
     if not prefer_local:
@@ -373,7 +374,7 @@ def get_llm_client(use_mock: bool = False, prefer_local: bool = None):
                 model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
                 return GroqClient(model=model)
             except Exception as e:
-                print(f"⚠️  Groq not available: {e}")
+                print(f"Groq not available: {e}")
     
     # Try Ollama if preferred or as fallback
     try:
@@ -387,13 +388,13 @@ def get_llm_client(use_mock: bool = False, prefer_local: bool = None):
                 available_models = [m["name"].split(":")[0] for m in models]
                 if model_name not in available_models and available_models:
                     model_name = available_models[0]
-                print(f"✅ Using Ollama with model: {model_name}")
+                print(f"Using Ollama with model: {model_name}")
                 return OllamaClient(model=model_name, base_url=ollama_url)
     except Exception as e:
-        print(f"⚠️  Ollama not available: {e}")
+        print(f"Ollama not available: {e}")
     
     # Fallback to mock
-    print("⚠️  No LLM available. Using MockLLMClient.")
+    print("No LLM available. Using MockLLMClient.")
     return MockLLMClient()
 
 

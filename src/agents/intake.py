@@ -173,14 +173,40 @@ class IntakeAgent:
             duration = 1
         
         # Extract budget (supports $300, 300$, 300 долларов)
+        # Also handles corrections: "ne sto dollarov a 300" (not 100 but 300)
         budget = 100  # default
-        budget_match = re.search(r'\$\s*(\d+)', user_input)  # $300
-        if not budget_match:
-            budget_match = re.search(r'(\d+)\s*\$', user_input)  # 300$
-        if not budget_match:
-            budget_match = re.search(r'(\d+)\s*(?:доллар|usd|dollar)', text)  # 300 долларов
-        if budget_match:
-            budget = float(budget_match.group(1))
+        
+        # Check for corrections first (ne sto/not X but Y)
+        correction_patterns = [
+            r'(?:ne|не|нет)\s*(?:sto|сто|100)\s*(?:dollarov|долларов|usd)?\s*(?:a|а|but|но)\s*(\d+)',
+            r'(?:not|не)\s*(\d+)\s*(?:but|а|но)\s*(\d+)',
+            r'(\d+)\s*(?:dollarov|долларов|usd|dollar)\s*(?:a|а|but|но)\s*(\d+)',
+        ]
+        for pattern in correction_patterns:
+            correction_match = re.search(pattern, text, re.IGNORECASE)
+            if correction_match:
+                # Take the last number (the corrected value)
+                budget = float(correction_match.group(-1))
+                break
+        
+        # If no correction found, try standard patterns
+        if budget == 100:
+            budget_match = re.search(r'\$\s*(\d+)', user_input)  # $300
+            if not budget_match:
+                budget_match = re.search(r'(\d+)\s*\$', user_input)  # 300$
+            if not budget_match:
+                budget_match = re.search(r'(\d+)\s*(?:доллар|usd|dollar)', text)  # 300 долларов
+            if budget_match:
+                budget = float(budget_match.group(1))
+        
+        # Also check for standalone numbers that might be budget (if > 50 and < 10000)
+        if budget == 100:
+            standalone_numbers = re.findall(r'\b(\d{2,4})\b', user_input)
+            for num_str in standalone_numbers:
+                num = int(num_str)
+                if 50 <= num <= 10000:  # Reasonable budget range
+                    budget = float(num)
+                    break
         
         # Extract interests
         interests = []

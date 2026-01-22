@@ -3,7 +3,9 @@ openai>=1.0.0
 pydantic>=2.0.0
 
 # RAG
-chromadb>=0.4.0
+# Pin to a modern Chroma that doesn't force numpy<2 (avoids building numpy from source on Python 3.14 Windows)
+chromadb>=1.0.0
+numpy>=2.0.0
 sentence-transformers>=2.2.0
 
 # Utils

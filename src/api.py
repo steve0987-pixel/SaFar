@@ -8,7 +8,9 @@ import hashlib
 from typing import List, Optional, Tuple
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from pathlib import Path
 
 # Import local modules
 from src.utils.llm import get_llm_client
@@ -33,14 +35,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- Singletons ---
-_llm_client = None
+# Serve static files (images)
+frontend_dir = Path(__file__).parent.parent / "frontend"
+if frontend_dir.exists():
+    app.mount("/images", StaticFiles(directory=str(frontend_dir / "images"), html=False), name="images")
+
 # --- Singletons ---
 _llm_client = None
 _intake_agent = None
 _context_chat = None
 _storyteller = None
 _weather_service = None
+_conversation_history: dict = {}  # session_id -> list of messages
 
 def get_llm():
     global _llm_client
@@ -71,6 +77,158 @@ def get_weather():
     if _weather_service is None:
         _weather_service = WeatherService()
     return _weather_service
+
+def get_poi_image_url(poi_id: str, category: str = "poi") -> str:
+    """Map POI ID to image URL. Returns API-served path."""
+    # #region agent log
+    import json
+    log_data = {
+        "sessionId": "debug-session",
+        "runId": "run1",
+        "hypothesisId": "A",
+        "location": "api.py:get_poi_image_url",
+        "message": "POI image URL lookup",
+        "data": {"poi_id": poi_id, "category": category},
+        "timestamp": int(__import__("time").time() * 1000)
+    }
+    try:
+        with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+            f.write(json.dumps(log_data) + "\n")
+    except:
+        pass
+    # #endregion
+    
+    # Special mappings for POI IDs that don't match image filenames exactly
+    poi_id_mappings = {
+        "gur_emir_mausoleum": "gur_e_amir_mausoleum",
+        "shah_i_zinda": "shah_i_zinda_necropolis",
+        "bibi_khanym_mosque": "bibi_khanym_mosque",
+        "siab_bazaar": "siob_bazaar",
+        "afrosiyab_museum": "afrosiyob_museum",
+        "ulugh_beg_observatory": "ulugh_beg_observatory_museum",
+        "hazrat_khizr_mosque": "hazrat_khizr_mosque",
+        "central_plov_center": "central_plov_center",  # May not exist, will fallback
+        "silk_paper_workshop_konigil": "meros_paper_mill",
+        "khovrenko_winery": "khovrenko_winery_wine_museum",
+        "rukhobod_mausoleum": "rukhobod_mausoleum",
+        "amir_temur_statue": "amir_temur_monument",
+        "zarafshan_gorge_day_trip": "amankutan_gorge_viewpoint",  # Fallback
+        "seven_lakes_fann_mountains": "amankutan_gorge_viewpoint",  # Fallback
+        "aksay_waterfall_hike": "amankutan_gorge_viewpoint",  # Fallback
+        "urgut_sunday_market": "urgut_bazaar",
+        "siyob_restaurant": "siob_bazaar",  # Fallback
+        "art_cafe_samarkand": "siob_bazaar",  # Fallback
+        "ishrat_khona_ruins": "ishratkhana_mausoleum",
+        "sunset_viewpoint_hill": "hazrat_khizr_viewpoint",
+        "samarkand_carpet_workshop": "samarkand_bukhara_silk_carpets_factory",
+        "saint_daniel_tomb": "khoja_doniyor_mausoleum",
+        "museum_ulughbek": "ulugh_beg_observatory_museum",
+        "registan_night_show": "registan_square",
+        "teahouse_lyabi_hovuz": "siob_bazaar",  # Fallback
+        "afrosiyab_ancient_settlement": "afrosiyob_archaeological_site",
+        "eternal_city_samarkand": "registan_square",  # Fallback
+        "nurata_mountains_2day": "amankutan_gorge_viewpoint",  # Fallback
+        "chorsu_local_market": "siob_bazaar",  # Fallback
+    }
+    
+    # Use mapping if exists, otherwise use POI ID as-is
+    image_filename = poi_id_mappings.get(poi_id, poi_id)
+    
+    # Check if image exists
+    frontend_dir = Path(__file__).parent.parent / "frontend"
+    image_path = frontend_dir / "images" / category / f"{image_filename}.jpg"
+    
+    # #region agent log
+    log_data2 = {
+        "sessionId": "debug-session",
+        "runId": "run1",
+        "hypothesisId": "B",
+        "location": "api.py:get_poi_image_url",
+        "message": "Image path check",
+        "data": {"image_path": str(image_path), "exists": image_path.exists()},
+        "timestamp": int(__import__("time").time() * 1000)
+    }
+    try:
+        with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+            f.write(json.dumps(log_data2) + "\n")
+    except:
+        pass
+    # #endregion
+    
+    if image_path.exists():
+        result = f"/images/{category}/{image_filename}.jpg"
+        # #region agent log
+        log_data3 = {
+            "sessionId": "debug-session",
+            "runId": "run1",
+            "hypothesisId": "C",
+            "location": "api.py:get_poi_image_url",
+            "message": "Image found",
+            "data": {"result": result},
+            "timestamp": int(__import__("time").time() * 1000)
+        }
+        try:
+            with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_data3) + "\n")
+        except:
+            pass
+        # #endregion
+        return result
+    
+    # Try alternative extensions
+    for ext in [".png", ".webp"]:
+        alt_path = frontend_dir / "images" / category / f"{image_filename}{ext}"
+        if alt_path.exists():
+            return f"/images/{category}/{image_filename}{ext}"
+    
+    # Fallbacks by category (so cards always have a local image)
+    fallback_by_category = {
+        "hotels": ("hotels", "hotel_city_samarkand.jpg"),
+        "restaurants": ("restaurants", "rest_afandi_food.jpg"),
+        "poi": ("poi", "registan_square.jpg"),
+    }
+    fb = fallback_by_category.get(category)
+    if fb:
+        fb_dir, fb_file = fb
+        fb_path = frontend_dir / "images" / fb_dir / fb_file
+        if fb_path.exists():
+            result = f"/images/{fb_dir}/{fb_file}"
+            # #region agent log
+            log_data4 = {
+                "sessionId": "debug-session",
+                "runId": "run1",
+                "hypothesisId": "D",
+                "location": "api.py:get_poi_image_url",
+                "message": "Image not found, using fallback",
+                "data": {"poi_id": poi_id, "image_filename": image_filename, "category": category, "fallback": result},
+                "timestamp": int(__import__("time").time() * 1000)
+            }
+            try:
+                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+                    f.write(json.dumps(log_data4) + "\n")
+            except:
+                pass
+            # #endregion
+            return result
+
+    # Return empty string if no image found (frontend will use remote fallback)
+    # #region agent log
+    log_data5 = {
+        "sessionId": "debug-session",
+        "runId": "run1",
+        "hypothesisId": "D2",
+        "location": "api.py:get_poi_image_url",
+        "message": "Image not found, returning empty",
+        "data": {"poi_id": poi_id, "image_filename": image_filename, "category": category},
+        "timestamp": int(__import__("time").time() * 1000)
+    }
+    try:
+        with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+            f.write(json.dumps(log_data5) + "\n")
+    except:
+        pass
+    # #endregion
+    return ""
 
 # --- Models ---
 class ChatRequest(BaseModel):
@@ -204,21 +362,52 @@ async def root():
 async def chat(request: ChatRequest):
     """
     Main chat endpoint - parses user request and generates AI itinerary.
-    Now with smart clarifying questions!
+    Now with smart clarifying questions and conversation history!
     """
     agent = get_intake_agent()
+    session_id = request.session_id or "default"
+    
+    # Initialize conversation history for this session
+    if session_id not in _conversation_history:
+        _conversation_history[session_id] = []
+    
+    # Add user message to history
+    _conversation_history[session_id].append({"role": "user", "content": request.message})
     
     # Check for greetings
     greetings = ['hello', 'hi', 'hey', 'salom', 'привет', 'здравствуйте']
     if request.message.lower().strip() in greetings or len(request.message.strip()) < 5:
+        _conversation_history[session_id].append({"role": "assistant", "content": "greeting"})
         return ChatResponse(
             message="Привет! Я SaFar — ваш AI-помощник для путешествий по Самарканду. 🏛️\n\nРасскажите о вашей поездке:\n• Сколько дней планируете?\n• Какой бюджет?\n• Что вас интересует? (история, еда, природа, шопинг...)",
             needs_clarification=True,
             trip_request=None
         )
     
-    # Parse user input
-    trip_request, question = agent.parse(request.message)
+    # Check if this is a correction to previous trip request
+    # Look for patterns like "ne sto dollarov a 300", "not 100 but 300", etc.
+    previous_trip = None
+    if len(_conversation_history[session_id]) > 2:
+        # Check last assistant response for trip_request
+        for msg in reversed(_conversation_history[session_id][:-1]):
+            if isinstance(msg, dict) and msg.get("trip_request"):
+                previous_trip = msg.get("trip_request")
+                break
+    
+    # If we have a previous trip and this looks like a correction, use apply_patch
+    if previous_trip and any(word in request.message.lower() for word in ['ne', 'не', 'not', 'но', 'but', 'а']):
+        try:
+            from src.models.schemas import TripRequest
+            prev_trip_obj = TripRequest.model_validate(previous_trip) if isinstance(previous_trip, dict) else previous_trip
+            updated_trip = agent.apply_patch(prev_trip_obj, request.message)
+            trip_request = updated_trip
+            question = None
+        except:
+            # Fallback to normal parsing
+            trip_request, question = agent.parse(request.message)
+    else:
+        # Parse user input (will handle corrections in _mock_parse)
+        trip_request, question = agent.parse(request.message)
     
     if trip_request:
         # Check if we need clarifying questions
@@ -237,6 +426,12 @@ async def chat(request: ChatRequest):
         # Ask clarifying questions if needed (but still remember the trip_request)
         if missing_info and len(missing_info) >= 2:
             clarification_msg = f"Отлично! {trip_request.duration_days} дней с бюджетом ${trip_request.budget_usd:.0f} — хороший план!\n\nЧтобы составить идеальный маршрут, уточните:\n" + "\n".join(missing_info)
+            # Store trip_request in history
+            _conversation_history[session_id].append({
+                "role": "assistant", 
+                "content": clarification_msg,
+                "trip_request": trip_request.model_dump() if hasattr(trip_request, 'model_dump') else trip_request
+            })
             return ChatResponse(
                 message=clarification_msg,
                 needs_clarification=True,
@@ -250,6 +445,12 @@ async def chat(request: ChatRequest):
             interests=trip_request.interests
         )
         
+        # Store successful trip_request in history
+        _conversation_history[session_id].append({
+            "role": "assistant",
+            "content": itinerary,
+            "trip_request": trip_request.model_dump() if hasattr(trip_request, 'model_dump') else trip_request
+        })
         return ChatResponse(
             message=itinerary,
             needs_clarification=False,
@@ -399,14 +600,61 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
         with open(poi_path, "r", encoding="utf-8") as f:
             poi_data = json.load(f)
         for poi in poi_data.get("poi", []):
+            poi_id = poi.get("id")
+            poi_categories = poi.get("category", [])
+            if isinstance(poi_categories, list):
+                # Map POI categories to frontend categories
+                # POIs with history/architecture/landmark/religious/museum -> "attraction"
+                if any(cat in ["history", "architecture", "landmark", "religious", "museum", "archaeology", "science", "viewpoint"] for cat in poi_categories):
+                    poi_category = "attraction"
+                elif any(cat in ["market", "shopping"] for cat in poi_categories):
+                    poi_category = "market"
+                elif any(cat in ["food", "restaurant", "cafe"] for cat in poi_categories):
+                    poi_category = "restaurant"
+                elif any(cat in ["hotel", "accommodation"] for cat in poi_categories):
+                    poi_category = "hotel"
+                else:
+                    poi_category = "attraction"  # default
+            else:
+                poi_category = "attraction"
+            
+            # Get image URL - use existing or generate from POI ID
+            image_url = poi.get("image_url", "")
+            if not image_url:
+                # Choose correct image folder based on mapped category
+                image_folder = "poi"
+                if poi_category == "hotel":
+                    image_folder = "hotels"
+                elif poi_category == "restaurant":
+                    image_folder = "restaurants"
+                image_url = get_poi_image_url(poi_id, image_folder)
+            
+            # #region agent log
+            import json
+            log_data_poi = {
+                "sessionId": "debug-session",
+                "runId": "run1",
+                "hypothesisId": "G",
+                "location": "api.py:search_places",
+                "message": "POI category mapping",
+                "data": {"poi_id": poi_id, "original_categories": poi_categories, "mapped_category": poi_category},
+                "timestamp": int(__import__("time").time() * 1000)
+            }
+            try:
+                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+                    f.write(json.dumps(log_data_poi) + "\n")
+            except:
+                pass
+            # #endregion
+            
             places.append({
-                "id": poi.get("id"),
+                "id": poi_id,
                 "name": poi.get("name_en") or poi.get("name"),
                 "description": poi.get("description", ""),
-                "category": poi.get("category", ["attraction"])[0] if isinstance(poi.get("category"), list) else "attraction",
+                "category": poi_category,
                 "price": poi.get("cost_usd", 0),
                 "rating": poi.get("avg_rating", 4.5),
-                "image_url": poi.get("image_url", "")
+                "image_url": image_url
             })
     
     # Load restaurants
@@ -415,6 +663,31 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
         with open(hr_path, "r", encoding="utf-8") as f:
             hr_data = json.load(f)
         for rest in hr_data.get("restaurants", []):
+            # Fix image URL path - change /images/ to /images/ (already correct) or ensure it exists
+            image_url = rest.get("image_url", "")
+            if image_url and not image_url.startswith("http"):
+                # Ensure path starts with /images/ for API serving
+                if not image_url.startswith("/images/"):
+                    # Extract filename and construct correct path
+                    filename = image_url.split("/")[-1]
+                    image_url = f"/images/restaurants/{filename}"
+            # #region agent log
+            import json
+            log_data = {
+                "sessionId": "debug-session",
+                "runId": "run1",
+                "hypothesisId": "E",
+                "location": "api.py:search_places",
+                "message": "Restaurant image URL",
+                "data": {"rest_id": rest.get("id"), "image_url": image_url, "original": rest.get("image_url", "")},
+                "timestamp": int(__import__("time").time() * 1000)
+            }
+            try:
+                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+                    f.write(json.dumps(log_data) + "\n")
+            except:
+                pass
+            # #endregion
             places.append({
                 "id": rest.get("id"),
                 "name": rest.get("name"),
@@ -422,9 +695,33 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
                 "category": "restaurant",
                 "price": rest.get("avg_check_usd", 10),
                 "rating": rest.get("rating", 4.0),
-                "image_url": rest.get("image_url", "")
+                "image_url": image_url
             })
         for hotel in hr_data.get("hotels", []):
+            # Fix image URL path
+            image_url = hotel.get("image_url", "")
+            if image_url and not image_url.startswith("http"):
+                # Ensure path starts with /images/ for API serving
+                if not image_url.startswith("/images/"):
+                    # Extract filename and construct correct path
+                    filename = image_url.split("/")[-1]
+                    image_url = f"/images/hotels/{filename}"
+            # #region agent log
+            log_data2 = {
+                "sessionId": "debug-session",
+                "runId": "run1",
+                "hypothesisId": "F",
+                "location": "api.py:search_places",
+                "message": "Hotel image URL",
+                "data": {"hotel_id": hotel.get("id"), "image_url": image_url, "original": hotel.get("image_url", "")},
+                "timestamp": int(__import__("time").time() * 1000)
+            }
+            try:
+                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+                    f.write(json.dumps(log_data2) + "\n")
+            except:
+                pass
+            # #endregion
             places.append({
                 "id": hotel.get("id"),
                 "name": hotel.get("name"),
@@ -432,12 +729,45 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
                 "category": "hotel",
                 "price": hotel.get("price_per_night_usd", 50),
                 "rating": hotel.get("rating", 4.0),
-                "image_url": hotel.get("image_url", "")
+                "image_url": image_url
             })
     
     # Filter by category
     if category != "all":
+        # #region agent log
+        import json
+        log_filter = {
+            "sessionId": "debug-session",
+            "runId": "run1",
+            "hypothesisId": "H",
+            "location": "api.py:search_places",
+            "message": "Category filter",
+            "data": {"requested_category": category, "places_before_filter": len(places), "place_categories": [p.get("category") for p in places[:5]]},
+            "timestamp": int(__import__("time").time() * 1000)
+        }
+        try:
+            with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_filter) + "\n")
+        except:
+            pass
+        # #endregion
         places = [p for p in places if p["category"] == category]
+        # #region agent log
+        log_filter_after = {
+            "sessionId": "debug-session",
+            "runId": "run1",
+            "hypothesisId": "I",
+            "location": "api.py:search_places",
+            "message": "After category filter",
+            "data": {"places_after_filter": len(places)},
+            "timestamp": int(__import__("time").time() * 1000)
+        }
+        try:
+            with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_filter_after) + "\n")
+        except:
+            pass
+        # #endregion
     
     # Filter by search query
     if q:
@@ -457,8 +787,56 @@ async def get_map_places():
     
     places = []
     data_dir = Path(__file__).parent.parent / "data"
-    hr_path = data_dir / "hotels_restaurants.json"
     
+    # Load POI data
+    poi_path = data_dir / "poi.json"
+    if poi_path.exists():
+        with open(poi_path, "r", encoding="utf-8") as f:
+            poi_data = json.load(f)
+        for poi in poi_data.get("poi", []):
+            coords = poi.get("coordinates", {})
+            lat = coords.get("lat", SAMARKAND_CENTER[0])
+            lng = coords.get("lng", SAMARKAND_CENTER[1])
+            poi_id = poi.get("id")
+            poi_categories = poi.get("category", [])
+            if isinstance(poi_categories, list):
+                if any(cat in ["history", "architecture", "landmark", "religious", "museum", "archaeology", "science", "viewpoint"] for cat in poi_categories):
+                    poi_category = "attraction"
+                elif any(cat in ["market", "shopping"] for cat in poi_categories):
+                    poi_category = "market"
+                elif any(cat in ["food", "restaurant", "cafe"] for cat in poi_categories):
+                    poi_category = "restaurant"
+                elif any(cat in ["hotel", "accommodation"] for cat in poi_categories):
+                    poi_category = "hotel"
+                else:
+                    poi_category = "attraction"
+            else:
+                poi_category = "attraction"
+            image_url = poi.get("image_url", "")
+            if not image_url:
+                image_folder = "poi"
+                if poi_category == "hotel":
+                    image_folder = "hotels"
+                elif poi_category == "restaurant":
+                    image_folder = "restaurants"
+                image_url = get_poi_image_url(poi_id, image_folder)
+            
+            places.append({
+                "id": poi_id,
+                "name": poi.get("name_en") or poi.get("name"),
+                "description": poi.get("description", ""),
+                "category": poi_category,
+                "type": f"🏛️ {poi_category.title()}",
+                "price": f"${poi.get('cost_usd', 0)}",
+                "rating": poi.get("avg_rating", 4.5),
+                "image_url": image_url,
+                "address": "",
+                "lat": lat,
+                "lng": lng,
+                "icon": "🏛️"
+            })
+    
+    hr_path = data_dir / "hotels_restaurants.json"
     if hr_path.exists():
         with open(hr_path, "r", encoding="utf-8") as f:
             hr_data = json.load(f)
@@ -469,6 +847,11 @@ async def get_map_places():
             coords = rest.get("coordinates", {})
             lat = coords.get("lat", SAMARKAND_CENTER[0])
             lng = coords.get("lng", SAMARKAND_CENTER[1])
+            image_url = rest.get("image_url", "")
+            if image_url and not image_url.startswith("http"):
+                if not image_url.startswith("/images/"):
+                    filename = image_url.split("/")[-1]
+                    image_url = f"/images/restaurants/{filename}"
             
             places.append({
                 "id": rest.get("id", f"rest_{i}"),
@@ -478,7 +861,7 @@ async def get_map_places():
                 "type": f"🍽️ {rest.get('category', 'restaurant').replace('-', ' ').title()}",
                 "price": f"${rest.get('avg_check_usd', 10)}",
                 "rating": rest.get("rating", 4.0),
-                "image_url": rest.get("image_url", ""),
+                "image_url": image_url,
                 "address": rest.get("address", ""),
                 "lat": lat,
                 "lng": lng,
@@ -491,6 +874,11 @@ async def get_map_places():
             coords = hotel.get("coordinates", {})
             lat = coords.get("lat", SAMARKAND_CENTER[0])
             lng = coords.get("lng", SAMARKAND_CENTER[1])
+            image_url = hotel.get("image_url", "")
+            if image_url and not image_url.startswith("http"):
+                if not image_url.startswith("/images/"):
+                    filename = image_url.split("/")[-1]
+                    image_url = f"/images/hotels/{filename}"
             
             places.append({
                 "id": hotel.get("id", f"hotel_{i}"),
@@ -500,7 +888,7 @@ async def get_map_places():
                 "type": f"🏨 {hotel.get('stars', 3)}★ Hotel",
                 "price": f"${hotel.get('price_per_night_usd', 50)}/night",
                 "rating": hotel.get("rating", 4.0),
-                "image_url": hotel.get("image_url", ""),
+                "image_url": image_url,
                 "address": hotel.get("address", ""),
                 "lat": lat,
                 "lng": lng,

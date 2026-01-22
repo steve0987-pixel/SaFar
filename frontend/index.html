@@ -899,6 +899,16 @@
         const API_BASE = 'http://localhost:8000';
         let map = null;
 
+        const staticLandmarks = [
+            { name: "Registan Square", lat: 39.6548, lng: 66.9758, type: "🏛️ Attraction", desc: "UNESCO World Heritage - 3 Madrasas", icon: "🏛️", category: "attraction" },
+            { name: "Gur-e-Amir Mausoleum", lat: 39.6490, lng: 66.9682, type: "🏛️ Attraction", desc: "Tomb of Amir Timur (Tamerlane)", icon: "⚱️", category: "attraction" },
+            { name: "Shah-i-Zinda Necropolis", lat: 39.6623, lng: 66.9880, type: "🏛️ Attraction", desc: "Avenue of stunning mausoleums", icon: "🕌", category: "attraction" },
+            { name: "Bibi-Khanym Mosque", lat: 39.6608, lng: 66.9792, type: "🏛️ Religious", desc: "Historic 15th century mosque", icon: "🕌", category: "attraction" },
+            { name: "Ulugh Beg Observatory", lat: 39.6725, lng: 66.9882, type: "🏛️ Attraction", desc: "15th century astronomical observatory", icon: "🔭", category: "attraction" },
+            { name: "Afrasiab Museum", lat: 39.6680, lng: 66.9945, type: "🏛️ Museum", desc: "Ancient Sogdian city artifacts", icon: "🏺", category: "attraction" },
+            { name: "Siab Bazaar", lat: 39.6595, lng: 66.9785, type: "🛒 Market", desc: "Traditional market - spices, fruits", icon: "🛒", category: "market" },
+        ];
+
 
 
         // ============ WEATHER WIDGET ============
@@ -1283,7 +1293,11 @@
                         "market": "https://lifejourney4two.com/wp-content/uploads/2020/01/SIYOB-BAZAAR-SAMARKAND.jpg"
                     };
                     const fallback = fallbackImages[place.category] || fallbackImages['attraction'];
-                    const imageUrl = place.image_url || fallback;
+                    let imageUrl = place.image_url || fallback;
+                    // If image_url is relative and starts with /images/, prepend API_BASE
+                    if (imageUrl && imageUrl.startsWith('/images/') && !imageUrl.startsWith('http')) {
+                        imageUrl = `${API_BASE}${imageUrl}`;
+                    }
 
                     const poiId = place.name.toLowerCase().replace(/[^a-z0-9]+/g, '_');
                     return `
@@ -1675,7 +1689,11 @@
         // Create popup with photo card
         function createPhotoPopup(place) {
             const fallbackImg = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Registan_square_Samarkand.jpg/200px-Registan_square_Samarkand.jpg';
-            const imgUrl = place.image_url || fallbackImg;
+            let imgUrl = place.image_url || fallbackImg;
+            // If image_url is relative and starts with /images/, prepend API_BASE
+            if (imgUrl && imgUrl.startsWith('/images/') && !imgUrl.startsWith('http')) {
+                imgUrl = `${API_BASE}${imgUrl}`;
+            }
 
             return `
                 <div style="width: 220px; font-family: var(--font-primary);">
@@ -1698,15 +1716,7 @@
 
 
 
-        const staticLandmarks = [
-            { name: "Registan Square", lat: 39.6548, lng: 66.9758, type: "🏛️ Attraction", desc: "UNESCO World Heritage - 3 Madrasas", icon: "🏛️", category: "attraction" },
-            { name: "Gur-e-Amir Mausoleum", lat: 39.6490, lng: 66.9682, type: "🏛️ Attraction", desc: "Tomb of Amir Timur (Tamerlane)", icon: "⚱️", category: "attraction" },
-            { name: "Shah-i-Zinda Necropolis", lat: 39.6623, lng: 66.9880, type: "🏛️ Attraction", desc: "Avenue of stunning mausoleums", icon: "🕌", category: "attraction" },
-            { name: "Bibi-Khanym Mosque", lat: 39.6608, lng: 66.9792, type: "🏛️ Religious", desc: "Historic 15th century mosque", icon: "🕌", category: "attraction" },
-            { name: "Ulugh Beg Observatory", lat: 39.6725, lng: 66.9882, type: "🏛️ Attraction", desc: "15th century astronomical observatory", icon: "🔭", category: "attraction" },
-            { name: "Afrasiab Museum", lat: 39.6680, lng: 66.9945, type: "🏛️ Museum", desc: "Ancient Sogdian city artifacts", icon: "🏺", category: "attraction" },
-            { name: "Siab Bazaar", lat: 39.6595, lng: 66.9785, type: "🛒 Market", desc: "Traditional market - spices, fruits", icon: "🛒", category: "market" },
-        ];
+
 
         async function initMap() {
             console.log('🗺️ initMap called');
