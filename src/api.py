@@ -807,6 +807,32 @@ async def get_weather_forecast(days: int = 3):
     forecasts = await service.get_forecast(days)
     return {"forecasts": forecasts}
 
+@app.get("/debug/files")
+async def debug_files():
+    """Debug: List files in the data directory."""
+    import os
+    from pathlib import Path
+    
+    result = {
+        "cwd": os.getcwd(),
+        "__file__": __file__,
+        "data_exists": False,
+        "data_files": [],
+        "poi_exists": False,
+        "hr_exists": False
+    }
+    
+    data_dir = Path(__file__).parent.parent / "data"
+    result["data_path"] = str(data_dir)
+    result["data_exists"] = data_dir.exists()
+    
+    if data_dir.exists():
+        result["data_files"] = [f.name for f in data_dir.iterdir()]
+        result["poi_exists"] = (data_dir / "poi.json").exists()
+        result["hr_exists"] = (data_dir / "hotels_restaurants.json").exists()
+    
+    return result
+
 # Serve Frontend (Must be last to not block API routes)
 if frontend_dir.exists():
     app.mount("/", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
