@@ -88,23 +88,6 @@ def get_weather():
 
 def get_poi_image_url(poi_id: str, category: str = "poi") -> str:
     """Map POI ID to image URL. Returns API-served path."""
-    # #region agent log
-    import json
-    log_data = {
-        "sessionId": "debug-session",
-        "runId": "run1",
-        "hypothesisId": "A",
-        "location": "api.py:get_poi_image_url",
-        "message": "POI image URL lookup",
-        "data": {"poi_id": poi_id, "category": category},
-        "timestamp": int(__import__("time").time() * 1000)
-    }
-    try:
-        with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-            f.write(json.dumps(log_data) + "\n")
-    except:
-        pass
-    # #endregion
     
     # Special mappings for POI IDs that don't match image filenames exactly
     poi_id_mappings = {
@@ -146,42 +129,9 @@ def get_poi_image_url(poi_id: str, category: str = "poi") -> str:
     frontend_dir = Path(__file__).parent.parent / "frontend"
     image_path = frontend_dir / "images" / category / f"{image_filename}.jpg"
     
-    # #region agent log
-    log_data2 = {
-        "sessionId": "debug-session",
-        "runId": "run1",
-        "hypothesisId": "B",
-        "location": "api.py:get_poi_image_url",
-        "message": "Image path check",
-        "data": {"image_path": str(image_path), "exists": image_path.exists()},
-        "timestamp": int(__import__("time").time() * 1000)
-    }
-    try:
-        with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-            f.write(json.dumps(log_data2) + "\n")
-    except:
-        pass
-    # #endregion
     
     if image_path.exists():
-        result = f"/images/{category}/{image_filename}.jpg"
-        # #region agent log
-        log_data3 = {
-            "sessionId": "debug-session",
-            "runId": "run1",
-            "hypothesisId": "C",
-            "location": "api.py:get_poi_image_url",
-            "message": "Image found",
-            "data": {"result": result},
-            "timestamp": int(__import__("time").time() * 1000)
-        }
-        try:
-            with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-                f.write(json.dumps(log_data3) + "\n")
-        except:
-            pass
-        # #endregion
-        return result
+        return f"/images/{category}/{image_filename}.jpg"
     
     # Try alternative extensions
     for ext in [".png", ".webp"]:
@@ -200,42 +150,9 @@ def get_poi_image_url(poi_id: str, category: str = "poi") -> str:
         fb_dir, fb_file = fb
         fb_path = frontend_dir / "images" / fb_dir / fb_file
         if fb_path.exists():
-            result = f"/images/{fb_dir}/{fb_file}"
-            # #region agent log
-            log_data4 = {
-                "sessionId": "debug-session",
-                "runId": "run1",
-                "hypothesisId": "D",
-                "location": "api.py:get_poi_image_url",
-                "message": "Image not found, using fallback",
-                "data": {"poi_id": poi_id, "image_filename": image_filename, "category": category, "fallback": result},
-                "timestamp": int(__import__("time").time() * 1000)
-            }
-            try:
-                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-                    f.write(json.dumps(log_data4) + "\n")
-            except:
-                pass
-            # #endregion
-            return result
+            return f"/images/{fb_dir}/{fb_file}"
 
     # Return empty string if no image found (frontend will use remote fallback)
-    # #region agent log
-    log_data5 = {
-        "sessionId": "debug-session",
-        "runId": "run1",
-        "hypothesisId": "D2",
-        "location": "api.py:get_poi_image_url",
-        "message": "Image not found, returning empty",
-        "data": {"poi_id": poi_id, "image_filename": image_filename, "category": category},
-        "timestamp": int(__import__("time").time() * 1000)
-    }
-    try:
-        with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-            f.write(json.dumps(log_data5) + "\n")
-    except:
-        pass
-    # #endregion
     return ""
 
 # --- Models ---
@@ -376,14 +293,9 @@ def generate_ai_itinerary(days: int, budget: float, interests: List[str]) -> str
 
 # --- API Endpoints ---
 
-@app.get("/")
-async def root():
-    llm = get_llm()
-    return {
-        "status": "SaFar API is running",
-        "llm": type(llm).__name__,
-        "version": "2.0 - 100% AI Generated"
-    }
+# Serve Frontend (Must be last to not block API routes)
+if frontend_dir.exists():
+    app.mount("/", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
 
 @app.post("/v1/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
@@ -655,24 +567,7 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
                 elif poi_category == "restaurant":
                     image_folder = "restaurants"
                 image_url = get_poi_image_url(poi_id, image_folder)
-            
-            # #region agent log
-            import json
-            log_data_poi = {
-                "sessionId": "debug-session",
-                "runId": "run1",
-                "hypothesisId": "G",
-                "location": "api.py:search_places",
-                "message": "POI category mapping",
-                "data": {"poi_id": poi_id, "original_categories": poi_categories, "mapped_category": poi_category},
-                "timestamp": int(__import__("time").time() * 1000)
-            }
-            try:
-                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-                    f.write(json.dumps(log_data_poi) + "\n")
-            except:
-                pass
-            # #endregion
+
             
             places.append({
                 "id": poi_id,
@@ -698,23 +593,6 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
                     # Extract filename and construct correct path
                     filename = image_url.split("/")[-1]
                     image_url = f"/images/restaurants/{filename}"
-            # #region agent log
-            import json
-            log_data = {
-                "sessionId": "debug-session",
-                "runId": "run1",
-                "hypothesisId": "E",
-                "location": "api.py:search_places",
-                "message": "Restaurant image URL",
-                "data": {"rest_id": rest.get("id"), "image_url": image_url, "original": rest.get("image_url", "")},
-                "timestamp": int(__import__("time").time() * 1000)
-            }
-            try:
-                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-                    f.write(json.dumps(log_data) + "\n")
-            except:
-                pass
-            # #endregion
             places.append({
                 "id": rest.get("id"),
                 "name": rest.get("name"),
@@ -733,22 +611,6 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
                     # Extract filename and construct correct path
                     filename = image_url.split("/")[-1]
                     image_url = f"/images/hotels/{filename}"
-            # #region agent log
-            log_data2 = {
-                "sessionId": "debug-session",
-                "runId": "run1",
-                "hypothesisId": "F",
-                "location": "api.py:search_places",
-                "message": "Hotel image URL",
-                "data": {"hotel_id": hotel.get("id"), "image_url": image_url, "original": hotel.get("image_url", "")},
-                "timestamp": int(__import__("time").time() * 1000)
-            }
-            try:
-                with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-                    f.write(json.dumps(log_data2) + "\n")
-            except:
-                pass
-            # #endregion
             places.append({
                 "id": hotel.get("id"),
                 "name": hotel.get("name"),
@@ -761,40 +623,7 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
     
     # Filter by category
     if category != "all":
-        # #region agent log
-        import json
-        log_filter = {
-            "sessionId": "debug-session",
-            "runId": "run1",
-            "hypothesisId": "H",
-            "location": "api.py:search_places",
-            "message": "Category filter",
-            "data": {"requested_category": category, "places_before_filter": len(places), "place_categories": [p.get("category") for p in places[:5]]},
-            "timestamp": int(__import__("time").time() * 1000)
-        }
-        try:
-            with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-                f.write(json.dumps(log_filter) + "\n")
-        except:
-            pass
-        # #endregion
         places = [p for p in places if p["category"] == category]
-        # #region agent log
-        log_filter_after = {
-            "sessionId": "debug-session",
-            "runId": "run1",
-            "hypothesisId": "I",
-            "location": "api.py:search_places",
-            "message": "After category filter",
-            "data": {"places_after_filter": len(places)},
-            "timestamp": int(__import__("time").time() * 1000)
-        }
-        try:
-            with open("c:\\Users\\hp\\Desktop\\Samarkand_Hacakton\\.cursor\\debug.log", "a", encoding="utf-8") as f:
-                f.write(json.dumps(log_filter_after) + "\n")
-        except:
-            pass
-        # #endregion
     
     # Filter by search query
     if q:
