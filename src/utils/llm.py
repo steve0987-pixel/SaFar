@@ -220,7 +220,7 @@ class OpenAIClient:
     """OpenAI API client with structured output support."""
     
     def __init__(self, model: str = None):
-        self.model = model or os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Safer default
+        self.model = model or os.getenv("OPENAI_MODEL", "gpt-4o")  # Using flagship model as requested
         self.api_key = os.getenv("OPENAI_API_KEY")
         
         if not self.api_key:
