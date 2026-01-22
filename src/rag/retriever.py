@@ -152,16 +152,40 @@ class HybridPOIRetriever:
         return " ".join(filter(None, parts))
     
     def _init_embeddings(self):
-        """Initialize embedding model and index POIs."""
+        """Initialize embedding model and index POIs with OpenAI or fallback."""
         try:
             import chromadb
+            from chromadb.config import Settings
+            import os
+            from pathlib import Path
+            
+            # Use persistent storage
+            persist_dir = str(Path(__file__).parent.parent.parent / "data" / "chroma_db")
+            os.makedirs(persist_dir, exist_ok=True)
+            
+            # Try OpenAI embeddings first for better quality
+            embedding_function = None
+            openai_key = os.getenv("OPENAI_API_KEY")
+            
+            if openai_key and openai_key not in ["sk-your-key-here", "sk-ваш-ключ-здесь"]:
+                try:
+                    from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
+                    embedding_function = OpenAIEmbeddingFunction(
+                        api_key=openai_key,
+                        model_name="text-embedding-3-small"
+                    )
+                    print("✅ Using OpenAI embeddings (text-embedding-3-small)")
+                except Exception as e:
+                    print(f"⚠️  OpenAI embeddings not available: {e}")
             
             # Create persistent client
-            self.chroma_client = chromadb.Client()
+            self.chroma_client = chromadb.PersistentClient(path=persist_dir)
             
             # Create collection with embedding function
+            collection_name = "samarkand_poi_openai" if embedding_function else "samarkand_poi_hybrid"
             self.collection = self.chroma_client.get_or_create_collection(
-                name="samarkand_poi_hybrid",
+                name=collection_name,
+                embedding_function=embedding_function,
                 metadata={"hnsw:space": "cosine"}
             )
             
@@ -170,7 +194,7 @@ class HybridPOIRetriever:
                 self._index_pois()
             
             self.use_vectors = True
-            print(f"✅ Vector store ready with {self.collection.count()} embeddings")
+            print(f"✅ Vector store ready with {self.collection.count()} embeddings (persistent)")
             
         except ImportError:
             print("⚠️  ChromaDB not installed. Using keyword-based fallback.")

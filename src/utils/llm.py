@@ -224,9 +224,13 @@ class OpenAIClient:
         self.api_key = os.getenv("OPENAI_API_KEY")
         
         if not self.api_key:
-            raise ValueError("OPENAI_API_KEY not set")
+            raise ValueError("OPENAI_API_KEY not set in .env file")
+        
+        if self.api_key in ["sk-your-key-here", "sk-ваш-ключ-здесь"]:
+            raise ValueError("Please replace the placeholder OpenAI API key in .env with your actual key")
         
         self._client = None
+        print(f"🤖 OpenAI client ready: {self.model}")
     
     @property
     def client(self):
@@ -235,6 +239,18 @@ class OpenAIClient:
             from openai import OpenAI
             self._client = OpenAI(api_key=self.api_key)
         return self._client
+    
+    def get_embeddings(self, texts: list, model: str = "text-embedding-3-small") -> list:
+        """Get embeddings for a list of texts using OpenAI."""
+        try:
+            response = self.client.embeddings.create(
+                input=texts,
+                model=model
+            )
+            return [item.embedding for item in response.data]
+        except Exception as e:
+            print(f"⚠️  OpenAI embeddings error: {e}")
+            raise
     
     def complete(
         self,
@@ -252,14 +268,17 @@ class OpenAIClient:
         
         messages.append({"role": "user", "content": prompt})
         
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=temperature,
-            max_tokens=max_tokens
-        )
-        
-        return response.choices[0].message.content
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            print(f"⚠️  OpenAI completion error: {e}")
+            raise
     
     def complete_json(
         self,
@@ -276,14 +295,17 @@ class OpenAIClient:
         
         messages.append({"role": "user", "content": prompt})
         
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=temperature,
-            response_format={"type": "json_object"}
-        )
-        
-        return json.loads(response.choices[0].message.content)
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=temperature,
+                response_format={"type": "json_object"}
+            )
+            return json.loads(response.choices[0].message.content)
+        except Exception as e:
+            print(f"⚠️  OpenAI JSON completion error: {e}")
+            raise
     
     def complete_structured(
         self,
