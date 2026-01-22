@@ -293,9 +293,7 @@ def generate_ai_itinerary(days: int, budget: float, interests: List[str]) -> str
 
 # --- API Endpoints ---
 
-# Serve Frontend (Must be last to not block API routes)
-if frontend_dir.exists():
-    app.mount("/", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
+
 
 @app.post("/v1/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
@@ -802,6 +800,10 @@ async def get_weather_forecast(days: int = 3):
     service = get_weather()
     forecasts = await service.get_forecast(days)
     return {"forecasts": forecasts}
+
+# Serve Frontend (Must be last to not block API routes)
+if frontend_dir.exists():
+    app.mount("/", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
 
 # --- Run ---
 if __name__ == "__main__":
