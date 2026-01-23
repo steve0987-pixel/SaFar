@@ -122,7 +122,7 @@ class IntakeAgent:
         Mock parsing for demo without LLM API.
         Extracts basic info using simple heuristics.
         """
-        
+        print(f"DEBUG: ENTERING MOCK PARSE with '{user_input}'")
         text = user_input.lower()
         
         # Text-to-number mapping for Russian (1-14)
@@ -149,6 +149,7 @@ class IntakeAgent:
         
         # Check for week-based input first (неделю, две недели, etc.)
         if 'недел' in text:
+            print("DEBUG: Checking week based")
             week_count = 1
             for word, num in text_numbers.items():
                 if word in text and 'недел' in text:
@@ -156,13 +157,14 @@ class IntakeAgent:
                     break
             duration = week_count * 7
         # Then try digit-based match (3 дня, 10 days)
-        elif re.search(r'(\d+)\s*(?:day|days|дня|дней|день|kun)', text):
-            day_match = re.search(r'(\d+)\s*(?:day|days|дня|дней|день|kun)', text)
+        elif re.search(r'(\d+)\s*(?:day|days|дня|дней|день|kun|dnya|den)', text):
+            print("DEBUG: Checking digit based duration")
+            day_match = re.search(r'(\d+)\s*(?:day|days|дня|дней|день|kun|dnya|den)', text)
             duration = int(day_match.group(1))
         else:
             # Try text-based numbers (три дня, пять дней, etc.)
             for word, num in text_numbers.items():
-                if re.search(rf'\b{word}\s*(?:дня|дней|день|day|days|kun)', text):
+                if re.search(rf'\b{word}\s*(?:дня|дней|день|day|days|kun|dnya|den)', text):
                     duration = num
                     break
         
@@ -174,7 +176,7 @@ class IntakeAgent:
         
         # Extract budget (supports $300, 300$, 300 долларов)
         # Also handles corrections: "ne sto dollarov a 300" (not 100 but 300)
-        budget = 100  # default
+        budget = 100.0  # default
         
         # Check for corrections first (ne sto/not X but Y)
         correction_patterns = [
@@ -182,29 +184,39 @@ class IntakeAgent:
             r'(?:not|не)\s*(\d+)\s*(?:but|а|но)\s*(\d+)',
             r'(\d+)\s*(?:dollarov|долларов|usd|dollar)\s*(?:a|а|but|но)\s*(\d+)',
         ]
-        for pattern in correction_patterns:
+        for i, pattern in enumerate(correction_patterns):
             correction_match = re.search(pattern, text, re.IGNORECASE)
             if correction_match:
                 # Take the last number (the corrected value)
-                budget = float(correction_match.group(-1))
+                budget = float(correction_match.group(2) if correction_match.lastindex >= 2 else correction_match.group(1))
+                print(f"DEBUG: Correction match {i}: {budget}")
                 break
         
         # If no correction found, try standard patterns
-        if budget == 100:
-            budget_match = re.search(r'\$\s*(\d+)', user_input)  # $300
-            if not budget_match:
-                budget_match = re.search(r'(\d+)\s*\$', user_input)  # 300$
-            if not budget_match:
-                budget_match = re.search(r'(\d+)\s*(?:доллар|usd|dollar)', text)  # 300 долларов
+        if budget == 100.0:
+            # 1. Check strict suffix first (100$)
+            budget_match = re.search(r'(\d+)\s*\$', user_input)
             if budget_match:
                 budget = float(budget_match.group(1))
+            
+            # 2. Check strict prefix ($100) - ensure not part of previous text
+            if not budget_match:
+                budget_match = re.search(r'(?<!\d)\$\s*(\d+)', user_input)
+                if budget_match:
+                    budget = float(budget_match.group(1))
+            
+            # 3. Check text patterns
+            if not budget_match:
+                budget_match = re.search(r'(\d+)\s*(?:доллар|usd|dollar)', text)
+                if budget_match:
+                    budget = float(budget_match.group(1))
         
-        # Also check for standalone numbers that might be budget (if > 50 and < 10000)
-        if budget == 100:
+        # Also check for standalone numbers
+        if budget == 100.0:
             standalone_numbers = re.findall(r'\b(\d{2,4})\b', user_input)
             for num_str in standalone_numbers:
                 num = int(num_str)
-                if 50 <= num <= 10000:  # Reasonable budget range
+                if 50 <= num <= 10000:
                     budget = float(num)
                     break
         
@@ -230,6 +242,7 @@ class IntakeAgent:
             constraints.append("mountains on day 2")
         if "7:00" in text or "7 утра" in text:
             constraints.append("departure at 7:00")
+        
         
         trip_request = TripRequest(
             city="Samarkand",

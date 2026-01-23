@@ -511,24 +511,10 @@ async def edit_itinerary(request: EditPlanRequest):
 @app.get("/v1/places")
 async def get_places(category: str = "all", limit: int = 20):
     """Get places from the database."""
-    # Return sample places for the frontend
-    places = [
-        {"id": "1", "name": "Registan Square", "description": "UNESCO World Heritage Site with 3 madrasas", "category": "attraction", "price": 5, "rating": 4.9},
-        {"id": "2", "name": "Gur-e-Amir", "description": "Mausoleum of Tamerlane", "category": "attraction", "price": 3, "rating": 4.8},
-        {"id": "3", "name": "Shah-i-Zinda", "description": "Avenue of Mausoleums", "category": "attraction", "price": 3, "rating": 4.9},
-        {"id": "4", "name": "Bibi-Khanym Mosque", "description": "Historic 15th century mosque", "category": "attraction", "price": 3, "rating": 4.7},
-        {"id": "5", "name": "Siab Bazaar", "description": "Traditional market with spices and fruits", "category": "market", "price": 0, "rating": 4.6},
-        {"id": "6", "name": "Ulugh Beg Observatory", "description": "15th century astronomical observatory", "category": "attraction", "price": 5, "rating": 4.7},
-        {"id": "7", "name": "Boss Plov", "description": "Best plov in Samarkand", "category": "restaurant", "price": 5, "rating": 4.8},
-        {"id": "8", "name": "Samarkand Darvoza", "description": "Fine dining with Registan view", "category": "restaurant", "price": 25, "rating": 4.7},
-        {"id": "9", "name": "Silk Road Hotel", "description": "5-star luxury hotel", "category": "hotel", "price": 150, "rating": 4.9},
-        {"id": "10", "name": "Afrasiab Museum", "description": "Ancient Sogdian artifacts", "category": "attraction", "price": 3, "rating": 4.5},
-    ]
-    
-    if category != "all":
-        places = [p for p in places if p["category"] == category]
-    
-    return {"places": places[:limit]}
+    """Get places from the database."""
+    # Use the search logic to get real data from the database
+    places = await search_places(q="", category=category, limit=limit)
+    return {"places": places}
 
 @app.get("/v1/search")
 async def search_places(q: str = "", category: str = "all", limit: int = 20):

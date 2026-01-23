@@ -40,7 +40,7 @@ class HybridPOIRetriever:
     """
     
     def __init__(self, data_path: str = None):
-        self.data_path = data_path or str(Path(__file__).parent.parent.parent / "data" / "poi.json")
+        self.data_path = data_path or str(Path(__file__).parent.parent.parent / "database" / "poi.json")
         self.pois: Dict[str, POI] = {}
         self.poi_texts: Dict[str, str] = {}  # For semantic search
         
@@ -54,7 +54,7 @@ class HybridPOIRetriever:
         
         self._load_data()
         self._init_embeddings()
-    
+
     def _load_data(self):
         """Load POI data from JSON file."""
         try:
@@ -94,6 +94,7 @@ class HybridPOIRetriever:
             print(f"✅ Loaded {len(self.pois)} POIs")
         except Exception as e:
             print(f"⚠️  Error loading POI data: {e}")
+
     def _convert_restaurant_to_poi(self, data: dict) -> POI:
         """Convert restaurant data to POI."""
         tags = ["restaurant", "food"] + data.get("features", []) + data.get("cuisine", [])
@@ -160,7 +161,7 @@ class HybridPOIRetriever:
             from pathlib import Path
             
             # Use persistent storage
-            persist_dir = str(Path(__file__).parent.parent.parent / "data" / "chroma_db")
+            persist_dir = str(Path(__file__).parent.parent.parent / "database" / "chroma_db")
             os.makedirs(persist_dir, exist_ok=True)
             
             # Try OpenAI embeddings first for better quality
@@ -587,7 +588,7 @@ class TipsRetriever:
     """Retriever for tips and recommendations."""
     
     def __init__(self, data_path: str = None):
-        self.data_path = data_path or str(Path(__file__).parent.parent.parent / "data" / "tips.json")
+        self.data_path = data_path or str(Path(__file__).parent.parent.parent / "database" / "tips.json")
         self.tips: Dict[str, List[str]] = {}
         self.seasonal: Dict[str, str] = {}
         self._load_data()
