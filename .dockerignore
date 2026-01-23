@@ -35,6 +35,8 @@ Thumbs.db
 docs/
 DATA_COLLECTION.md
 DEPLOYMENT_GUIDE.md
+README.md
 
-# Large Data (if any local only)
-data/
+# Local development files (not needed in production)
+*.log
+.cursor/

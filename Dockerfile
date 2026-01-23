@@ -20,11 +20,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY src/ src/
-COPY data/ data/
+COPY database/ database/
 COPY frontend/ frontend/
 
 # Debug: List files to ensure data is copied
-RUN ls -R /app/data
+RUN ls -R /app/database
 
 # Expose port (Railway uses PORT env var)
 EXPOSE 8000

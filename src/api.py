@@ -538,7 +538,7 @@ async def search_places(q: str = "", category: str = "all", limit: int = 20):
         from pathlib import Path
         
         places = []
-        data_dir = Path(__file__).parent.parent / "data"
+        data_dir = Path(__file__).parent.parent / "database"
         
         # Debug logging for Railway
         print(f"🔍 DEBUG: __file__ = {__file__}")
@@ -660,7 +660,7 @@ async def get_map_places():
         SAMARKAND_CENTER = (39.6548, 66.9758)
         
         places = []
-        data_dir = Path(__file__).parent.parent / "data"
+        data_dir = Path(__file__).parent.parent / "database"
         
         # Load POI data
         poi_path = data_dir / "poi.json"
