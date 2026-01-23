@@ -71,10 +71,16 @@ class IntakeAgent:
         if user_input.lower().strip() in greetings or len(user_input.strip()) < 5:
             return None, "How many days would you like to travel and what's your budget? What interests you - history, food, nature?"
         
-        # For simple inputs with trip keywords, use mock parser directly (more reliable)
-        simple_patterns = ['day', 'дн', 'kun', '$', 'budget', 'бюджет', 'trip', 'travel']
-        if len(user_input.split()) <= 8 or any(p in user_input.lower() for p in simple_patterns):
+        # For simple inputs with trip keywords, use mock parser
+        simple_patterns = ['day', 'дн', 'kun', '$', 'budget', 'бюджет', 'trip', 'travel', 'маршрут', 'план']
+        if any(p in user_input.lower() for p in simple_patterns) or (len(user_input.split()) <= 10 and any(char.isdigit() for char in user_input)):
             return self._mock_parse(user_input)
+        
+        # If input is short but NO trip keywords/numbers, it might be a general question/search
+        # In that case, we don't want to force a TripRequest.
+        if len(user_input.split()) < 10:
+            # Let the API handle it as a smart answer (Question check happens later)
+             return None, None
         
         prompt = EXTRACTION_PROMPT_TEMPLATE.format(user_input=user_input)
         

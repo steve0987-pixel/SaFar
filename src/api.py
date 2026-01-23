@@ -291,6 +291,41 @@ def generate_ai_itinerary(days: int, budget: float, interests: List[str]) -> str
         # Fallback if LLM fails
         return f"❌ Ошибка генерации: {str(e)}. Попробуйте ещё раз."
 
+def generate_smart_answer(message: str) -> str:
+    """Generate a smart answer for general travel questions using RAG."""
+    llm = get_llm()
+    retriever = get_poi_retriever()
+    
+    # RAG Search
+    rag_results = retriever.search(query=message, top_k=5)
+    
+    # Format Context
+    context = ""
+    if rag_results:
+        context = "Relevant places found in database:\n"
+        for r in rag_results:
+            poi = r.poi
+            context += f"- {poi.name} ({poi.category}): {poi.description[:150]}... (Rating: {poi.rating})\n"
+    
+    prompt = f"""User Question: "{message}"
+
+Context info from database:
+{context}
+
+Answer the user's question helpfully and concisely. 
+If they suggest a place, verify if it's in the context.
+If they ask for recommendations, use the context.
+Respond in the language of the user's message.
+Use emojis where appropriate.
+"""
+    
+    system = "You are SaFar, a helpful AI travel assistant for Samarkand."
+    
+    try:
+        return llm.complete(prompt, system_prompt=system)
+    except Exception as e:
+        return f"I couldn't process that clearly. {e}"
+
 # --- API Endpoints ---
 
 
@@ -395,11 +430,31 @@ async def chat(request: ChatRequest):
                 trip_request=trip_request
             )
         else:
-            return ChatResponse(
-                message=question or "Расскажите подробнее: сколько дней, какой бюджет, что хотите увидеть?",
-                needs_clarification=True,
-                trip_request=None
-            )
+            # IntakeAgent returned None for trip_request
+            # If explicit question was asked by Intake that means clarification needed, but usually Intake only returns Question if it PARTIALLY parsed something.
+            # If both None (as per our recent change), treat as GENERAL QA
+            
+            if question:
+                return ChatResponse(
+                    message=question,
+                    needs_clarification=True,
+                    trip_request=None
+                )
+            else:
+                # SMART ANSWER MODE
+                # The user asked something that isn't a trip plan (e.g. "french restaurant")
+                answer = generate_smart_answer(request.message)
+                
+                _conversation_history[session_id].append({
+                    "role": "assistant",
+                    "content": answer
+                })
+                
+                return ChatResponse(
+                    message=answer,
+                    needs_clarification=False,
+                    trip_request=None
+                )
     except Exception as e:
         print(f"❌ Error in chat endpoint: {e}")
         return ChatResponse(
