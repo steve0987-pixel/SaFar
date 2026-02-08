@@ -20,8 +20,8 @@ from src.agents.context_chat import ContextChatAgent
 from src.agents.storyteller import CultureStoryteller
 from src.utils.weather import WeatherService
 from src.rag.retriever import HybridPOIRetriever
-from src.agents.planner import DeterministicTripPlanner
-from src.models.schemas import PlanRequest, PlanResponse
+from src.agents.planner import DeterministicTripPlanner, AIRoutePlanner
+from src.models.schemas import PlanRequest, PlanResponse, PlanDay, PlanBlock, PlanBlockType
 
 app = FastAPI(
     title="SaFar API",
@@ -359,6 +359,87 @@ async def create_trip_plan(request: PlanRequest):
     except Exception as e:
         print(f"❌ Error in create_trip_plan: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+def _convert_route_to_plan_response(route, pace: str = "medium") -> PlanResponse:
+    """Convert AIRoutePlanner's Route format to PlanResponse format."""
+    plan_days = []
+    poi_count = 0
+    meal_count = 0
+    
+    for day_plan in route.days:
+        blocks = []
+        for activity in day_plan.activities:
+            # Determine block type from POI name/notes
+            block_type = PlanBlockType.poi
+            if any(keyword in activity.poi_name.lower() for keyword in ['restaurant', 'lunch', 'dinner', 'breakfast', 'cafe', 'plov']):
+                block_type = PlanBlockType.meal
+                meal_count += 1
+            else:
+                poi_count += 1
+            
+            blocks.append(PlanBlock(
+                start=activity.start_time,
+                end=activity.end_time,
+                type=block_type,
+                poi_id=activity.poi_id,
+                name=activity.poi_name,
+                reason=activity.notes or "AI-recommended",
+                cost_usd=activity.cost_usd
+            ))
+        
+        plan_days.append(PlanDay(
+            day_number=day_plan.day,
+            date=str(day_plan.date) if day_plan.date else None,
+            theme=day_plan.theme,
+            blocks=blocks
+        ))
+    
+    return PlanResponse(
+        days=plan_days,
+        warnings=route.warnings,
+        total_cost_usd=route.total_cost_usd,
+        pace=pace,
+        poi_count=poi_count,
+        meal_count=meal_count
+    )
+
+
+@app.post("/v1/plan/ai", response_model=PlanResponse)
+async def create_ai_trip_plan(request: PlanRequest):
+    """
+    AI-Powered Trip Planner using RAG + LLM.
+    Uses vector search (ChromaDB) + LLM (Ollama/Groq/OpenAI) for smart recommendations.
+    Falls back to deterministic planner on error.
+    """
+    try:
+        print("🤖 AI Trip Planner requested...")
+        
+        # Create TripRequest from PlanRequest
+        trip_request = TripRequest(
+            city="Samarkand",
+            duration_days=request.days,
+            budget_usd=request.budget,
+            interests=request.interests or ["history", "culture"],
+            constraints=[],
+            pace=request.pace or "moderate"
+        )
+        
+        # Use AI planner with RAG
+        ai_planner = AIRoutePlanner()
+        routes, evidence = ai_planner.generate_routes(trip_request, num_variants=1)
+        
+        if routes:
+            print(f"✅ AI generated {len(routes)} route(s)")
+            return _convert_route_to_plan_response(routes[0], request.pace or "medium")
+        else:
+            print("⚠️ AI returned no routes, falling back to deterministic")
+            return await create_trip_plan(request)
+            
+    except Exception as e:
+        print(f"⚠️ AI planner error: {e}, falling back to deterministic")
+        # Fallback to deterministic planner
+        return await create_trip_plan(request)
 
 
 @app.post("/v1/chat", response_model=ChatResponse)

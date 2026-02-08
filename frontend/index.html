@@ -746,6 +746,27 @@
             font-size: 1rem;
         }
 
+        /* Toggle Switch */
+        .toggle-switch input:checked+.toggle-slider {
+            background: var(--gradient);
+        }
+
+        .toggle-slider::before {
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .toggle-switch input:checked+.toggle-slider::before {
+            transform: translateX(24px);
+        }
+
         .interests-grid {
             display: flex;
             flex-wrap: wrap;
@@ -983,6 +1004,16 @@
                 <h1>Explore on Map</h1>
                 <p>See all attractions, hotels, and restaurants on an interactive map</p>
             </div>
+
+            <!-- Map Category Filters -->
+            <div class="categories" id="map-categories" style="margin-bottom: 1rem;">
+                <button class="category-pill active" data-map-category="all">🌟 All</button>
+                <button class="category-pill" data-map-category="attraction">🏛️ Attractions</button>
+                <button class="category-pill" data-map-category="restaurant">🍽️ Restaurants</button>
+                <button class="category-pill" data-map-category="hotel">🏨 Hotels</button>
+                <button class="category-pill" data-map-category="market">🛒 Markets</button>
+            </div>
+
             <div id="map-container" style="height: 500px; border-radius: 16px; overflow: hidden; margin: 1rem;"></div>
         </section>
 
@@ -1029,7 +1060,17 @@
                         <option value="slow">Slow (2-3 places/day)</option>
                         <option value="medium" selected>Medium (3-4 places/day)</option>
                         <option value="fast">Fast (5-6 places/day)</option>
-                    </select>
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: center; gap: 1rem;">
+                    <label style="flex: 1;">🤖 Use AI Mode</label>
+                    <label class="toggle-switch"
+                        style="position: relative; display: inline-block; width: 50px; height: 26px;">
+                        <input type="checkbox" id="use-ai-toggle" style="opacity: 0; width: 0; height: 0;">
+                        <span class="toggle-slider"
+                            style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--glass); border-radius: 26px; transition: all 0.3s; border: 1px solid var(--glass-border);"></span>
+                    </label>
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Smarter but slower</small>
                 </div>
 
                 <button class="generate-plan-btn" onclick="generateQuickPlan()">
@@ -1146,6 +1187,7 @@
     <script>
         const API_BASE = '';
         let map = null;
+        let mapMarkers = []; // Store all map markers with category info
 
         const staticLandmarks = [
             { name: "Registan Square", lat: 39.6548, lng: 66.9758, type: "🏛️ Attraction", desc: "UNESCO World Heritage - 3 Madrasas", icon: "🏛️", category: "attraction" },
@@ -1157,7 +1199,17 @@
             { name: "Siab Bazaar", lat: 39.6595, lng: 66.9785, type: "🛒 Market", desc: "Traditional market - spices, fruits", icon: "🛒", category: "market" },
         ];
 
-
+        // Simple markdown parser for chat responses
+        function parseMarkdown(text) {
+            if (!text) return '';
+            return text
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')  // **bold**
+                .replace(/\*(.+?)\*/g, '<em>$1</em>')              // *italic*
+                .replace(/^- (.+)$/gm, '<li>$1</li>')              // - list items
+                .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')        // wrap lists
+                .replace(/<\/ul>\s*<ul>/g, '')                     // merge adjacent
+                .replace(/\n/g, '<br>');                           // newlines
+        }
 
         // ============ WEATHER WIDGET ============
         async function loadWeather() {
@@ -1494,6 +1546,13 @@
                 document.getElementById('map-section').style.display = tabName === 'map' ? 'block' : 'none';
                 document.getElementById('chat-section').style.display = tabName === 'chat' ? 'block' : 'none';
                 document.getElementById('chat-section').classList.toggle('active', tabName === 'chat');
+
+                // Quick Plan section
+                const quickplanEl = document.getElementById('quickplan-section');
+                if (quickplanEl) {
+                    quickplanEl.style.display = tabName === 'quickplan' ? 'block' : 'none';
+                    quickplanEl.classList.toggle('active', tabName === 'quickplan');
+                }
             });
         });
 
@@ -1674,11 +1733,12 @@
                 const loadingMsg = document.getElementById(`loading-${loadingId}`);
                 if (loadingMsg) loadingMsg.remove();
 
-                // Add bot response
+                // Add bot response with markdown parsing
+                const formattedMsg = parseMarkdown(data.message || data.response || 'I received your message!');
                 chatMessages.innerHTML += `
                     <div class="message">
                         <div class="message-avatar">🤖</div>
-                        <div class="message-content">${data.message || data.response || 'I received your message!'}</div>
+                        <div class="message-content" style="line-height: 1.6;">${formattedMsg}</div>
                     </div>
                 `;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1868,37 +1928,24 @@
         // Apply saved language on load
         applyLanguage(savedLang);
 
-        // ============ CURRENCY CONVERTER ============
-        const RATE = 12700; // 1 USD = 12,700 UZS
+        // ============ CURRENCY CONVERTER (UI) ============
+        // Note: exchangeRates and convertCurrency() are declared globally above
         const currencyBtn = document.getElementById('currency-btn');
         const currencyModal = document.getElementById('currency-modal');
-        const usdInput = document.getElementById('usd-input');
-        const uzsInput = document.getElementById('uzs-input');
 
-        currencyBtn.addEventListener('click', () => {
-            currencyModal.style.display = 'flex';
-        });
+        // Initialize currency converter with null checks
+        if (currencyBtn && currencyModal) {
+            currencyBtn.addEventListener('click', () => {
+                currencyModal.style.display = 'flex';
+            });
 
-        function closeCurrencyModal() {
-            currencyModal.style.display = 'none';
+            currencyModal.addEventListener('click', (e) => {
+                if (e.target === currencyModal) closeCurrencyModal();
+            });
         }
 
-        currencyModal.addEventListener('click', (e) => {
-            if (e.target === currencyModal) closeCurrencyModal();
-        });
-
-        usdInput.addEventListener('input', () => {
-            uzsInput.value = Math.round(parseFloat(usdInput.value || 0) * RATE);
-        });
-
-        uzsInput.addEventListener('input', () => {
-            usdInput.value = (parseFloat(uzsInput.value || 0) / RATE).toFixed(2);
-        });
-
-        function swapCurrency() {
-            const temp = usdInput.value;
-            usdInput.value = (parseFloat(uzsInput.value) / RATE).toFixed(2);
-            uzsInput.value = Math.round(parseFloat(temp) * RATE);
+        function closeCurrencyModal() {
+            if (currencyModal) currencyModal.style.display = 'none';
         }
 
         // ============ INTERACTIVE MAP ============
@@ -1994,6 +2041,7 @@
                             type: place.type,
                             desc: place.desc
                         }));
+                        mapMarkers.push({ marker, category: place.category });
                     } catch (err) {
                         console.error('❌ Error adding static marker:', place.name, err);
                     }
@@ -2012,6 +2060,7 @@
                                     icon: createMarkerIcon(place.category)
                                 }).addTo(map);
                                 marker.bindPopup(createPhotoPopup(place));
+                                mapMarkers.push({ marker, category: place.category });
                             });
                         }
                     } else {
@@ -2024,6 +2073,34 @@
             } catch (e) {
                 console.error('❌ Error initializing map:', e);
             }
+
+            // Map category pill click handlers - inside initMap so elements exist
+            console.log('🎨 Setting up map category filters...');
+            document.querySelectorAll('#map-categories .category-pill').forEach(pill => {
+                pill.addEventListener('click', () => {
+                    console.log('🔘 Filter clicked:', pill.dataset.mapCategory);
+                    document.querySelectorAll('#map-categories .category-pill').forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    const category = pill.dataset.mapCategory;
+                    filterMapMarkers(category);
+                });
+            });
+        }
+
+        // Map category filter function
+        function filterMapMarkers(category) {
+            console.log(`🗺️ Filtering to: ${category}, markers: ${mapMarkers.length}`);
+            let shown = 0, hidden = 0;
+            mapMarkers.forEach(({ marker, category: markerCat }) => {
+                if (category === 'all' || markerCat === category) {
+                    marker.addTo(map);
+                    shown++;
+                } else {
+                    map.removeLayer(marker);
+                    hidden++;
+                }
+            });
+            console.log(`✅ Shown: ${shown}, Hidden: ${hidden}`);
         }
 
         // Initialize App with robust error handling
@@ -2105,22 +2182,40 @@
                 const interests = Array.from(document.querySelectorAll('.interest-tag.selected'))
                     .map(t => t.dataset.interest);
 
-                const response = await fetch(`${API_BASE}/v1/plan`, {
+                // Check if AI mode is enabled
+                const useAI = document.getElementById('use-ai-toggle')?.checked || false;
+                const endpoint = useAI ? '/v1/plan/ai' : '/v1/plan';
+
+                console.log(`📤 Sending plan request (AI: ${useAI}):`, { days, interests, budget, pace });
+
+                // Update button text for AI mode (slower)
+                if (useAI) {
+                    btn.innerHTML = '<div class="spinner"></div> 🤖 AI Thinking...';
+                }
+
+                const response = await fetch(`${API_BASE}${endpoint}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ days, interests, budget, pace })
                 });
 
-                if (!response.ok) throw new Error('API error');
+                console.log('📥 Response status:', response.status, response.statusText);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('❌ API Error:', errorText);
+                    throw new Error(`API error ${response.status}: ${errorText}`);
+                }
 
                 currentPlan = await response.json();
+                console.log('✅ Plan received:', currentPlan);
                 renderPlanResult(currentPlan);
 
                 document.getElementById('plan-form').style.display = 'none';
                 document.getElementById('plan-result').style.display = 'block';
             } catch (e) {
-                console.error('Plan generation failed:', e);
-                alert('Failed to generate plan. Please try again.');
+                console.error('❌ Plan generation failed:', e);
+                alert(`Failed to generate plan: ${e.message}\n\nCheck browser console (F12) for details.`);
             } finally {
                 btn.innerHTML = oldText;
                 btn.disabled = false;
