@@ -316,7 +316,7 @@ def generate_smart_answer(message: str) -> str:
         context = "Relevant places found in database:\n"
         for r in rag_results:
             poi = r.poi
-            context += f"- {poi.name} ({poi.category}): {poi.description[:150]}... (Rating: {poi.rating})\n"
+            context += f"- {poi.name} ({poi.category}): {poi.description[:150]}... (Rating: {getattr(poi, 'avg_rating', getattr(poi, 'rating', 4.5))})\n"
     
     prompt = f"""User Question: "{message}"
 
