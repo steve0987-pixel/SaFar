@@ -287,3 +287,64 @@ class RestaurantSearchResult(BaseModel):
     restaurant: Restaurant
     score: float
     cuisine_match: bool = True
+
+
+# ==================== TRIP PLANNER SCHEMAS (Step 3) ====================
+
+class PlanBlockType(str, Enum):
+    """Type of activity block in a plan."""
+    POI = "poi"
+    MEAL = "meal"
+    TRANSIT = "transit"
+    FREE = "free"
+
+
+class PlanBlock(BaseModel):
+    """Single block in a day's itinerary."""
+    
+    start: str  # "09:00"
+    end: str    # "11:00"
+    type: PlanBlockType
+    
+    poi_id: Optional[str] = None      # for type=poi
+    venue_id: Optional[str] = None    # for type=meal (restaurant id)
+    
+    name: str = ""                    # Display name
+    reason: str = ""                  # "Best morning light for photos"
+    cost_usd: float = 0
+
+
+class PlanDay(BaseModel):
+    """Plan for a single day."""
+    
+    day_number: int
+    date: Optional[str] = None        # "2026-02-10"
+    theme: str = ""                   # "День 1: Сердце Самарканда"
+    blocks: List[PlanBlock] = Field(default_factory=list)
+
+
+class PlanResponse(BaseModel):
+    """Complete trip plan response - frozen contract."""
+    
+    days: List[PlanDay]
+    warnings: List[str] = Field(default_factory=list)
+    total_cost_usd: float = 0
+    pace: str = "medium"
+    poi_count: int = 0
+    meal_count: int = 0
+
+
+class PlanRequest(BaseModel):
+    """Request for trip plan generation."""
+    
+    days: int = Field(default=3, ge=1, le=14, description="Number of days")
+    interests: List[str] = Field(
+        default_factory=lambda: ["history", "food"],
+        description="User interests"
+    )
+    budget: float = Field(default=100.0, ge=10, description="Budget in USD")
+    pace: str = Field(
+        default="medium", 
+        description="Trip pace: slow (2-3 POI/day), medium (3-4), fast (5-6)"
+    )
+    start_date: Optional[str] = None  # "2026-02-10"

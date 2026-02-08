@@ -1,5 +1,5 @@
 {
-  "version": "3.0",
+  "version": "3.2",
   "city": "Samarkand",
   "restaurants": [
     {
@@ -26,7 +26,11 @@
       "coordinates": {
         "lat": 39.6564,
         "lng": 66.9785
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Afandi%20Food%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%98%D1%81%D0%BB%D0%B0%D0%BC%D0%B0%20%D0%9A%D0%B0%D1%80%D0%B8%D0%BC%D0%BE%D0%B2%D0%B0%2C%2043%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9785%2C39.6564&z=17",
+      "opens_at": "10:00",
+      "opens_at_source": "https://2gis.uz/uz/samarkand/firm/70000001095895965/tab/info",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_ayvan_by_la_minor",
@@ -54,7 +58,11 @@
       "coordinates": {
         "lat": 39.678,
         "lng": 66.94
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Ayvan%20by%20La%20Minor%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%98%D0%B1%D0%BD%20%D0%A5%D0%BE%D0%BB%D0%B4%D1%83%D0%BD%D0%B0%2C%201%2F1%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.94%2C39.678&z=17",
+      "opens_at": "00:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001095008952",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_bellis",
@@ -82,7 +90,11 @@
       "coordinates": {
         "lat": 39.643076,
         "lng": 66.9466591
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Bellis%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%2086%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9466591%2C39.643076&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001079737023",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_blinniy_domik",
@@ -110,7 +122,11 @@
       "coordinates": {
         "lat": 39.6818671,
         "lng": 66.9802581
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=%D0%91%D0%BB%D0%B8%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%94%D0%BE%D0%BC%D0%B8%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A8%D0%BE%D1%85%D1%80%D1%83%D1%85%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%2C%2041%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9802581%2C39.6818671&z=17",
+      "opens_at": "05:30",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001091360685/tab/info",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_burger_co",
@@ -138,7 +154,11 @@
       "coordinates": {
         "lat": 39.6450774,
         "lng": 66.9549097
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Burger%20%26%20Co%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9E%D1%80%D0%B7%D1%83%20%D0%9C%D0%B0%D1%85%D0%BC%D1%83%D0%B4%D0%BE%D0%B2%D0%B0%2C%2011%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9549097%2C39.6450774&z=17",
+      "opens_at": "07:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001084031824",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_chapon_uz",
@@ -165,7 +185,11 @@
       "coordinates": {
         "lat": 39.6594807,
         "lng": 66.9473222
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Chapon%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%94%D0%B0%D0%B2%D0%BB%D0%B0%D1%82%D0%BE%D0%B1%D0%BE%D0%B4%2C%2094%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9473222%2C39.6594807&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001092584852",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_gruzinka",
@@ -192,7 +216,11 @@
       "coordinates": {
         "lat": 39.64787,
         "lng": 66.95526
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Gruzinka%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B0%D1%85%D0%BC%D1%83%D0%B4%20%D0%B0%D0%BB-%D0%9A%D0%B0%D1%88%D0%B3%D0%B0%D1%80%D0%B8%2C%2087%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.95526%2C39.64787&z=17",
+      "opens_at": "09:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001081128956",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_istiqlol",
@@ -220,7 +248,11 @@
       "coordinates": {
         "lat": 39.6462064,
         "lng": 66.9279329
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Istiqlol%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BC%D0%B8%D1%80%D0%B0%20%D0%A2%D0%B5%D0%BC%D1%83%D1%80%D0%B0%2C%20101%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9279329%2C39.6462064&z=17",
+      "opens_at": "10:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001083466647",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_jasmin",
@@ -248,7 +280,11 @@
       "coordinates": {
         "lat": 39.647822,
         "lng": 66.9127897
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Jasmin%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BC%D0%B8%D1%80%D0%B0%20%D0%A2%D0%B5%D0%BC%D1%83%D1%80%D0%B0%2C%20202%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9127897%2C39.647822&z=17",
+      "opens_at": "10:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001085727335",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_katana",
@@ -275,7 +311,11 @@
       "coordinates": {
         "lat": 39.655,
         "lng": 66.9735
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Katana%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%B1%D1%83%20%D0%A0%D0%B0%D0%B9%D1%85%D0%BE%D0%BD%20%D0%91%D0%B5%D1%80%D1%83%D0%BD%D0%B8%2C%2069A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9735%2C39.655&z=17",
+      "opens_at": "13:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001076467249",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_khan_ahmad",
@@ -303,7 +343,11 @@
       "coordinates": {
         "lat": 39.675904,
         "lng": 66.973977
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Khan%20Ahmad%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%93%D0%B8%D1%91%D1%81%D0%B8%D0%B4%D0%B4%D0%B8%D0%BD%20%D0%96%D0%B0%D0%BC%D1%88%D0%B5%D0%B4%2C%204F%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.973977%2C39.675904&z=17",
+      "opens_at": "09:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001083773159",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_malachit",
@@ -331,7 +375,11 @@
       "coordinates": {
         "lat": 39.6655579,
         "lng": 66.9282862
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=%D0%9C%D0%B0%D0%BB%D0%B0%D1%85%D0%B8%D1%82%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%20%D0%A3%D0%BB%D1%83%D0%B3%D0%B1%D0%B5%D0%BA%D0%B0%2C%2037A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9282862%2C39.6655579&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=%D0%9C%D0%B0%D0%BB%D0%B0%D1%85%D0%B8%D1%82%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%20%D0%A3%D0%BB%D1%83%D0%B3%D0%B1%D0%B5%D0%BA%D0%B0%2C%2037A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9282862%2C39.6655579&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_manhattan",
@@ -358,7 +406,11 @@
       "coordinates": {
         "lat": 39.6589657,
         "lng": 66.9554069
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Manhattan%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%BE%D0%BD%D1%88%D0%BE%D1%85%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%2C%2040%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9554069%2C39.6589657&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Manhattan%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%BE%D0%BD%D1%88%D0%BE%D1%85%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%2C%2040%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9554069%2C39.6589657&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_manresa",
@@ -385,7 +437,11 @@
       "coordinates": {
         "lat": 39.6595131,
         "lng": 66.9304445
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Manresa%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9D%D0%BE%D0%B4%D0%B8%D1%80%D0%B0%D0%B1%D0%B5%D0%B3%D0%B8%D0%BC%2C%2056%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9304445%2C39.6595131&z=17",
+      "opens_at": "10:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001081953021",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_maroqand",
@@ -412,7 +468,11 @@
       "coordinates": {
         "lat": 39.653,
         "lng": 66.971
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Maroqand%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%98%D0%BC%D0%BE%D0%BC%20%D0%B0%D0%BB%D1%8C-%D0%91%D1%83%D1%85%D0%BE%D1%80%D0%B8%D0%B9%2C%2058%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.971%2C39.653&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001086912692",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_maroqand_osh",
@@ -437,7 +497,11 @@
       "coordinates": {
         "lat": 39.649925,
         "lng": 66.948824
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Maroqand%20Osh%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B0%D0%B2%D0%BB%D0%BE%D0%BD%D0%BE%20%D0%9B%D1%83%D1%82%D1%84%D0%B8%D0%B9%2C%2050A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.948824%2C39.649925&z=17",
+      "opens_at": "07:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001095370456",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_minor",
@@ -464,7 +528,11 @@
       "coordinates": {
         "lat": 39.68258,
         "lng": 66.92798
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=La%20Minor%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%98%D0%B1%D0%BD%20%D0%A5%D0%BE%D0%BB%D0%B4%D1%83%D0%BD%D0%B0%2C%201%2F1%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.92798%2C39.68258&z=17",
+      "opens_at": "08:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001080222609",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_oasis_garden",
@@ -492,7 +560,11 @@
       "coordinates": {
         "lat": 39.647385,
         "lng": 66.959769
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Oasis%20Garden%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%B1%D0%B4%D1%83%D1%80%D0%B0%D1%85%D0%BC%D0%BE%D0%BD%D0%B0%20%D0%96%D0%BE%D0%BC%D0%B8%D0%B9%2C%2059A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.959769%2C39.647385&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001094606563",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_old_city",
@@ -520,7 +592,11 @@
       "coordinates": {
         "lat": 39.653,
         "lng": 66.974
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Old%20City%20Restaurant%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%B1%D0%B4%D1%83%D1%80%D0%B0%D1%85%D0%BC%D0%BE%D0%BD%D0%B0%20%D0%96%D0%BE%D0%BC%D0%B8%D0%B9%2C%20100%2F1%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.974%2C39.653&z=17",
+      "opens_at": "10:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001078069166",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_oshqand",
@@ -546,7 +622,11 @@
       "coordinates": {
         "lat": 39.6585,
         "lng": 66.9765
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Oshqand%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%97%D0%B0%D1%80a%D1%84%D1%88%D0%BE%D0%BD%20%D0%A8%D0%BE%D1%85%2C%2016%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9765%2C39.6585&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/155807147230",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_shampooor",
@@ -573,7 +653,11 @@
       "coordinates": {
         "lat": 39.6508706,
         "lng": 66.9482429
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Shampoor%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BC%D0%B8%D1%80%D0%B0%20%D0%A2%D0%B5%D0%BC%D1%83%D1%80%D0%B0%2C%2068%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9482429%2C39.6508706&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001088267755",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_shashlik_uz",
@@ -597,9 +681,13 @@
       ],
       "image_url": "/images/restaurants/rest_shashlik_uz.jpg",
       "coordinates": {
-        "lat": 39.9309999,
-        "lng": 65.9373217
-      }
+        "lat": 39.663041,
+        "lng": 66.918218
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Shashlik%20Uz%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9D%D0%B0%D1%80%D0%BF%D0%B0%D0%B9%2C%2077%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.918218%2C39.663041&z=17",
+      "opens_at": "10:00",
+      "opens_at_source": "https://2gis.uz/uz/samarkand/firm/70000001079215834",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_shokhrukh_nur",
@@ -625,7 +713,11 @@
       "coordinates": {
         "lat": 39.6515712,
         "lng": 66.9679524
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Shokhrukh%20Nur%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D0%B0%D0%BD%2C%2010B%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9679524%2C39.6515712&z=17",
+      "opens_at": "08:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001079696207",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_sophia",
@@ -653,7 +745,11 @@
       "coordinates": {
         "lat": 39.6624757,
         "lng": 66.933891
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Sophia%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%20%D0%A3%D0%BB%D1%83%D0%B3%D0%B1%D0%B5%D0%BA%D0%B0%2C%2079A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.933891%2C39.6624757&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://2gis.uz/samarkand/firm/70000001094684772",
+      "opens_at_is_estimated": false
     },
     {
       "id": "rest_t_bone",
@@ -681,7 +777,11 @@
       "coordinates": {
         "lat": 39.6606398,
         "lng": 66.9398981
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=T-Bone%20Cafe%20%26%20Bar%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%20%D0%A3%D0%BB%D1%83%D0%B3%D0%B1%D0%B5%D0%BA%D0%B0%2C%2076%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9398981%2C39.6606398&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=T-Bone%20Cafe%20%26%20Bar%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%20%D0%A3%D0%BB%D1%83%D0%B3%D0%B1%D0%B5%D0%BA%D0%B0%2C%2076%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9398981%2C39.6606398&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_ulfatlar",
@@ -708,7 +808,11 @@
       "coordinates": {
         "lat": 39.649419,
         "lng": 66.934701
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Ulfatlar%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B5%D0%B2%D0%B0%D0%BB%D0%B8%2C%2012%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.934701%2C39.649419&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Ulfatlar%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B5%D0%B2%D0%B0%D0%BB%D0%B8%2C%2012%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.934701%2C39.649419&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_yaponamama",
@@ -736,7 +840,11 @@
       "coordinates": {
         "lat": 39.663693,
         "lng": 66.907783
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Yaponamama%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%B1%D1%83%20%D0%90%D0%B1%D0%B4%D1%83%D0%BB%D0%BB%D0%B0%D1%85%20%D0%A0%D1%83%D0%B4%D0%B0%D0%BA%D0%B8%2C%2078%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.907783%2C39.663693&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Yaponamama%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%B1%D1%83%20%D0%90%D0%B1%D0%B4%D1%83%D0%BB%D0%BB%D0%B0%D1%85%20%D0%A0%D1%83%D0%B4%D0%B0%D0%BA%D0%B8%2C%2078%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.907783%2C39.663693&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_yzum_choyxona",
@@ -763,7 +871,11 @@
       "coordinates": {
         "lat": 39.6378069,
         "lng": 66.9674348
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Uzum%20Choyxona%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A5%D0%BE%D0%B4%D0%B6%D0%B0%20%D0%90%D1%85%D1%80%D0%BE%D1%80%20%D0%92%D0%B0%D0%BB%D0%B8%2C%2058A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9674348%2C39.6378069&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Uzum%20Choyxona%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A5%D0%BE%D0%B4%D0%B6%D0%B0%20%D0%90%D1%85%D1%80%D0%BE%D1%80%20%D0%92%D0%B0%D0%BB%D0%B8%2C%2058A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9674348%2C39.6378069&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_zabi_bobo",
@@ -788,7 +900,11 @@
       "coordinates": {
         "lat": 39.644612,
         "lng": 66.941521
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Zabi%20Bobo%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A4%D0%B8%D1%80%D0%B4%D0%B0%D0%B2%D1%81%D0%B8%D0%B9%2C%20165%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.941521%2C39.644612&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Zabi%20Bobo%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A4%D0%B8%D1%80%D0%B4%D0%B0%D0%B2%D1%81%D0%B8%D0%B9%2C%20165%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.941521%2C39.644612&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_zafar",
@@ -815,7 +931,11 @@
       "coordinates": {
         "lat": 39.66,
         "lng": 66.98
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Zafar%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B0%D1%85%D1%82%D1%83%D0%BC%D0%BA%D1%83%D0%BB%D0%B8%2C%202%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.98%2C39.66&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Zafar%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B0%D1%85%D1%82%D1%83%D0%BC%D0%BA%D1%83%D0%BB%D0%B8%2C%202%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.98%2C39.66&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_la_romantica",
@@ -844,7 +964,11 @@
       "coordinates": {
         "lat": 39.65,
         "lng": 66.96
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Trattoria%20La%20Romantica%2C%20Amir%20Temur%20Street%2C%20105%2C%20Samarkand&ll=66.96%2C39.65&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Trattoria%20La%20Romantica%2C%20Amir%20Temur%20Street%2C%20105%2C%20Samarkand&ll=66.96%2C39.65&z=17",
+      "opens_at_is_estimated": true
     },
     {
       "id": "rest_green_garden",
@@ -872,7 +996,11 @@
       "coordinates": {
         "lat": 39.645,
         "lng": 66.965
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Green%20Garden%20Healthy%20Bar%2C%20University%20Boulevard%2C%2015%2C%20Samarkand&ll=66.965%2C39.645&z=17",
+      "opens_at": "11:00",
+      "opens_at_source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Green%20Garden%20Healthy%20Bar%2C%20University%20Boulevard%2C%2015%2C%20Samarkand&ll=66.965%2C39.645&z=17",
+      "opens_at_is_estimated": true
     }
   ],
   "hotels": [
@@ -896,7 +1024,8 @@
       "coordinates": {
         "lat": 39.6589657,
         "lng": 66.9554069
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=AD%20Bellagio%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%B8%D1%80%D0%BE%D0%BD%D1%88%D0%BE%D1%85%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%2C%2019%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9554069%2C39.6589657&z=17"
     },
     {
       "id": "hotel_al_bukhary",
@@ -917,7 +1046,8 @@
       "coordinates": {
         "lat": 39.6525,
         "lng": 66.97
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Hotel%20Al%20Bukhary%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BB%D1%8C-%D0%91%D1%83%D1%85%D0%BE%D1%80%D0%B8%D0%B9%2C%2048%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.97%2C39.6525&z=17"
     },
     {
       "id": "hotel_al_maryam",
@@ -936,9 +1066,10 @@
       ],
       "image_url": "/images/hotels/hotel_al_maryam.jpg",
       "coordinates": {
-        "lat": 39.6474576,
-        "lng": 66.9542587
-      }
+        "lat": 39.645653,
+        "lng": 66.950936
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Hotel%20Al%20Maryam%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%2070%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9542587%2C39.6474576&z=17"
     },
     {
       "id": "hotel_bibi_khanum",
@@ -959,7 +1090,8 @@
       "coordinates": {
         "lat": 39.6600642,
         "lng": 66.9801496
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Bibi-Khanym%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%D1%81%D0%BA%D0%B0%D1%8F%2C%2010%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9801496%2C39.6600642&z=17"
     },
     {
       "id": "hotel_bogishamol",
@@ -980,7 +1112,8 @@
       "coordinates": {
         "lat": 39.66579,
         "lng": 66.997744
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Bog%27ishamol%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D1%83%D1%80%D0%B0%D0%BA%D1%83%D0%BB%D0%B0%20%D0%97%D0%B5%D1%85%D0%BD%D0%B8%2C%20102%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.997744%2C39.66579&z=17"
     },
     {
       "id": "hotel_chekhran",
@@ -1001,7 +1134,8 @@
       "coordinates": {
         "lat": 39.66,
         "lng": 66.98
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Chehran%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%AE%D1%82%D1%83%D0%BA%2C%2059%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.98%2C39.66&z=17"
     },
     {
       "id": "hotel_city_samarkand",
@@ -1023,7 +1157,8 @@
       "coordinates": {
         "lat": 39.6467482,
         "lng": 66.9612333
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Hotel%20City%20Samarkand%2C%20%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B1%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%2C%2019A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9612333%2C39.6467482&z=17"
     },
     {
       "id": "hotel_continental",
@@ -1047,7 +1182,8 @@
       "coordinates": {
         "lat": 39.6479884,
         "lng": 66.9641161
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Continental%20Hotel%20Samarkand%2C%20%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B1%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%2C%207%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9641161%2C39.6479884&z=17"
     },
     {
       "id": "hotel_diyor",
@@ -1068,7 +1204,8 @@
       "coordinates": {
         "lat": 39.654543,
         "lng": 66.968847
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Diyora%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%98%D0%BC%D0%BE%D0%BC%20%D0%B0%D0%BB%D1%8C-%D0%91%D1%83%D1%85%D0%BE%D1%80%D0%B8%D0%B9%2C%20106%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.968847%2C39.654543&z=17"
     },
     {
       "id": "hotel_grand_sogdiana",
@@ -1090,9 +1227,10 @@
       ],
       "image_url": "/images/hotels/hotel_grand_sogdiana.jpg",
       "coordinates": {
-        "lat": 39.9309999,
-        "lng": 65.9373217
-      }
+        "lat": 39.662847,
+        "lng": 66.907978
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Grand%20Hotel%20Sogdiana%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9D%D0%B0%D1%80%D0%BF%D0%B0%D0%B9%2C%2076A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.907978%2C39.662847&z=17"
     },
     {
       "id": "hotel_gur_emir",
@@ -1114,7 +1252,8 @@
       "coordinates": {
         "lat": 39.6818671,
         "lng": 66.9802581
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Gur%20Emir%20Palace%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A8%D0%BE%D1%85%D1%80%D1%83%D1%85%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%2C%20126%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9802581%2C39.6818671&z=17"
     },
     {
       "id": "hotel_hilton_garden_inn",
@@ -1136,9 +1275,10 @@
       ],
       "image_url": "/images/hotels/hotel_hilton_garden_inn.jpg",
       "coordinates": {
-        "lat": 39.6557,
-        "lng": 67.0571
-      }
+        "lat": 39.673691,
+        "lng": 66.966871
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Hilton%20Garden%20Inn%20Samarkand%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%94%D0%B0%D1%85%D0%B1%D0%B5%D0%B4%20%D0%B9%D1%83%D0%BB%D0%B8%2C%202%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.966871%2C39.673691&z=17"
     },
     {
       "id": "hotel_karim_parkside",
@@ -1158,9 +1298,10 @@
       ],
       "image_url": "/images/hotels/hotel_karim_parkside.jpg",
       "coordinates": {
-        "lat": 39.6474576,
-        "lng": 66.9542587
-      }
+        "lat": 39.653097,
+        "lng": 66.964577
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Karim%20Parkside%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%201G%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9542587%2C39.6474576&z=17"
     },
     {
       "id": "hotel_kok_saroy_plaza",
@@ -1179,9 +1320,10 @@
       ],
       "image_url": "/images/hotels/hotel_kok_saroy_plaza.jpg",
       "coordinates": {
-        "lat": 39.6534051,
-        "lng": 66.9702527
-      }
+        "lat": 39.654579,
+        "lng": 66.969955
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Ko%27k%20Saroy%20Plaza%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%94%D0%B0%D0%B3%D0%B1%D0%B8%D1%82%D1%81%D0%BA%D0%B0%D1%8F%2C%201A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9702527%2C39.6534051&z=17"
     },
     {
       "id": "hotel_kosh_xavuz",
@@ -1203,7 +1345,8 @@
       "coordinates": {
         "lat": 39.661,
         "lng": 66.98
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Kosh%20Havuz%20Boutique%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9A%D0%BE%D1%88%20%D0%A5%D0%B0%D0%B2%D1%83%D0%B7%2C%2040%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.98%2C39.661&z=17"
     },
     {
       "id": "hotel_marokand",
@@ -1225,9 +1368,10 @@
       ],
       "image_url": "/images/hotels/hotel_marokand.jpg",
       "coordinates": {
-        "lat": 39.7063629,
-        "lng": 66.6714471
-      }
+        "lat": 39.683353,
+        "lng": 66.984263
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Marokand%20SPA%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%98%D0%B1%D0%BD%20%D0%A1%D0%B8%D0%BD%D0%BE%2C%2017%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.984263%2C39.683353&z=17"
     },
     {
       "id": "hotel_maroqand_a",
@@ -1248,7 +1392,8 @@
       "coordinates": {
         "lat": 39.648,
         "lng": 66.9641
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Maroqanda%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%91%D1%83%D1%85%D0%B0%D1%80%D0%B0%2C%20141%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9641%2C39.648&z=17"
     },
     {
       "id": "hotel_medina",
@@ -1268,9 +1413,10 @@
       ],
       "image_url": "/images/hotels/hotel_medina.jpg",
       "coordinates": {
-        "lat": 39.6534051,
-        "lng": 66.9702527
-      }
+        "lat": 39.664942,
+        "lng": 66.971157
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Medina%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%94%D0%B0%D0%B3%D0%B1%D0%B8%D1%82%D1%81%D0%BA%D0%B0%D1%8F%2C%2053%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9702527%2C39.6534051&z=17"
     },
     {
       "id": "hotel_movenpick",
@@ -1293,9 +1439,10 @@
       ],
       "image_url": "/images/hotels/hotel_movenpick.jpg",
       "coordinates": {
-        "lat": 39.6818671,
-        "lng": 66.9802581
-      }
+        "lat": 39.650126,
+        "lng": 66.962631
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=M%C3%B6venpick%20Samarkand%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A8%D0%BE%D1%85%D1%80%D1%83%D1%85%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%2C%2053%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.962631%2C39.650126&z=17"
     },
     {
       "id": "hotel_reikartz_amar",
@@ -1316,7 +1463,8 @@
       "coordinates": {
         "lat": 39.644424,
         "lng": 66.9549121
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Reikartz%20Amar%20Samarkand%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9E%D1%80%D0%B7%D1%83%20%D0%9C%D0%B0%D1%85%D0%BC%D1%83%D0%B4%D0%BE%D0%B2%D0%B0%2C%2014%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9549121%2C39.644424&z=17"
     },
     {
       "id": "hotel_rio_samarkand",
@@ -1339,7 +1487,8 @@
       "coordinates": {
         "lat": 39.648,
         "lng": 66.96
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=RIO%20Hotel%20%26%20Apartments%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%AE%D1%81%D1%83%D1%84%20%D0%A5%D0%BE%D1%81%20%D0%A5%D0%BE%D0%B4%D0%B6%D0%B8%D0%B1%2C%203%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.96%2C39.648&z=17"
     },
     {
       "id": "hotel_samarkand_city_center",
@@ -1360,7 +1509,8 @@
       "coordinates": {
         "lat": 39.6572135,
         "lng": 66.9731698
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Samarkand%20City%20Center%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%B1%D0%B4%D1%83%D1%80%D0%B0%D1%81%D1%83%D0%BB%D0%BE%D0%B2%2C%2055%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9731698%2C39.6572135&z=17"
     },
     {
       "id": "hotel_samarkand_travel",
@@ -1382,7 +1532,8 @@
       "coordinates": {
         "lat": 39.649,
         "lng": 66.965
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Samarkand%20Travel%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D1%83%D1%80%D1%81%D1%83%D0%BD%D0%BE%D0%B2%D0%B0%2C%20127%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.965%2C39.649&z=17"
     },
     {
       "id": "hotel_sangzor",
@@ -1403,7 +1554,8 @@
       "coordinates": {
         "lat": 39.658797,
         "lng": 66.9793321
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Sangzor%20Boutique%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%98%D1%81%D0%BB%D0%B0%D0%BC%D0%B0%20%D0%9A%D0%B0%D1%80%D0%B8%D0%BC%D0%BE%D0%B2%D0%B0%2C%2045A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9793321%2C39.658797&z=17"
     },
     {
       "id": "hotel_shahram_plus",
@@ -1424,7 +1576,8 @@
       "coordinates": {
         "lat": 39.657537,
         "lng": 66.981162
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Shahram%20Plus%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D1%83%D0%BB%D0%BB%D0%B0%D0%BA%D0%B0%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%2C%2062%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.981162%2C39.657537&z=17"
     },
     {
       "id": "hotel_shohjahon_palace",
@@ -1448,7 +1601,8 @@
       "coordinates": {
         "lat": 39.64544,
         "lng": 66.97556
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Shohjahon%20Palace%20Hotel%20%26%20Spa%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A1%D1%9E%D0%B7%D0%B0%D0%BD%D0%B3%D0%B0%D1%80%D0%BE%D0%BD%2C%20110%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.97556%2C39.64544&z=17"
     },
     {
       "id": "hotel_the_afrosiyob",
@@ -1469,7 +1623,8 @@
       "coordinates": {
         "lat": 39.66,
         "lng": 67.0
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=The%20Afrosiyob%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%94%D0%B6%D1%83%D1%80%D0%B0%D0%BA%D1%83%D0%BB%D0%BE%D0%B2%2C%20228%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=67.0%2C39.66&z=17"
     },
     {
       "id": "hotel_zarafshon_parkside",
@@ -1492,7 +1647,8 @@
       "coordinates": {
         "lat": 39.648744,
         "lng": 66.957942
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Zarafshon%20Parkside%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%B1%D0%B4%D1%83%D1%80%D0%B0%D1%85%D0%BC%D0%BE%D0%BD%D0%B0%20%D0%96%D0%BE%D0%BC%D0%B8%D0%B9%2C%2065%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.957942%2C39.648744&z=17"
     },
     {
       "id": "hotel_zilol_baxt",
@@ -1514,7 +1670,8 @@
       "coordinates": {
         "lat": 39.6330137,
         "lng": 66.9587747
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Zilol-Baxt%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%93%D1%83%D0%BB%D0%BE%D0%B1%D0%BE%D0%B4%2C%205%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.9587747%2C39.6330137&z=17"
     },
     {
       "id": "hotel_majestic_palace",
@@ -1537,7 +1694,9 @@
       "coordinates": {
         "lat": 39.644258,
         "lng": 66.952875
-      }
+      },
+      "source": "https://yandex.uz/maps/10334/samarkand/?mode=search&text=Majestic%20Palace%20Hotel%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%91%D0%BE%D0%B1%D1%83%D1%80%20%D0%9C%D0%B8%D1%80%D0%B7%D0%BE%2C%2032A%2C%20%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4&ll=66.952875%2C39.644258&z=17"
     }
-  ]
+  ],
+  "last_checked": "2026-02-08"
 }

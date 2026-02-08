@@ -524,3 +524,278 @@ if __name__ == "__main__":
             print(f"\n  🗺️ {route.name} — ${route.total_cost_usd:.0f}")
             for day in route.days:
                 print(f"     Day {day.day}: {day.theme} ({len(day.activities)} activities)")
+
+
+# ==================== DETERMINISTIC TRIP PLANNER (Step 4) ====================
+
+class DeterministicTripPlanner:
+    """
+    No-LLM Trip Planner using pure data-driven scheduling.
+    Returns PlanResponse-compatible dicts with days[], blocks[], warnings[].
+    """
+    
+    PACE_CONFIG = {
+        "slow": (2, 3),
+        "medium": (3, 4),
+        "fast": (5, 6)
+    }
+    
+    DAY_THEMES = {
+        1: "Сердце Самарканда",
+        2: "Древние тайны",
+        3: "Культура и вкусы",
+        4: "За пределами туризма",
+        5: "Неспешный ритм",
+    }
+    
+    def __init__(self, data_dir: Path = None):
+        if data_dir is None:
+            data_dir = Path(__file__).parent.parent.parent / "database"
+        self.data_dir = data_dir
+        self.poi_data: List[Dict[str, Any]] = []
+        self.restaurants: List[Dict[str, Any]] = []
+        self.poi_index: Dict[str, Dict[str, Any]] = {}
+        self.restaurant_index: Dict[str, Dict[str, Any]] = {}
+        self._load_data()
+    
+    def _load_data(self):
+        """Load POI and restaurant data."""
+        poi_path = self.data_dir / "poi.json"
+        hr_path = self.data_dir / "hotels_restaurants.json"
+        
+        if poi_path.exists():
+            with open(poi_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                self.poi_data = data.get("poi", [])
+                self.poi_index = {p["id"]: p for p in self.poi_data}
+        
+        if hr_path.exists():
+            with open(hr_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                self.restaurants = data.get("restaurants", [])
+                self.restaurant_index = {r["id"]: r for r in self.restaurants}
+    
+    def create_plan(
+        self,
+        days: int,
+        interests: List[str],
+        budget: float,
+        pace: str = "medium",
+        start_date: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Create a deterministic trip plan. Returns PlanResponse-compatible dict."""
+        warnings: List[str] = []
+        plan_days: List[Dict[str, Any]] = []
+        total_cost = 0.0
+        poi_count = 0
+        meal_count = 0
+        
+        min_poi, max_poi = self.PACE_CONFIG.get(pace, (3, 4))
+        scored_pois = self._score_pois(interests)
+        used_poi_ids = set()
+        
+        if start_date:
+            try:
+                current_date = datetime.strptime(start_date, "%Y-%m-%d")
+            except:
+                current_date = datetime.now()
+        else:
+            current_date = datetime.now()
+        
+        for day_num in range(1, days + 1):
+            day_date = current_date + timedelta(days=day_num - 1)
+            blocks: List[Dict[str, Any]] = []
+            day_cost = 0.0
+            
+            day_pois = self._select_pois_for_day(scored_pois, used_poi_ids, min_poi, max_poi, day_num)
+            for pid in day_pois:
+                used_poi_ids.add(pid)
+            
+            current_time = datetime.strptime("09:00", "%H:%M")
+            
+            # Morning POIs
+            morning_pois = [p for p in day_pois if self.poi_index.get(p, {}).get("best_time") == "morning"]
+            other_pois = [p for p in day_pois if p not in morning_pois]
+            
+            if not morning_pois and other_pois:
+                morning_pois = [other_pois.pop(0)]
+            
+            for poi_id in morning_pois[:2]:
+                poi = self.poi_index.get(poi_id, {})
+                duration = poi.get("duration_hours", 1.5)
+                cost = poi.get("cost_usd", 0)
+                
+                start_time = current_time.strftime("%H:%M")
+                end_time = (current_time + timedelta(hours=duration)).strftime("%H:%M")
+                
+                blocks.append({
+                    "start": start_time, "end": end_time, "type": "poi",
+                    "poi_id": poi_id, "venue_id": None,
+                    "name": poi.get("name_en") or poi.get("name", poi_id),
+                    "reason": self._get_reason(poi), "cost_usd": cost
+                })
+                day_cost += cost
+                poi_count += 1
+                current_time = current_time + timedelta(hours=duration, minutes=15)
+            
+            # Lunch - schedule after morning POIs, but not before 12:00
+            lunch_start = max(current_time, datetime.strptime("12:00", "%H:%M"))
+            lunch_end = lunch_start + timedelta(hours=1, minutes=30)
+            
+            lunch_rest = self._select_restaurant(lunch_start.strftime("%H:%M"), budget / days / 3)
+            if lunch_rest:
+                blocks.append({
+                    "start": lunch_start.strftime("%H:%M"), 
+                    "end": lunch_end.strftime("%H:%M"), 
+                    "type": "meal",
+                    "poi_id": None, "venue_id": lunch_rest["id"],
+                    "name": f"Обед: {lunch_rest['name']}",
+                    "reason": f"{lunch_rest.get('category', 'restaurant').title()} кухня",
+                    "cost_usd": lunch_rest.get("avg_check_usd", 15)
+                })
+                day_cost += lunch_rest.get("avg_check_usd", 15)
+                meal_count += 1
+            
+            current_time = lunch_end + timedelta(minutes=15)
+
+            
+            # Afternoon POIs
+            for poi_id in other_pois[:2]:
+                poi = self.poi_index.get(poi_id, {})
+                duration = poi.get("duration_hours", 1.5)
+                cost = poi.get("cost_usd", 0)
+                
+                start_time = current_time.strftime("%H:%M")
+                end_time = (current_time + timedelta(hours=duration)).strftime("%H:%M")
+                
+                blocks.append({
+                    "start": start_time, "end": end_time, "type": "poi",
+                    "poi_id": poi_id, "venue_id": None,
+                    "name": poi.get("name_en") or poi.get("name", poi_id),
+                    "reason": self._get_reason(poi), "cost_usd": cost
+                })
+                day_cost += cost
+                poi_count += 1
+                current_time = current_time + timedelta(hours=duration, minutes=20)
+            
+            # Optional dinner
+            if budget > day_cost + 20:
+                dinner_rest = self._select_restaurant("19:00", budget / days / 3, 
+                                                       exclude=lunch_rest["id"] if lunch_rest else None)
+                if dinner_rest:
+                    blocks.append({
+                        "start": "19:30", "end": "21:00", "type": "meal",
+                        "poi_id": None, "venue_id": dinner_rest["id"],
+                        "name": f"Ужин: {dinner_rest['name']}",
+                        "reason": dinner_rest.get("description", "")[:50],
+                        "cost_usd": dinner_rest.get("avg_check_usd", 20)
+                    })
+                    day_cost += dinner_rest.get("avg_check_usd", 20)
+                    meal_count += 1
+            
+            blocks.sort(key=lambda b: b["start"])
+            
+            plan_days.append({
+                "day_number": day_num,
+                "date": day_date.strftime("%Y-%m-%d"),
+                "theme": f"День {day_num}: {self.DAY_THEMES.get(day_num, 'Исследование')}",
+                "blocks": blocks
+            })
+            total_cost += day_cost
+        
+        # Quality gates
+        if total_cost > budget:
+            warnings.append(f"⚠️ Estimated cost ${total_cost:.0f} exceeds budget ${budget:.0f}")
+        
+        issues = self._validate_plan(plan_days)
+        warnings.extend(issues)
+        
+        return {
+            "days": plan_days, "warnings": warnings,
+            "total_cost_usd": round(total_cost, 2), "pace": pace,
+            "poi_count": poi_count, "meal_count": meal_count
+        }
+    
+    def _score_pois(self, interests: List[str]) -> List[Tuple[str, float]]:
+        """Score POIs by relevance to interests."""
+        scored = []
+        for poi in self.poi_data:
+            score = 0.0
+            tags = poi.get("tags", [])
+            categories = poi.get("category", [])
+            
+            for interest in interests:
+                il = interest.lower()
+                if il in tags: score += 2.0
+                if il in categories: score += 1.5
+                if il in poi.get("description", "").lower(): score += 0.5
+            
+            if "must-see" in tags: score += 3.0
+            if "unesco" in tags: score += 2.0
+            score += (poi.get("avg_rating", 4.0) - 4.0) * 0.5
+            
+            scored.append((poi.get("id"), score))
+        
+        scored.sort(key=lambda x: x[1], reverse=True)
+        return scored
+    
+    def _select_pois_for_day(self, scored, used, min_c, max_c, day_num) -> List[str]:
+        selected = []
+        for poi_id, _ in scored:
+            if poi_id in used: continue
+            if len(selected) >= max_c: break
+            poi = self.poi_index.get(poi_id, {})
+            if day_num == 1 and "day_trip" in poi.get("category", []): continue
+            if "overnight" in poi.get("category", []): continue
+            selected.append(poi_id)
+        return selected
+    
+    def _get_reason(self, poi: Dict[str, Any]) -> str:
+        best_time = poi.get("best_time", "any")
+        tags = poi.get("tags", [])
+        if best_time == "morning": return "Лучший утренний свет"
+        if best_time == "sunset": return "Невероятный закат"
+        if "must-see" in tags: return "Обязательно к посещению"
+        if "unesco" in tags: return "Объект ЮНЕСКО"
+        return poi.get("description", "")[:40] + "..."
+    
+    def _select_restaurant(self, time: str, max_price: float, exclude=None) -> Optional[Dict]:
+        try:
+            time_dt = datetime.strptime(time, "%H:%M")
+        except:
+            return None
+        
+        candidates = []
+        for rest in self.restaurants:
+            if rest["id"] == exclude: continue
+            opens = rest.get("opens_at", "00:00")
+            closes = rest.get("closing_hours", "23:59")
+            try:
+                opens_dt = datetime.strptime(opens, "%H:%M")
+                closes_dt = datetime.strptime(closes, "%H:%M")
+                if closes_dt <= opens_dt: closes_dt = datetime.strptime("23:59", "%H:%M")
+                if not (opens_dt <= time_dt <= closes_dt): continue
+            except: pass
+            
+            if rest.get("avg_check_usd", 15) <= max_price * 1.5:
+                candidates.append((rest, rest.get("rating", 4.0)))
+        
+        candidates.sort(key=lambda x: x[1], reverse=True)
+        return candidates[0][0] if candidates else None
+    
+    def _validate_plan(self, plan_days: List[Dict]) -> List[str]:
+        """Quality Gates - Step 5."""
+        issues = []
+        for day in plan_days:
+            blocks = day.get("blocks", [])
+            for block in blocks:
+                if block.get("poi_id") and block["poi_id"] not in self.poi_index:
+                    issues.append(f"Unknown POI: {block['poi_id']}")
+                if block.get("venue_id") and block["venue_id"] not in self.restaurant_index:
+                    issues.append(f"Unknown restaurant: {block['venue_id']}")
+            
+            for i in range(len(blocks) - 1):
+                if blocks[i]["end"] > blocks[i + 1]["start"]:
+                    issues.append(f"Time overlap in day {day['day_number']}")
+        return issues
+

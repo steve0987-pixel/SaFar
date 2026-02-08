@@ -705,6 +705,189 @@
             background: var(--primary);
             color: white;
         }
+
+        /* Quick Plan Styles */
+        .quick-plan-section {
+            display: none;
+        }
+
+        .quick-plan-section.active {
+            display: block;
+        }
+
+        .plan-form {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .interest-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interest-tag.selected {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .generate-plan-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .generate-plan-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .day-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .day-header {
+            padding: 1rem 1.5rem;
+            background: var(--gradient);
+            font-weight: 600;
+        }
+
+        .day-blocks {
+            padding: 1rem;
+        }
+
+        .block-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-left: 3px solid var(--primary);
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .block-item.meal {
+            border-left-color: var(--secondary);
+        }
+
+        .block-time {
+            font-weight: 600;
+            min-width: 100px;
+            color: var(--primary);
+        }
+
+        .block-info {
+            flex: 1;
+        }
+
+        .block-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .block-reason {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .plan-summary {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .summary-item {
+            text-align: center;
+            padding: 1rem 2rem;
+            background: var(--glass);
+            border-radius: 12px;
+        }
+
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .summary-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .plan-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .plan-action-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .plan-action-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
     </style>
 </head>
 
@@ -719,7 +902,8 @@
         <nav class="nav-tabs">
             <button class="nav-tab active" data-tab="explore">🔍 Explore</button>
             <button class="nav-tab" data-tab="map" onclick="setTimeout(initMap, 100)">🗺️ Map</button>
-            <button class="nav-tab" data-tab="chat">💬 Plan Trip</button>
+            <button class="nav-tab" data-tab="quickplan">⚡ Quick Plan</button>
+            <button class="nav-tab" data-tab="chat">💬 AI Chat</button>
         </nav>
         <div style="display: flex; gap: 0.5rem; align-items: center;">
             <div class="weather-widget" id="weather-widget" title="Weather Forecast">
@@ -800,6 +984,70 @@
                 <p>See all attractions, hotels, and restaurants on an interactive map</p>
             </div>
             <div id="map-container" style="height: 500px; border-radius: 16px; overflow: hidden; margin: 1rem;"></div>
+        </section>
+
+        <!-- Quick Plan Section -->
+        <section id="quickplan-section" class="quick-plan-section">
+            <div class="hero">
+                <h1>⚡ Quick Trip Planner</h1>
+                <p>Get a personalized itinerary in seconds — no AI hallucinations!</p>
+            </div>
+
+            <div class="plan-form" id="plan-form">
+                <div class="form-group">
+                    <label>📅 Number of Days</label>
+                    <select id="plan-days">
+                        <option value="1">1 day</option>
+                        <option value="2" selected>2 days</option>
+                        <option value="3">3 days</option>
+                        <option value="4">4 days</option>
+                        <option value="5">5 days</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>🎯 Your Interests</label>
+                    <div class="interests-grid" id="interests-grid">
+                        <span class="interest-tag selected" data-interest="history">🏛️ History</span>
+                        <span class="interest-tag" data-interest="food">🍽️ Food</span>
+                        <span class="interest-tag" data-interest="architecture">🕌 Architecture</span>
+                        <span class="interest-tag" data-interest="nature">🌿 Nature</span>
+                        <span class="interest-tag" data-interest="culture">🎭 Culture</span>
+                        <span class="interest-tag" data-interest="shopping">🛍️ Shopping</span>
+                        <span class="interest-tag" data-interest="photography">📷 Photography</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>💰 Budget (USD)</label>
+                    <input type="number" id="plan-budget" value="100" min="20" max="1000">
+                </div>
+
+                <div class="form-group">
+                    <label>🚶 Trip Pace</label>
+                    <select id="plan-pace">
+                        <option value="slow">Slow (2-3 places/day)</option>
+                        <option value="medium" selected>Medium (3-4 places/day)</option>
+                        <option value="fast">Fast (5-6 places/day)</option>
+                    </select>
+                </div>
+
+                <button class="generate-plan-btn" onclick="generateQuickPlan()">
+                    ✨ Generate My Plan
+                </button>
+            </div>
+
+            <div id="plan-result" style="display: none;">
+                <div class="plan-summary" id="plan-summary"></div>
+                <div class="timeline-container" id="timeline-container"></div>
+                <div class="plan-actions">
+                    <button class="plan-action-btn" onclick="savePlanToLocal()">💾 Save Plan</button>
+                    <button class="plan-action-btn" onclick="loadPlanFromLocal()">📂 Load Saved</button>
+                    <button class="plan-action-btn"
+                        onclick="document.getElementById('plan-form').style.display='block'; document.getElementById('plan-result').style.display='none';">🔄
+                        New Plan</button>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -1813,9 +2061,17 @@
                 tab.classList.add('active');
 
                 // Switch section visibility
-                ['explore', 'map', 'chat'].forEach(section => {
+                ['explore', 'map', 'chat', 'quickplan'].forEach(section => {
                     const el = document.getElementById(`${section}-section`);
-                    if (el) el.style.display = section === target ? 'block' : 'none';
+                    if (el) {
+                        if (section === target) {
+                            el.style.display = 'block';
+                            if (section === 'quickplan') el.classList.add('active');
+                        } else {
+                            el.style.display = 'none';
+                            if (section === 'quickplan') el.classList.remove('active');
+                        }
+                    }
                 });
 
                 // Map specific logic
@@ -1827,6 +2083,128 @@
                 }
             });
         });
+
+        // ============ QUICK PLAN FUNCTIONS ============
+        let currentPlan = null;
+
+        // Interest tag toggle
+        document.querySelectorAll('.interest-tag').forEach(tag => {
+            tag.addEventListener('click', () => tag.classList.toggle('selected'));
+        });
+
+        async function generateQuickPlan() {
+            const btn = document.querySelector('.generate-plan-btn');
+            const oldText = btn.innerHTML;
+            btn.innerHTML = '<div class="spinner"></div> Generating...';
+            btn.disabled = true;
+
+            try {
+                const days = parseInt(document.getElementById('plan-days').value);
+                const budget = parseFloat(document.getElementById('plan-budget').value);
+                const pace = document.getElementById('plan-pace').value;
+                const interests = Array.from(document.querySelectorAll('.interest-tag.selected'))
+                    .map(t => t.dataset.interest);
+
+                const response = await fetch(`${API_BASE}/v1/plan`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ days, interests, budget, pace })
+                });
+
+                if (!response.ok) throw new Error('API error');
+
+                currentPlan = await response.json();
+                renderPlanResult(currentPlan);
+
+                document.getElementById('plan-form').style.display = 'none';
+                document.getElementById('plan-result').style.display = 'block';
+            } catch (e) {
+                console.error('Plan generation failed:', e);
+                alert('Failed to generate plan. Please try again.');
+            } finally {
+                btn.innerHTML = oldText;
+                btn.disabled = false;
+            }
+        }
+
+        function renderPlanResult(plan) {
+            // Render summary
+            const summaryEl = document.getElementById('plan-summary');
+            summaryEl.innerHTML = `
+                <div class="summary-item">
+                    <div class="summary-value">${plan.days.length}</div>
+                    <div class="summary-label">Days</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">${plan.poi_count}</div>
+                    <div class="summary-label">Places</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">${plan.meal_count}</div>
+                    <div class="summary-label">Meals</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">$${plan.total_cost_usd}</div>
+                    <div class="summary-label">Est. Cost</div>
+                </div>
+            `;
+
+            // Render timeline
+            const timelineEl = document.getElementById('timeline-container');
+            timelineEl.innerHTML = plan.days.map(day => `
+                <div class="day-card">
+                    <div class="day-header">
+                        ${day.theme} <span style="opacity: 0.7; font-size: 0.85rem;">${day.date || ''}</span>
+                    </div>
+                    <div class="day-blocks">
+                        ${day.blocks.map(block => `
+                            <div class="block-item ${block.type}">
+                                <div class="block-time">${block.start} - ${block.end}</div>
+                                <div class="block-info">
+                                    <div class="block-name">${getBlockIcon(block.type)} ${block.name}</div>
+                                    <div class="block-reason">${block.reason}</div>
+                                    ${block.cost_usd > 0 ? `<div style="color: #10b981; font-size: 0.85rem;">$${block.cost_usd}</div>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            // Show warnings if any
+            if (plan.warnings && plan.warnings.length > 0) {
+                timelineEl.innerHTML += `
+                    <div style="padding: 1rem; background: rgba(251, 191, 36, 0.1); border: 1px solid #fbbf24; border-radius: 12px; margin-top: 1rem;">
+                        <strong>⚠️ Warnings:</strong><br>
+                        ${plan.warnings.join('<br>')}
+                    </div>
+                `;
+            }
+        }
+
+        function getBlockIcon(type) {
+            const icons = { poi: '🏛️', meal: '🍽️', transit: '🚶', free: '☕' };
+            return icons[type] || '📍';
+        }
+
+        function savePlanToLocal() {
+            if (!currentPlan) return alert('No plan to save!');
+            const saved = JSON.parse(localStorage.getItem('safarPlans') || '[]');
+            saved.push({ ...currentPlan, savedAt: new Date().toISOString() });
+            localStorage.setItem('safarPlans', JSON.stringify(saved));
+            alert('Plan saved! ✅');
+        }
+
+        function loadPlanFromLocal() {
+            const saved = JSON.parse(localStorage.getItem('safarPlans') || '[]');
+            if (saved.length === 0) return alert('No saved plans found.');
+
+            const latest = saved[saved.length - 1];
+            currentPlan = latest;
+            renderPlanResult(currentPlan);
+            document.getElementById('plan-form').style.display = 'none';
+            document.getElementById('plan-result').style.display = 'block';
+        }
     </script>
 </body>
 

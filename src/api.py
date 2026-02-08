@@ -20,6 +20,8 @@ from src.agents.context_chat import ContextChatAgent
 from src.agents.storyteller import CultureStoryteller
 from src.utils.weather import WeatherService
 from src.rag.retriever import HybridPOIRetriever
+from src.agents.planner import DeterministicTripPlanner
+from src.models.schemas import PlanRequest, PlanResponse
 
 app = FastAPI(
     title="SaFar API",
@@ -182,6 +184,15 @@ class EditPlanRequest(BaseModel):
     places: List[str]
     instruction: str
 
+# --- Deterministic Trip Planner Singleton ---
+_trip_planner = None
+
+def get_trip_planner():
+    global _trip_planner
+    if _trip_planner is None:
+        _trip_planner = DeterministicTripPlanner()
+    return _trip_planner
+
 # --- AI Itinerary Generation ---
 ITINERARY_SYSTEM = """Ты SaFar — лучший AI-гид по Самарканду и Узбекистану.
 
@@ -328,6 +339,26 @@ Use emojis where appropriate.
 
 # --- API Endpoints ---
 
+
+@app.post("/v1/plan", response_model=PlanResponse)
+async def create_trip_plan(request: PlanRequest):
+    """
+    Deterministic Trip Planner - No LLM hallucinations!
+    Returns a structured plan with days[], blocks[], warnings[].
+    """
+    try:
+        planner = get_trip_planner()
+        plan = planner.create_plan(
+            days=request.days,
+            interests=request.interests,
+            budget=request.budget,
+            pace=request.pace,
+            start_date=request.start_date
+        )
+        return PlanResponse(**plan)
+    except Exception as e:
+        print(f"❌ Error in create_trip_plan: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/v1/chat", response_model=ChatResponse)
