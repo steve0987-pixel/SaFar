@@ -767,6 +767,55 @@
             transform: translateX(24px);
         }
 
+        /* AI Mode Toggle Switch */
+        .ai-toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+            flex-shrink: 0;
+        }
+
+        .ai-toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .ai-toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--glass);
+            border-radius: 26px;
+            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
+        }
+
+        .ai-toggle-slider::before {
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 2px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .ai-toggle-switch input:checked+.ai-toggle-slider {
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+        }
+
+        .ai-toggle-switch input:checked+.ai-toggle-slider::before {
+            transform: translateX(24px);
+        }
+
         .interests-grid {
             display: flex;
             flex-wrap: wrap;
@@ -1060,17 +1109,16 @@
                         <option value="slow">Slow (2-3 places/day)</option>
                         <option value="medium" selected>Medium (3-4 places/day)</option>
                         <option value="fast">Fast (5-6 places/day)</option>
+                    </select>
                 </div>
 
-                <div class="form-group" style="display: flex; align-items: center; gap: 1rem;">
-                    <label style="flex: 1;">🤖 Use AI Mode</label>
-                    <label class="toggle-switch"
-                        style="position: relative; display: inline-block; width: 50px; height: 26px;">
-                        <input type="checkbox" id="use-ai-toggle" style="opacity: 0; width: 0; height: 0;">
-                        <span class="toggle-slider"
-                            style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--glass); border-radius: 26px; transition: all 0.3s; border: 1px solid var(--glass-border);"></span>
-                    </label>
-                    <small style="color: var(--text-muted); font-size: 0.75rem;">Smarter but slower</small>
+                <div class="form-group" style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>🤖 Use AI Mode</span>
+                    <button type="button" id="ai-mode-btn" onclick="toggleAIMode()"
+                        style="padding: 0.5rem 1.2rem; border-radius: 20px; border: 2px solid #6366f1; background: transparent; color: var(--text); cursor: pointer; font-weight: 600; transition: all 0.3s;">
+                        OFF
+                    </button>
+                    <input type="checkbox" id="use-ai-toggle" style="display: none;">
                 </div>
 
                 <button class="generate-plan-btn" onclick="generateQuickPlan()">
@@ -2168,6 +2216,29 @@
         document.querySelectorAll('.interest-tag').forEach(tag => {
             tag.addEventListener('click', () => tag.classList.toggle('selected'));
         });
+
+        // AI Mode Toggle Button
+        function toggleAIMode() {
+            const btn = document.getElementById('ai-mode-btn');
+            const checkbox = document.getElementById('use-ai-toggle');
+            const isOn = checkbox.checked;
+
+            checkbox.checked = !isOn;
+
+            if (!isOn) {
+                // Turning ON
+                btn.textContent = 'ON';
+                btn.style.background = 'linear-gradient(135deg, #6366f1, #ec4899)';
+                btn.style.color = 'white';
+                btn.style.borderColor = 'transparent';
+            } else {
+                // Turning OFF
+                btn.textContent = 'OFF';
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--text)';
+                btn.style.borderColor = '#6366f1';
+            }
+        }
 
         async function generateQuickPlan() {
             const btn = document.querySelector('.generate-plan-btn');
